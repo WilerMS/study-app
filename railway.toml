@@ -3,10 +3,10 @@
 
 [build]
 builder = "nixpacks"
-buildCommand = "pnpm run build"
+buildCommand = "npm run build"
 
 [deploy]
-startCommand = "pnpm run start"
+startCommand = "npm run start"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
