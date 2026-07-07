@@ -8,11 +8,32 @@ interface Props {
   disabled?: boolean;
 }
 
-const stateStyles: Record<OptionState, string> = {
-  default: 'bg-white border-2 border-gray-100 text-gray-800 hover:border-indigo-300 hover:shadow-sm cursor-pointer active:scale-95',
-  correct: 'bg-green-50 border-2 border-green-400 text-green-800',
-  wrong:   'bg-red-50 border-2 border-red-400 text-red-800',
-  dimmed:  'bg-white border-2 border-gray-100 text-gray-400',
+const containerStyles: Record<OptionState, string> = {
+  default: 'bg-white border border-gray-100 hover:border-indigo-200 hover:bg-indigo-50/40 cursor-pointer active:scale-[0.98]',
+  correct: 'bg-green-50 border border-green-200',
+  wrong:   'bg-red-50 border border-red-200',
+  dimmed:  'bg-white border border-gray-100 opacity-40',
+};
+
+const accentStyles: Record<OptionState, string> = {
+  default: 'bg-indigo-600',
+  correct: 'bg-green-500',
+  wrong:   'bg-red-500',
+  dimmed:  'bg-gray-200',
+};
+
+const labelStyles: Record<OptionState, string> = {
+  default: 'text-white/60',
+  correct: 'text-white/70',
+  wrong:   'text-white/70',
+  dimmed:  'text-gray-400',
+};
+
+const textStyles: Record<OptionState, string> = {
+  default: 'text-gray-800',
+  correct: 'text-green-800',
+  wrong:   'text-red-700',
+  dimmed:  'text-gray-400',
 };
 
 export default function OptionCard({ label, text, state = 'default', onClick, disabled }: Props) {
@@ -20,10 +41,16 @@ export default function OptionCard({ label, text, state = 'default', onClick, di
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`w-full rounded-2xl p-4 text-left font-medium transition-all duration-150 ${stateStyles[state]}`}
+      className={`w-full rounded-2xl overflow-hidden flex items-stretch transition-all duration-150 ${containerStyles[state]}`}
     >
-      <span className="text-xs font-bold mr-2 opacity-50">{label}</span>
-      {text}
+      <div className={`flex items-center justify-center w-12 shrink-0 ${accentStyles[state]}`}>
+        <span className={`text-sm font-bold ${labelStyles[state]}`}>{label}</span>
+      </div>
+      <div className="flex items-center px-4 py-4 flex-1">
+        <span className={`text-sm font-medium text-left leading-snug ${textStyles[state]}`}>
+          {text}
+        </span>
+      </div>
     </button>
   );
 }

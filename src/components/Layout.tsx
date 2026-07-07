@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { IconArrowLeft } from '@tabler/icons-react';
+import type { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
+import { IconArrowLeft } from "@tabler/icons-react";
 
 interface Props {
   children: ReactNode;
@@ -11,7 +11,14 @@ interface Props {
   headerRight?: ReactNode;
 }
 
-export default function Layout({ children, backTo, title, subtitle, progress, headerRight }: Props) {
+export default function Layout({
+  children,
+  backTo,
+  title,
+  subtitle,
+  progress,
+  headerRight,
+}: Props) {
   const navigate = useNavigate();
   const hasHeader = backTo || title;
 
@@ -35,7 +42,9 @@ export default function Layout({ children, backTo, title, subtitle, progress, he
               </span>
             )}
             {headerRight && (
-              <div className="shrink-0 text-sm text-gray-400">{headerRight}</div>
+              <div className="shrink-0 text-sm text-gray-400">
+                {headerRight}
+              </div>
             )}
           </div>
 
@@ -52,7 +61,7 @@ export default function Layout({ children, backTo, title, subtitle, progress, he
         </header>
       )}
 
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-5">
         <div className="max-w-2xl mx-auto">
           {subtitle && <p className="text-gray-500 mb-6">{subtitle}</p>}
           {children}
