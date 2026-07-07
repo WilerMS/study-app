@@ -17,7 +17,7 @@ export default function Home() {
   const stats = overallStats(progress, subjects);
 
   const brandHeader = (
-    <div className="px-5 h-14 flex items-center justify-between gap-3">
+    <div className="px-5 py-3.5 flex items-center justify-between gap-3">
       <div className="flex items-center gap-2.5">
         <span
           className="shrink-0 w-9 h-9 rounded-[11px] grid place-items-center shadow-[0_6px_14px_-6px_var(--color-primary)]"
