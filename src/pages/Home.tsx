@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useSubjects } from '../hooks/useSubjects';
 import StatusScreen from '../components/StatusScreen';
 import Layout from '../components/Layout';
@@ -7,6 +8,7 @@ import { useProgress, subjectPct, overallStats } from '../utils/progress';
 import { hueFor, initialsOf, badgeColors } from '../utils/subjectVisual';
 
 export default function Home() {
+  const { t } = useTranslation();
   const { data: subjects, loading, error } = useSubjects();
   const progress = useProgress();
 
@@ -42,9 +44,9 @@ export default function Home() {
   return (
     <Layout header={brandHeader}>
       <div className="mb-5 mt-2">
-        <div className="text-sm font-semibold text-fgdim">¡Hola! 👋</div>
+        <div className="text-sm font-semibold text-fgdim">{t('home.greeting')}</div>
         <h1 className="text-[26px] font-extrabold text-fg tracking-tight mt-0.5">
-          ¿Qué estudiamos hoy?
+          {t('home.title')}
         </h1>
       </div>
 
@@ -57,26 +59,28 @@ export default function Home() {
       >
         <div className="flex justify-between items-start">
           <div>
-            <div className="text-[13px] font-semibold opacity-85">Tu progreso general</div>
+            <div className="text-[13px] font-semibold opacity-85">{t('home.progressLabel')}</div>
             <div className="text-[40px] font-extrabold tracking-tighter leading-none mt-1">
               {stats.pct}%
             </div>
           </div>
           <div className="text-right leading-tight">
             <div className="text-[20px] font-extrabold">{stats.testsCompleted}</div>
-            <div className="text-[12px] font-semibold opacity-90">tests hechos</div>
+            <div className="text-[12px] font-semibold opacity-90">
+              {t('home.testsDone', { count: stats.testsCompleted })}
+            </div>
           </div>
         </div>
         <div className="h-[9px] rounded-full bg-white/25 overflow-hidden mt-4">
           <div className="h-full rounded-full bg-white transition-all duration-500" style={{ width: `${stats.pct}%` }} />
         </div>
         <div className="flex justify-between text-[11px] font-semibold opacity-85 mt-2.5">
-          <span>{subjects.length} asignaturas</span>
-          <span>{stats.totalQuestions} preguntas</span>
+          <span>{t('home.subjectsCount', { count: subjects.length })}</span>
+          <span>{t('home.questionsCount', { count: stats.totalQuestions })}</span>
         </div>
       </div>
 
-      <div className="text-[15px] font-bold text-fg mb-3">Asignaturas</div>
+      <div className="text-[15px] font-bold text-fg mb-3">{t('home.subjectsSection')}</div>
       <div className="grid grid-cols-2 gap-3">
         {subjects.map((subject) => {
           const pct = subjectPct(progress, subject);
@@ -99,14 +103,17 @@ export default function Home() {
                   {subject.name}
                 </div>
                 <div className="text-[11.5px] font-medium text-fgfaint mt-0.5 truncate">
-                  {topicCount} temas · {totalQ} preguntas
+                  {t('home.topicsCount', { count: topicCount })} ·{' '}
+                  {t('home.questionsCount', { count: totalQ })}
                 </div>
               </div>
               <div>
                 <div className="h-1.5 rounded-full bg-surface2 overflow-hidden">
                   <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
                 </div>
-                <div className="text-[10.5px] font-bold text-fgdim mt-1.5">{pct}% completado</div>
+                <div className="text-[10.5px] font-bold text-fgdim mt-1.5">
+                  {t('home.completed', { pct })}
+                </div>
               </div>
             </Link>
           );
