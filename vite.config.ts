@@ -9,24 +9,35 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'favicon.ico', 'favicon-32x32.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'StudyApp',
         short_name: 'StudyApp',
         description: 'App para estudiar preguntas tipo test',
-        theme_color: '#4f46e5',
-        background_color: '#f9fafb',
+        lang: 'es',
+        theme_color: '#f7fafe',
+        background_color: '#f7fafe',
         display: 'standalone',
+        display_override: ['standalone'],
+        orientation: 'portrait',
         icons: [
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'any',
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: 'pwa-512x512-maskable.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },

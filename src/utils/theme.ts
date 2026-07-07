@@ -20,11 +20,26 @@ function stored(): Theme | null {
   }
 }
 
+// Status-bar colour per theme — must match --color-bg in src/index.css.
+const THEME_BG: Record<Theme, string> = {
+  light: "#f7fafe",
+  dark: "#131720",
+};
+
 let theme: Theme = stored() ?? systemTheme();
 const listeners = new Set<() => void>();
 
 function applyToDom() {
   document.documentElement.setAttribute("data-theme", theme);
+
+  // Colour the mobile status/notification bar to match the interface.
+  let meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "theme-color";
+    document.head.appendChild(meta);
+  }
+  meta.content = THEME_BG[theme];
 }
 
 // Lock the current effective theme in as an explicit override on first load.
