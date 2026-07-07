@@ -11,6 +11,8 @@ interface Props {
   progress?: number;
   centerSlot?: ReactNode;
   headerRight?: ReactNode;
+  /** Contenido de cabecera personalizado; ocupa el header sticky por completo. */
+  header?: ReactNode;
 }
 
 export default function Layout({
@@ -22,15 +24,18 @@ export default function Layout({
   progress,
   centerSlot,
   headerRight,
+  header,
 }: Props) {
   const navigate = useNavigate();
-  const hasHeader = backTo || title || centerSlot || headerRight;
+  const hasHeader = header || backTo || title || centerSlot || headerRight;
 
   return (
     <div className="min-h-svh bg-canvas flex justify-center">
       <div className="w-full max-w-[480px] bg-bg min-h-svh flex flex-col shadow-[var(--shadow)]">
         {hasHeader && (
           <header className="sticky top-0 z-10 bg-bg/90 backdrop-blur-md">
+            {header ?? (
+            <>
             <div className="px-4 h-14 flex items-center gap-3">
               {backTo && (
                 <button
@@ -70,6 +75,8 @@ export default function Layout({
                   style={{ width: `${progress}%` }}
                 />
               </div>
+            )}
+            </>
             )}
           </header>
         )}
