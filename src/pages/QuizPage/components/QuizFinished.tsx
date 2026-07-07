@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Layout from "../../../components/Layout";
 import Button from "../../../components/Button";
 
 interface Props {
@@ -15,30 +14,36 @@ export default function QuizFinished({ score, total, topicName, backPath, onRepe
   const pct = Math.round((score / total) * 100);
 
   return (
-    <Layout backTo={backPath} title={topicName}>
-      <div className="flex flex-col items-center pt-4">
-        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 w-full max-w-md text-center">
-          <div className="text-6xl mb-4">{pct >= 70 ? "🎉" : "📖"}</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            ¡Sesión terminada!
-          </h2>
-          <p className="text-gray-500 mb-6">{topicName}</p>
-          <div className="bg-indigo-50 rounded-2xl p-6 mb-6">
-            <p className="text-5xl font-bold text-indigo-600">{pct}%</p>
-            <p className="text-gray-500 mt-1">
-              {score} de {total} correctas
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="secondary" className="flex-1" onClick={() => navigate(backPath)}>
-              Volver
-            </Button>
-            <Button variant="primary" className="flex-1" onClick={onRepeat}>
-              Repetir
-            </Button>
-          </div>
+    <div className="min-h-svh bg-canvas flex justify-center">
+      <div className="w-full max-w-[480px] bg-bg min-h-svh flex flex-col items-center justify-center text-center px-8 shadow-[var(--shadow)] animate-[fade-in_0.35s_ease]">
+        <div className="w-24 h-24 rounded-full bg-primarysoft grid place-items-center text-[42px] text-primary font-extrabold">
+          {pct >= 70 ? "★" : "☆"}
+        </div>
+        <h2 className="text-[26px] font-extrabold text-fg tracking-tight mt-6">
+          ¡Tema completado!
+        </h2>
+        <p className="text-[15px] font-medium text-fgdim mt-2 leading-relaxed">
+          Has acertado{" "}
+          <b className="text-fg">
+            {score} de {total}
+          </b>{" "}
+          preguntas
+        </p>
+        <div className="text-[56px] font-extrabold text-primary tracking-tighter my-4">
+          {pct}%
+        </div>
+        <p className="text-[13px] font-semibold text-fgfaint mb-6 truncate max-w-full">
+          {topicName}
+        </p>
+        <div className="flex flex-col gap-2.5 w-full max-w-[280px]">
+          <Button variant="primary" onClick={onRepeat}>
+            Repetir tema
+          </Button>
+          <Button variant="secondary" onClick={() => navigate(backPath)}>
+            Volver a los temas
+          </Button>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }

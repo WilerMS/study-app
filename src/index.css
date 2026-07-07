@@ -1,8 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
+/* ── Design tokens (from Claude Design "App de Tests") ───────────────────── */
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-canvas: oklch(0.93 0.02 255);
+  --color-bg: oklch(0.985 0.006 255);
+  --color-surface: #ffffff;
+  --color-surface2: oklch(0.968 0.014 255);
+
+  --color-fg: oklch(0.29 0.02 265);
+  --color-fgdim: oklch(0.56 0.02 265);
+  --color-fgfaint: oklch(0.68 0.015 265);
+  --color-line: oklch(0.915 0.012 260);
+
+  --color-primary: oklch(0.6 0.14 255);
+  --color-primarystrong: oklch(0.52 0.15 255);
+  --color-primarysoft: oklch(0.95 0.03 255);
+
+  --color-good: oklch(0.66 0.15 158);
+  --color-goodsoft: oklch(0.955 0.045 158);
+  --color-bad: oklch(0.62 0.18 22);
+  --color-badsoft: oklch(0.955 0.045 22);
+}
+
+/* Elevation shared by cards / sheets (not a color, kept as a raw var) */
+:root {
+  --shadow: 0 18px 50px -18px oklch(0.5 0.08 260 / 0.45);
+}
+
+/* Dark theme tokens. Applied when the OS prefers dark (unless the user forced
+   light) OR when the user explicitly picks dark via the [data-theme] toggle. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas: oklch(0.155 0.015 265);
+    --color-bg: oklch(0.205 0.018 265);
+    --color-surface: oklch(0.25 0.02 265);
+    --color-surface2: oklch(0.29 0.024 265);
+
+    --color-fg: oklch(0.95 0.01 260);
+    --color-fgdim: oklch(0.7 0.02 265);
+    --color-fgfaint: oklch(0.58 0.02 265);
+    --color-line: oklch(0.34 0.02 265);
+
+    --color-primary: oklch(0.7 0.13 255);
+    --color-primarystrong: oklch(0.78 0.12 255);
+    --color-primarysoft: oklch(0.33 0.06 255);
+
+    --color-good: oklch(0.72 0.15 158);
+    --color-goodsoft: oklch(0.34 0.07 158);
+    --color-bad: oklch(0.68 0.17 22);
+    --color-badsoft: oklch(0.36 0.08 22);
+
+    --shadow: 0 18px 50px -18px oklch(0 0 0 / 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-canvas: oklch(0.155 0.015 265);
+  --color-bg: oklch(0.205 0.018 265);
+  --color-surface: oklch(0.25 0.02 265);
+  --color-surface2: oklch(0.29 0.024 265);
+
+  --color-fg: oklch(0.95 0.01 260);
+  --color-fgdim: oklch(0.7 0.02 265);
+  --color-fgfaint: oklch(0.58 0.02 265);
+  --color-line: oklch(0.34 0.02 265);
+
+  --color-primary: oklch(0.7 0.13 255);
+  --color-primarystrong: oklch(0.78 0.12 255);
+  --color-primarysoft: oklch(0.33 0.06 255);
+
+  --color-good: oklch(0.72 0.15 158);
+  --color-goodsoft: oklch(0.34 0.07 158);
+  --color-bad: oklch(0.68 0.17 22);
+  --color-badsoft: oklch(0.36 0.08 22);
+
+  --shadow: 0 18px 50px -18px oklch(0 0 0 / 0.6);
+}
+
 @keyframes slide-up {
-  from { transform: translateY(100%); }
+  from { transform: translateY(102%); }
   to   { transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .scrollbar-hide {
@@ -15,11 +99,14 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-fg);
   -webkit-font-smoothing: antialiased;
 }
 

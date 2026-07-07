@@ -2,26 +2,37 @@ import { useState } from 'react';
 
 type AlertVariant = 'success' | 'danger' | 'warning' | 'info';
 
-const variantStyles: Record<AlertVariant, { container: string; title: string; button: string }> = {
+const variantStyles: Record<
+  AlertVariant,
+  { container: string; icon: string; title: string; button: string; glyph: string }
+> = {
   success: {
-    container: 'bg-green-50 border border-green-200',
-    title: 'text-green-700',
-    button: 'text-green-600',
+    container: 'bg-goodsoft border-good',
+    icon: 'bg-good text-white',
+    title: 'text-good',
+    button: 'text-good',
+    glyph: '✓',
   },
   danger: {
-    container: 'bg-red-50 border border-red-200',
-    title: 'text-red-700',
-    button: 'text-red-600',
+    container: 'bg-badsoft border-bad',
+    icon: 'bg-bad text-white',
+    title: 'text-bad',
+    button: 'text-bad',
+    glyph: '✕',
   },
   warning: {
-    container: 'bg-yellow-50 border border-yellow-200',
-    title: 'text-yellow-700',
-    button: 'text-yellow-600',
+    container: 'bg-amber-50 border-amber-300',
+    icon: 'bg-amber-500 text-white',
+    title: 'text-amber-600',
+    button: 'text-amber-600',
+    glyph: '!',
   },
   info: {
-    container: 'bg-blue-50 border border-blue-200',
-    title: 'text-blue-700',
-    button: 'text-blue-600',
+    container: 'bg-primarysoft border-primary',
+    icon: 'bg-primary text-white',
+    title: 'text-primary',
+    button: 'text-primary',
+    glyph: 'i',
   },
 };
 
@@ -37,24 +48,33 @@ export default function Alert({ variant, title, description, className = '' }: A
   const styles = variantStyles[variant];
 
   return (
-    <div className={`rounded-2xl p-5 ${styles.container} ${className}`}>
-      <p className={`font-bold mb-2 ${styles.title}`}>{title}</p>
-      {description && (
-        <>
-          <div
-            className="overflow-hidden transition-all duration-300 ease-in-out"
-            style={{ maxHeight: expanded ? '500px' : '4.27rem' }}
-          >
-            <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
-          </div>
-          <button
-            onClick={() => setExpanded((e) => !e)}
-            className={`text-xs font-semibold mt-2 ${styles.button} hover:underline`}
-          >
-            {expanded ? 'Ver menos ↑' : 'Ver más ↓'}
-          </button>
-        </>
-      )}
+    <div className={`flex gap-3.5 items-start rounded-[18px] border p-4 ${styles.container} ${className}`}>
+      <div
+        className={`shrink-0 w-9 h-9 rounded-full grid place-items-center text-lg font-extrabold ${styles.icon}`}
+      >
+        {styles.glyph}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className={`text-base font-extrabold tracking-tight ${styles.title}`}>{title}</p>
+        {description && (
+          <>
+            <div
+              className="overflow-hidden transition-all duration-300 ease-in-out"
+              style={{ maxHeight: expanded ? '40rem' : '4.5rem' }}
+            >
+              <p className="text-[13.5px] font-medium text-fgdim leading-relaxed mt-1.5 text-pretty">
+                {description}
+              </p>
+            </div>
+            <button
+              onClick={() => setExpanded((e) => !e)}
+              className={`text-xs font-bold mt-1.5 ${styles.button} hover:underline`}
+            >
+              {expanded ? 'Ver menos ↑' : 'Ver más ↓'}
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

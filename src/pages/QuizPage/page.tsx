@@ -7,11 +7,12 @@ import Button from "../../components/Button";
 import OptionCard from "../../components/OptionCard";
 import Alert from "../../components/Alert";
 import QuizFinished from "./components/QuizFinished";
+import { recordResult } from "../../utils/progress";
 import type { Question } from "../../types";
 
 type QuizState = "answering" | "feedback" | "finished";
 
-const OPTION_LABELS = ["A", "B", "C", "D"];
+const OPTION_LABELS = ["A", "B", "C", "D", "E", "F"];
 
 export default function QuizPage() {
   const { subjectId, topicId } = useParams<{
@@ -33,8 +34,9 @@ export default function QuizPage() {
   const questions: Question[] = topic.questions;
   const current = questions[currentIndex];
   const isCorrect = selected === current.correct;
-  const progress = ((currentIndex + 1) / questions.length) * 100;
   const backPath = `/subject/${subjectId}`;
+  const progress =
+    ((currentIndex + (quizState === "feedback" ? 1 : 0)) / questions.length) * 100;
 
   function getOptionState(index: number) {
     if (quizState !== "feedback") return "default" as const;
@@ -52,6 +54,10 @@ export default function QuizPage() {
 
   function handleNext() {
     if (currentIndex + 1 >= questions.length) {
+      const finalScore = score; // already includes the last answer
+      if (subjectId && topicId) {
+        recordResult(subjectId, topicId, (finalScore / questions.length) * 100);
+      }
       setQuizState("finished");
     } else {
       setCurrentIndex((i) => i + 1);
@@ -82,61 +88,62 @@ export default function QuizPage() {
   return (
     <Layout
       backTo={backPath}
-      title={topic.name}
-      progress={progress}
+      backIcon="close"
+      centerSlot={
+        <div className="h-2 rounded-full bg-surface2 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      }
       headerRight={`${currentIndex + 1} / ${questions.length}`}
     >
-      <div className="relative mb-8 px-1 overflow-hidden">
-        <div className="relative">
-          <p className="text-[0.65rem] font-bold text-indigo-400 tracking-[0.25em] uppercase mb-1">
-            Pregunta
-          </p>
-          <p className="text-xl font-bold text-gray-900 leading-snug tracking-tight text-balance">
-            {current.question}
-          </p>
+      <div className="bg-primarysoft rounded-[22px] p-5 mb-5">
+        <div className="text-xs font-bold text-primarystrong uppercase tracking-wider">
+          {topic.name}
+        </div>
+        <div className="text-[22px] font-extrabold text-fg tracking-tight leading-snug mt-2 text-pretty">
+          {current.question}
         </div>
       </div>
 
-      <div className="flex items-center gap-3 mb-4 px-1">
-        <div className="flex-1 h-px bg-gray-200" />
-        <span className="text-xs font-medium text-gray-400 tracking-wide uppercase">
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <span className="w-5 h-0.5 rounded bg-line" />
+        <span className="text-[11px] font-bold text-fgfaint uppercase tracking-wider">
           Elige una opción
         </span>
-        <div className="flex-1 h-px bg-gray-200" />
+        <span className="w-5 h-0.5 rounded bg-line" />
       </div>
 
-      <div className="overflow-y-auto max-h-[55vh] mb-4 scrollbar-hide">
-        <div className="grid gap-3">
-          {current.options.map((option, index) => (
-            <OptionCard
-              key={index}
-              label={OPTION_LABELS[index]}
-              text={option}
-              state={getOptionState(index)}
-              onClick={() => handleSelect(index)}
-              disabled={quizState === "feedback"}
-            />
-          ))}
-        </div>
+      <div className={`flex flex-col gap-2.5 ${quizState === "feedback" ? "pb-72" : ""}`}>
+        {current.options.map((option, index) => (
+          <OptionCard
+            key={index}
+            label={OPTION_LABELS[index]}
+            text={option}
+            state={getOptionState(index)}
+            onClick={() => handleSelect(index)}
+            disabled={quizState === "feedback"}
+          />
+        ))}
       </div>
 
       {quizState === "feedback" && (
-        <div
-          className="fixed bottom-0 left-0 right-0 z-50 px-4 py-5
-            bg-white/95 backdrop-blur-md rounded-t-3xl shadow-2xl
-            animate-[slide-up_0.3s_ease-out]"
-        >
-          <Alert
-            variant={isCorrect ? "success" : "danger"}
-            title={isCorrect ? "¡Correcto!" : "Incorrecto"}
-            description={current.explanation}
-            className="mb-3"
-          />
-          <Button variant="primary" fullWidth onClick={handleNext}>
-            {currentIndex + 1 >= questions.length
-              ? "Ver resultados"
-              : "Siguiente pregunta"}
-          </Button>
+        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 animate-[slide-up_0.34s_cubic-bezier(0.22,1,0.36,1)]">
+          <div className="bg-bg rounded-t-[30px] border-t border-line shadow-[0_-18px_44px_-20px_oklch(0.4_0.05_260)] px-5 pt-3.5 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+            <div className="w-[42px] h-[5px] rounded-full bg-line mx-auto mb-4" />
+            <Alert
+              variant={isCorrect ? "success" : "danger"}
+              title={isCorrect ? "¡Correcto!" : "Incorrecto"}
+              description={current.explanation}
+            />
+            <Button variant="primary" fullWidth onClick={handleNext} className="mt-4">
+              {currentIndex + 1 >= questions.length
+                ? "Ver resultados"
+                : "Siguiente pregunta"}
+            </Button>
+          </div>
         </div>
       )}
     </Layout>

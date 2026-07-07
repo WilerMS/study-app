@@ -10,13 +10,13 @@ export default function StatusScreen({ loading, error }: Props) {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="min-h-svh bg-bg flex items-center justify-center px-6">
       {loading && (
-        <div className="w-8 h-8 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-surface2 border-t-primary rounded-full animate-spin" />
       )}
       {error && (
         <div className="text-center">
-          <p className="text-gray-500 mb-4">{error}</p>
+          <p className="text-fgdim font-medium mb-4">{error}</p>
           <Button variant="ghost" onClick={() => navigate('/')}>
             Volver al inicio
           </Button>

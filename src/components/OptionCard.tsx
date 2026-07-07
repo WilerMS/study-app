@@ -8,32 +8,33 @@ interface Props {
   disabled?: boolean;
 }
 
+// Diseño B — options sit on surface2 with a square badge and a trailing marker.
 const containerStyles: Record<OptionState, string> = {
-  default: 'bg-white border border-gray-100 hover:border-indigo-200 hover:bg-indigo-50/40 cursor-pointer active:scale-[0.98]',
-  correct: 'bg-green-50 border border-green-200',
-  wrong:   'bg-red-50 border border-red-200',
-  dimmed:  'bg-white border border-gray-100 opacity-40',
+  default: 'bg-surface2 border-transparent hover:border-primary/40 cursor-pointer active:scale-[0.99]',
+  correct: 'bg-goodsoft border-good shadow-[0_12px_30px_-12px_var(--color-good)]',
+  wrong:   'bg-badsoft border-bad shadow-[0_12px_30px_-12px_var(--color-bad)]',
+  dimmed:  'bg-surface2 border-transparent opacity-40',
 };
 
-const accentStyles: Record<OptionState, string> = {
-  default: 'bg-indigo-600',
-  correct: 'bg-green-500',
-  wrong:   'bg-red-500',
-  dimmed:  'bg-gray-200',
+const badgeStyles: Record<OptionState, string> = {
+  default: 'bg-surface text-primary border border-line',
+  correct: 'bg-good text-white border border-transparent',
+  wrong:   'bg-bad text-white border border-transparent',
+  dimmed:  'bg-surface text-primary border border-line',
 };
 
-const labelStyles: Record<OptionState, string> = {
-  default: 'text-white/60',
-  correct: 'text-white/70',
-  wrong:   'text-white/70',
-  dimmed:  'text-gray-400',
+const trailStyles: Record<OptionState, string> = {
+  default: 'opacity-0',
+  correct: 'bg-good border-good text-white',
+  wrong:   'bg-bad border-bad text-white',
+  dimmed:  'opacity-0',
 };
 
-const textStyles: Record<OptionState, string> = {
-  default: 'text-gray-800',
-  correct: 'text-green-800',
-  wrong:   'text-red-700',
-  dimmed:  'text-gray-400',
+const trailChar: Record<OptionState, string> = {
+  default: '',
+  correct: '✓',
+  wrong:   '✕',
+  dimmed:  '',
 };
 
 export default function OptionCard({ label, text, state = 'default', onClick, disabled }: Props) {
@@ -41,16 +42,19 @@ export default function OptionCard({ label, text, state = 'default', onClick, di
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`w-full rounded-2xl overflow-hidden flex items-stretch transition-all duration-150 ${containerStyles[state]}`}
+      className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-[18px] border-2 text-left transition-all duration-200 text-fg ${containerStyles[state]}`}
     >
-      <div className={`flex items-center justify-center w-12 shrink-0 ${accentStyles[state]}`}>
-        <span className={`text-sm font-bold ${labelStyles[state]}`}>{label}</span>
-      </div>
-      <div className="flex items-center px-4 py-4 flex-1">
-        <span className={`text-sm font-medium text-left leading-snug ${textStyles[state]}`}>
-          {text}
-        </span>
-      </div>
+      <span
+        className={`shrink-0 w-9 h-9 rounded-xl grid place-items-center text-sm font-extrabold transition-all ${badgeStyles[state]}`}
+      >
+        {label}
+      </span>
+      <span className="flex-1 text-[15px] font-semibold leading-snug">{text}</span>
+      <span
+        className={`shrink-0 w-6 h-6 rounded-full border-2 grid place-items-center text-[13px] font-extrabold transition-all ${trailStyles[state]}`}
+      >
+        {trailChar[state]}
+      </span>
     </button>
   );
 }
