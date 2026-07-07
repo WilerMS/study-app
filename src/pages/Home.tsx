@@ -1,11 +1,26 @@
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { useSubjects } from '../hooks/useSubjects';
-import StatusScreen from '../components/StatusScreen';
-import Layout from '../components/Layout';
-import UserMenu from '../components/UserMenu';
-import { useProgress, subjectPct, overallStats } from '../utils/progress';
-import { hueFor, initialsOf, badgeColors } from '../utils/subjectVisual';
+import { Link } from "react-router-dom";
+import { motion, type Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { useSubjects } from "../hooks/useSubjects";
+import StatusScreen from "../components/StatusScreen";
+import Layout from "../components/Layout";
+import UserMenu from "../components/UserMenu";
+import { useProgress, subjectPct, overallStats } from "../utils/progress";
+import { hueFor, initialsOf, badgeColors } from "../utils/subjectVisual";
+
+const MotionLink = motion.create(Link);
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const riseIn: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
+};
+
+const gridStagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
+};
 
 export default function Home() {
   const { t } = useTranslation();
@@ -22,10 +37,16 @@ export default function Home() {
         <span
           className="shrink-0 w-9 h-9 rounded-[11px] grid place-items-center shadow-[0_6px_14px_-6px_var(--color-primary)]"
           style={{
-            background: 'linear-gradient(135deg, var(--color-primary), var(--color-primarystrong))',
+            background:
+              "linear-gradient(135deg, var(--color-primary), var(--color-primarystrong))",
           }}
         >
-          <svg viewBox="0 0 512 512" className="w-5 h-5" fill="none" aria-hidden="true">
+          <svg
+            viewBox="0 0 512 512"
+            className="w-5 h-5"
+            fill="none"
+            aria-hidden="true"
+          >
             <polyline
               points="100,281 215,379 420,133"
               stroke="#fff"
@@ -35,7 +56,9 @@ export default function Home() {
             />
           </svg>
         </span>
-        <span className="text-[19px] font-extrabold text-fg tracking-tight">StudyApp</span>
+        <span className="text-[19px] font-extrabold text-fg tracking-tight">
+          StudyApp
+        </span>
       </div>
       <UserMenu />
     </div>
@@ -44,53 +67,82 @@ export default function Home() {
   return (
     <Layout header={brandHeader}>
       <div className="mb-5 mt-2">
-        <div className="text-sm font-semibold text-fgdim">{t('home.greeting')}</div>
+        <div className="text-sm font-semibold text-fgdim">
+          {t("home.greeting")}
+        </div>
         <h1 className="text-[26px] font-extrabold text-fg tracking-tight mt-0.5">
-          {t('home.title')}
+          {t("home.title")}
         </h1>
       </div>
 
-      <div
+      <motion.div
+        variants={riseIn}
+        initial="hidden"
+        animate="show"
         className="rounded-[26px] p-5 text-white mb-6"
         style={{
-          background: 'linear-gradient(135deg, var(--color-primary), var(--color-primarystrong))',
-          boxShadow: '0 16px 34px -14px var(--color-primary)',
+          background:
+            "linear-gradient(135deg, var(--color-primary), var(--color-primarystrong))",
+          boxShadow: "0 16px 34px -14px var(--color-primary)",
         }}
       >
         <div className="flex justify-between items-start">
           <div>
-            <div className="text-[13px] font-semibold opacity-85">{t('home.progressLabel')}</div>
+            <div className="text-[13px] font-semibold opacity-85">
+              {t("home.progressLabel")}
+            </div>
             <div className="text-[40px] font-extrabold tracking-tighter leading-none mt-1">
               {stats.pct}%
             </div>
           </div>
           <div className="text-right leading-tight">
-            <div className="text-[20px] font-extrabold">{stats.testsCompleted}</div>
+            <div className="text-[20px] font-extrabold">
+              {stats.testsCompleted}
+            </div>
             <div className="text-[12px] font-semibold opacity-90">
-              {t('home.testsDone', { count: stats.testsCompleted })}
+              {t("home.testsDone", { count: stats.testsCompleted })}
             </div>
           </div>
         </div>
         <div className="h-[9px] rounded-full bg-white/25 overflow-hidden mt-4">
-          <div className="h-full rounded-full bg-white transition-all duration-500" style={{ width: `${stats.pct}%` }} />
+          <div
+            className="h-full rounded-full bg-white transition-all duration-500"
+            style={{ width: `${stats.pct}%` }}
+          />
         </div>
         <div className="flex justify-between text-[11px] font-semibold opacity-85 mt-2.5">
-          <span>{t('home.subjectsCount', { count: subjects.length })}</span>
-          <span>{t('home.questionsCount', { count: stats.totalQuestions })}</span>
+          <span>{t("home.subjectsCount", { count: subjects.length })}</span>
+          <span>
+            {t("home.questionsCount", { count: stats.totalQuestions })}
+          </span>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="text-[15px] font-bold text-fg mb-3">{t('home.subjectsSection')}</div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="text-[15px] font-bold text-fg mb-3">
+        {t("home.subjectsSection")}
+      </div>
+      <motion.div
+        className="grid grid-cols-2 gap-3"
+        variants={gridStagger}
+        initial="hidden"
+        animate="show"
+      >
         {subjects.map((subject) => {
           const pct = subjectPct(progress, subject);
-          const totalQ = subject.topics.reduce((a, t) => a + t.questions.length, 0);
-          const topicCount = subject.topics.filter((t) => t.questions.length > 0).length;
+          const totalQ = subject.topics.reduce(
+            (a, t) => a + t.questions.length,
+            0,
+          );
+          const topicCount = subject.topics.filter(
+            (t) => t.questions.length > 0,
+          ).length;
           return (
-            <Link
+            <MotionLink
               key={subject.id}
+              variants={riseIn}
+              whileTap={{ scale: 0.98 }}
               to={`/subject/${subject.id}`}
-              className="flex flex-col gap-3 p-4 rounded-[22px] bg-surface border border-line shadow-[0_6px_16px_-12px_oklch(0.4_0.05_260)] active:scale-[0.98] transition-all outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              className="flex flex-col gap-3 p-4 rounded-[22px] bg-surface border border-line shadow-[0_6px_16px_-12px_oklch(0.4_0.05_260)] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
               <div
                 className="w-[46px] h-[46px] rounded-[15px] grid place-items-center text-base font-extrabold"
@@ -103,22 +155,25 @@ export default function Home() {
                   {subject.name}
                 </div>
                 <div className="text-[11.5px] font-medium text-fgfaint mt-0.5 truncate">
-                  {t('home.topicsCount', { count: topicCount })} ·{' '}
-                  {t('home.questionsCount', { count: totalQ })}
+                  {t("home.topicsCount", { count: topicCount })} ·{" "}
+                  {t("home.questionsCount", { count: totalQ })}
                 </div>
               </div>
               <div className="mt-auto">
                 <div className="h-1.5 rounded-full bg-surface2 overflow-hidden">
-                  <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+                  <div
+                    className="h-full rounded-full bg-primary"
+                    style={{ width: `${pct}%` }}
+                  />
                 </div>
                 <div className="text-[10.5px] font-bold text-fgdim mt-1.5">
-                  {t('home.completed', { pct })}
+                  {t("home.completed", { pct })}
                 </div>
               </div>
-            </Link>
+            </MotionLink>
           );
         })}
-      </div>
+      </motion.div>
     </Layout>
   );
 }
