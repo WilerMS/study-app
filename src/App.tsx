@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/page';
-import SubjectPage from './pages/SubjectPage';
+import SubjectPage from './pages/SubjectPage/page';
 import QuizPage from './pages/QuizPage/page';
 
 export default function App() {

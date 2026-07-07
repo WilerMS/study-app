@@ -19,6 +19,7 @@
   },
   "subject": {
     "topicsSection": "Temas",
-    "noQuestions": "Sin preguntas todavía"
+    "noQuestions": "Sin preguntas todavía",
+    "progressLabel": "Progreso"
   }
 }

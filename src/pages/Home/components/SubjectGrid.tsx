@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import type { Subject } from "../../../types";
 import { subjectPct, type ProgressData } from "../../../utils/progress";
-import { gridStagger } from "../animations";
+import { staggerContainer } from "../../../utils/animations";
 import SubjectCard from "./SubjectCard";
 
 interface Props {
@@ -13,7 +13,7 @@ export default function SubjectGrid({ subjects, progress }: Props) {
   return (
     <motion.div
       className="grid grid-cols-2 gap-3"
-      variants={gridStagger}
+      variants={staggerContainer}
       initial="hidden"
       animate="show"
     >

@@ -7,7 +7,7 @@ export const riseIn: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE } },
 };
 
-export const gridStagger: Variants = {
+export const staggerContainer: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
 };

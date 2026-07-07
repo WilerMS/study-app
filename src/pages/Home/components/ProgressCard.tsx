@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { riseIn } from "../animations";
+import { riseIn } from "../../../utils/animations";
 
 interface Props {
   pct: number;

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import type { Subject } from "../../../types";
 import { hueFor, initialsOf, badgeColors } from "../../../utils/subjectVisual";
-import { riseIn } from "../animations";
+import { riseIn } from "../../../utils/animations";
 
 const MotionLink = motion.create(Link);
 
