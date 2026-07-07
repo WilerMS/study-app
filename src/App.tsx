@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import SubjectPage from './pages/SubjectPage';
-import QuizPage from './pages/QuizPage';
+import QuizPage from './pages/QuizPage/page';
 
 export default function App() {
   return (
