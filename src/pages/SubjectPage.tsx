@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useSubject } from "../hooks/useSubject";
 import StatusScreen from "../components/StatusScreen";
 import Layout from "../components/Layout";
@@ -7,6 +8,7 @@ import { hueFor, initialsOf, badgeColors } from "../utils/subjectVisual";
 import type { Topic } from "../types";
 
 export default function SubjectPage() {
+  const { t } = useTranslation();
   const { subjectId } = useParams<{ subjectId: string }>();
   const { data: subject, loading, error } = useSubject(subjectId);
   const progress = useProgress();
@@ -32,7 +34,8 @@ export default function SubjectPage() {
               {subject.name}
             </h1>
             <p className="text-[12.5px] font-medium text-fgfaint mt-0.5">
-              {topicCount} temas · {pct}% completado
+              {t("common.topicsCount", { count: topicCount })} ·{" "}
+              {t("common.completed", { pct })}
             </p>
           </div>
         </div>
@@ -42,7 +45,7 @@ export default function SubjectPage() {
       </div>
 
       <div className="text-[13px] font-bold text-fgdim uppercase tracking-wider mb-3">
-        Temas
+        {t("subject.topicsSection")}
       </div>
       <div className="flex flex-col gap-2.5">
         {subject.topics.map((topic: Topic) => {
@@ -58,7 +61,7 @@ export default function SubjectPage() {
                 <div className="min-w-0">
                   <div className="text-[14.5px] font-bold text-fg truncate">{topic.name}</div>
                   <div className="text-[12px] font-medium text-fgfaint mt-0.5">
-                    Sin preguntas todavía
+                    {t("subject.noQuestions")}
                   </div>
                 </div>
               </div>
@@ -92,7 +95,7 @@ export default function SubjectPage() {
                 </div>
               </div>
               <span className="shrink-0 text-[12px] font-semibold text-fgfaint">
-                {topic.questions.length} preg.
+                {t("common.questionsShort", { count: topic.questions.length })}
               </span>
               <span className="shrink-0 text-lg text-fgfaint">›</span>
             </Link>

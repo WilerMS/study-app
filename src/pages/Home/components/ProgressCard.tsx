@@ -52,8 +52,8 @@ export default function ProgressCard({
         />
       </div>
       <div className="flex justify-between text-[11px] font-semibold opacity-85 mt-2.5">
-        <span>{t("home.subjectsCount", { count: subjectsCount })}</span>
-        <span>{t("home.questionsCount", { count: totalQuestions })}</span>
+        <span>{t("common.subjectsCount", { count: subjectsCount })}</span>
+        <span>{t("common.questionsCount", { count: totalQuestions })}</span>
       </div>
     </motion.div>
   );

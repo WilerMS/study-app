@@ -1,17 +1,24 @@
 {
+  "common": {
+    "subjectsCount_one": "{{count}} asignatura",
+    "subjectsCount_other": "{{count}} asignaturas",
+    "topicsCount_one": "{{count}} tema",
+    "topicsCount_other": "{{count}} temas",
+    "questionsCount_one": "{{count}} pregunta",
+    "questionsCount_other": "{{count}} preguntas",
+    "questionsShort": "{{count}} preg.",
+    "completed": "{{pct}}% completado"
+  },
   "home": {
     "greeting": "¡Hola! 👋",
     "title": "¿Qué estudiamos hoy?",
     "progressLabel": "Tu progreso general",
     "testsDone_one": "test hecho",
     "testsDone_other": "tests hechos",
-    "subjectsCount_one": "{{count}} asignatura",
-    "subjectsCount_other": "{{count}} asignaturas",
-    "questionsCount_one": "{{count}} pregunta",
-    "questionsCount_other": "{{count}} preguntas",
-    "topicsCount_one": "{{count}} tema",
-    "topicsCount_other": "{{count}} temas",
-    "subjectsSection": "Asignaturas",
-    "completed": "{{pct}}% completado"
+    "subjectsSection": "Asignaturas"
+  },
+  "subject": {
+    "topicsSection": "Temas",
+    "noQuestions": "Sin preguntas todavía"
   }
 }

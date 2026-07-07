@@ -43,8 +43,8 @@ export default function SubjectCard({ subject, pct }: Props) {
           {subject.name}
         </div>
         <div className="text-[11.5px] font-medium text-fgfaint mt-0.5 truncate">
-          {t("home.topicsCount", { count: topicCount })} ·{" "}
-          {t("home.questionsCount", { count: totalQuestions })}
+          {t("common.topicsCount", { count: topicCount })} ·{" "}
+          {t("common.questionsCount", { count: totalQuestions })}
         </div>
       </div>
       <div className="mt-auto">
@@ -55,7 +55,7 @@ export default function SubjectCard({ subject, pct }: Props) {
           />
         </div>
         <div className="text-[10.5px] font-bold text-fgdim mt-1.5">
-          {t("home.completed", { pct })}
+          {t("common.completed", { pct })}
         </div>
       </div>
     </MotionLink>
