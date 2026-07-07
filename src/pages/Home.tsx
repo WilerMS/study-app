@@ -95,10 +95,10 @@ export default function Home() {
                 {subject.icon ?? initialsOf(subject.name)}
               </div>
               <div>
-                <div className="text-[15px] font-bold text-fg tracking-tight leading-tight">
+                <div className="text-[15px] font-bold text-fg tracking-tight leading-tight line-clamp-2">
                   {subject.name}
                 </div>
-                <div className="text-[11.5px] font-medium text-fgfaint mt-0.5">
+                <div className="text-[11.5px] font-medium text-fgfaint mt-0.5 truncate">
                   {topicCount} temas · {totalQ} preguntas
                 </div>
               </div>
