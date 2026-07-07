@@ -31,7 +31,7 @@ export default function Layout({
 
   return (
     <div className="min-h-svh bg-canvas flex justify-center">
-      <div className="w-full max-w-[480px] bg-bg min-h-svh flex flex-col shadow-[var(--shadow)]">
+      <div className="w-full max-w-[480px] bg-bg min-h-svh flex flex-col sm:shadow-[var(--shadow)]">
         {hasHeader && (
           <header className="sticky top-0 z-10 bg-bg/90 backdrop-blur-md">
             {header ?? (
