@@ -159,7 +159,7 @@ export default function QuizPage() {
 
       {quizState === "feedback" && (
         <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 animate-[slide-up_0.34s_cubic-bezier(0.22,1,0.36,1)]">
-          <div className="bg-bg rounded-t-[30px] border-t border-line shadow-[0_-18px_44px_-20px_oklch(0.4_0.05_260)] px-5 pt-3.5 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+          <div className="bg-bg rounded-t-[30px] border-t border-line shadow-[0_-18px_44px_-22px_oklch(0.4_0.05_260_/_0.35)] px-5 pt-3.5 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
             <div className="w-[42px] h-[5px] rounded-full bg-line mx-auto mb-4" />
             <Alert
               variant={isCorrect ? "success" : "danger"}

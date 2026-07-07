@@ -11,8 +11,8 @@ interface Props {
 // Diseño B — options sit on surface2 with a square badge and a trailing marker.
 const containerStyles: Record<OptionState, string> = {
   default: 'bg-surface2 border-transparent hover:border-primary/40 cursor-pointer active:scale-[0.99]',
-  correct: 'bg-goodsoft border-good shadow-[0_12px_30px_-12px_var(--color-good)]',
-  wrong:   'bg-badsoft border-bad shadow-[0_12px_30px_-12px_var(--color-bad)]',
+  correct: 'relative z-10 bg-goodsoft border-good shadow-[0_12px_30px_-12px_var(--color-good)]',
+  wrong:   'relative z-10 bg-badsoft border-bad shadow-[0_12px_30px_-12px_var(--color-bad)]',
   dimmed:  'bg-surface2 border-transparent opacity-40',
 };
 
