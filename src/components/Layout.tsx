@@ -81,7 +81,7 @@ export default function Layout({
           </header>
         )}
 
-        <main className="flex-1 px-5 pb-8 pt-2">
+        <main className="flex-1 px-5 pt-2 pb-[calc(2rem+env(safe-area-inset-bottom))]">
           {subtitle && <p className="text-fgdim font-medium mb-6">{subtitle}</p>}
           {children}
         </main>

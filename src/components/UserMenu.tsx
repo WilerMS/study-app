@@ -31,7 +31,7 @@ export default function UserMenu() {
     <div ref={ref} className="relative shrink-0">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-8 h-8 grid place-items-center rounded-full bg-surface border border-line text-fgdim active:scale-95 transition-all"
+        className="w-8 h-8 grid place-items-center rounded-full bg-surface border border-line text-fgdim active:scale-95 transition-all outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Menú de usuario"
@@ -69,7 +69,7 @@ export default function UserMenu() {
           <button
             role="menuitem"
             onClick={toggleTheme}
-            className="w-full flex items-center gap-3 px-2.5 py-2.5 rounded-[13px] text-left hover:bg-surface2 transition-colors"
+            className="w-full flex items-center gap-3 px-2.5 py-2.5 rounded-[13px] text-left hover:bg-surface2 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
           >
             <span className="shrink-0 w-8 h-8 grid place-items-center rounded-[10px] bg-surface2 text-fg">
               {isDark ? (
