@@ -28,7 +28,9 @@ export default function SubjectCard({ subject, pct }: Props) {
       variants={riseIn}
       whileTap={{ scale: 0.98 }}
       to={`/subject/${subject.id}`}
-      className="flex flex-col gap-3 p-4 rounded-[22px] bg-surface border border-line shadow-[0_6px_16px_-12px_oklch(0.4_0.05_260)] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      draggable={false}
+      onContextMenu={(e) => e.preventDefault()}
+      className="flex flex-col gap-3 p-4 rounded-[22px] bg-surface border border-line shadow-[0_6px_16px_-12px_oklch(0.4_0.05_260)] transition-colors outline-none select-none [-webkit-touch-callout:none] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
     >
       <div
         className="w-[46px] h-[46px] rounded-[15px] grid place-items-center text-base font-extrabold"
