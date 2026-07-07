@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTopic } from "../../hooks/useTopic";
 import StatusScreen from "../../components/StatusScreen";
@@ -14,6 +14,24 @@ type QuizState = "answering" | "feedback" | "finished";
 
 const OPTION_LABELS = ["A", "B", "C", "D", "E", "F"];
 
+/**
+ * Reordena aleatoriamente las opciones de una pregunta (Fisher-Yates) y
+ * recalcula el índice de la respuesta correcta para que siga apuntando a la
+ * misma opción. Evita que la correcta caiga siempre en el mismo sitio.
+ */
+function shuffleQuestion(q: Question): Question {
+  const order = q.options.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+  return {
+    ...q,
+    options: order.map((i) => q.options[i]),
+    correct: order.indexOf(q.correct),
+  };
+}
+
 export default function QuizPage() {
   const { subjectId, topicId } = useParams<{
     subjectId: string;
@@ -25,13 +43,22 @@ export default function QuizPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [quizState, setQuizState] = useState<QuizState>("answering");
   const [score, setScore] = useState(0);
+  const [attempt, setAttempt] = useState(0);
+
+  // Baraja las opciones una vez por carga del tema (y en cada repetición),
+  // no en cada render, para que el orden se mantenga estable mientras se
+  // responde la pregunta.
+  const questions: Question[] = useMemo(
+    () => (topic ? topic.questions.map(shuffleQuestion) : []),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [topic, attempt],
+  );
 
   if (loading || error) return <StatusScreen loading={loading} error={error} />;
-  if (!topic || topic.questions.length === 0) {
+  if (!topic || questions.length === 0) {
     return <StatusScreen error="Este tema no tiene preguntas todavía." />;
   }
 
-  const questions: Question[] = topic.questions;
   const current = questions[currentIndex];
   const isCorrect = selected === current.correct;
   const backPath = `/subject/${subjectId}`;
@@ -71,6 +98,7 @@ export default function QuizPage() {
     setSelected(null);
     setQuizState("answering");
     setScore(0);
+    setAttempt((a) => a + 1); // rebaraja las opciones al repetir
   }
 
   if (quizState === "finished") {
