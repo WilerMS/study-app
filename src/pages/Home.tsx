@@ -18,12 +18,25 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="pt-2 mb-5 flex items-start justify-between gap-3">
-        <div>
-          <div className="text-sm font-semibold text-fgdim">¡Hola! 👋</div>
-          <h1 className="text-[26px] font-extrabold text-fg tracking-tight mt-0.5">
-            ¿Qué estudiamos hoy?
-          </h1>
+      <div className="pt-2 mb-6 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span
+            className="shrink-0 w-9 h-9 rounded-[11px] grid place-items-center shadow-[0_6px_14px_-6px_var(--color-primary)]"
+            style={{
+              background: 'linear-gradient(135deg, var(--color-primary), var(--color-primarystrong))',
+            }}
+          >
+            <svg viewBox="0 0 512 512" className="w-5 h-5" fill="none" aria-hidden="true">
+              <polyline
+                points="100,281 215,379 420,133"
+                stroke="#fff"
+                strokeWidth="54"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span className="text-[19px] font-extrabold text-fg tracking-tight">StudyApp</span>
         </div>
         <button
           onClick={toggleTheme}
@@ -32,6 +45,13 @@ export default function Home() {
         >
           {theme === 'dark' ? <IconSun size={19} stroke={2} /> : <IconMoon size={19} stroke={2} />}
         </button>
+      </div>
+
+      <div className="mb-5">
+        <div className="text-sm font-semibold text-fgdim">¡Hola! 👋</div>
+        <h1 className="text-[26px] font-extrabold text-fg tracking-tight mt-0.5">
+          ¿Qué estudiamos hoy?
+        </h1>
       </div>
 
       <div
