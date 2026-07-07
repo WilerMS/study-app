@@ -1,0 +1,13 @@
+# Railway deployment config — https://docs.railway.com/reference/config-as-code
+# Vite SPA: build to static assets, then serve them with SPA (history) fallback.
+
+[build]
+builder = "nixpacks"
+buildCommand = "pnpm run build"
+
+[deploy]
+startCommand = "pnpm run start"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
