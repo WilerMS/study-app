@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
-import { IconSun, IconMoon } from '@tabler/icons-react';
 import { useSubjects } from '../hooks/useSubjects';
 import StatusScreen from '../components/StatusScreen';
 import Layout from '../components/Layout';
+import UserMenu from '../components/UserMenu';
 import { useProgress, subjectPct, overallStats } from '../utils/progress';
 import { hueFor, initialsOf, badgeColors } from '../utils/subjectVisual';
-import { useTheme, toggleTheme } from '../utils/theme';
 
 export default function Home() {
   const { data: subjects, loading, error } = useSubjects();
   const progress = useProgress();
-  const theme = useTheme();
 
   if (loading || error) return <StatusScreen loading={loading} error={error} />;
 
@@ -37,13 +35,7 @@ export default function Home() {
         </span>
         <span className="text-[19px] font-extrabold text-fg tracking-tight">StudyApp</span>
       </div>
-      <button
-        onClick={toggleTheme}
-        className="shrink-0 w-10 h-10 grid place-items-center rounded-xl bg-surface border border-line text-fg active:scale-95 transition-all"
-        aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-      >
-        {theme === 'dark' ? <IconSun size={19} stroke={2} /> : <IconMoon size={19} stroke={2} />}
-      </button>
+      <UserMenu />
     </div>
   );
 
