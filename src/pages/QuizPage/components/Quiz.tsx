@@ -5,6 +5,7 @@ import Layout from "../../../components/Layout";
 import Button from "../../../components/Button";
 import OptionCard from "../../../components/OptionCard";
 import Alert from "../../../components/Alert";
+import QuizProgress from "./QuizProgress";
 import QuizFinished from "./QuizFinished";
 import { recordResult } from "../../../utils/progress";
 import { EASE } from "../../../utils/animations";
@@ -65,6 +66,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
   const [selected, setSelected] = useState<number | null>(null);
   const [quizState, setQuizState] = useState<QuizState>("answering");
   const [score, setScore] = useState(0);
+  const [results, setResults] = useState<boolean[]>([]);
   const [attempt, setAttempt] = useState(0);
 
   const questions: Question[] = useMemo(
@@ -75,9 +77,6 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
 
   const current = questions[currentIndex];
   const isCorrect = selected === current.correct;
-  const progress =
-    ((currentIndex + (quizState === "feedback" ? 1 : 0)) / questions.length) *
-    100;
 
   function getOptionState(index: number) {
     if (quizState !== "feedback") return "default" as const;
@@ -90,7 +89,9 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
     if (quizState !== "answering") return;
     setSelected(index);
     setQuizState("feedback");
-    if (index === current.correct) setScore((s) => s + 1);
+    const ok = index === current.correct;
+    if (ok) setScore((s) => s + 1);
+    setResults((r) => [...r, ok]);
   }
 
   function handleNext() {
@@ -110,6 +111,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
     setSelected(null);
     setQuizState("answering");
     setScore(0);
+    setResults([]);
     setAttempt((a) => a + 1);
   }
 
@@ -126,19 +128,13 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
   }
 
   return (
-    <Layout
-      backTo={backPath}
-      backIcon="close"
-      centerSlot={
-        <div className="h-2 rounded-full bg-surface2 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      }
-      headerRight={`${currentIndex + 1} / ${questions.length}`}
-    >
+    <Layout backTo={backPath} backIcon="close">
+      <QuizProgress
+        total={questions.length}
+        currentIndex={currentIndex}
+        results={results}
+      />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
