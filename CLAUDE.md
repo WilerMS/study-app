@@ -21,12 +21,12 @@ Algunas asignaturas solo tienen una actividad, o solo el banco. Se hace test de 
 Modelo de datos:
 ```ts
 interface Question { id: number; question: string; options: string[]; correct: number; explanation?: string; }
-interface Topic    { id: number; name: string; questions: Question[]; }
+interface Topic    { id: number; name: string; description?: string; questions: Question[]; }
 interface Subject  { id: string; name: string; icon?: string; topics: Topic[]; }
 ```
 `correct` es el **índice 0-based** de la opción correcta dentro de `options`.
 
-Cada asignatura tiene **un `Topic` por cada archivo PDF** (Actividad 1, Actividad 2, Banco de preguntas). El banco usa siempre el nombre de topic `"Banco de preguntas examen"`.
+Cada asignatura tiene **un `Topic` por cada archivo PDF** (Actividad 1, Actividad 2, Banco de preguntas). El `name` es el **título corto** (`"Actividad 1"`, `"Actividad 2"`, `"Banco de preguntas"`) y `description` es la **temática** que resume el contenido (p. ej. `"Operaciones con matrices y resolución de sistemas lineales"`). La UI muestra el título en negrita y la descripción atenuada debajo. El banco usa siempre `name: "Banco de preguntas"` con `description: "Test tipo examen de todos los temas"`.
 
 ## Cómo generar los tests a partir de los PDFs
 

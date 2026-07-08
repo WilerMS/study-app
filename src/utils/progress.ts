@@ -8,9 +8,14 @@ export interface ProgressData {
   best: Record<string, Record<string, number>>;
   /** total number of tests finished (may repeat the same topic) */
   testsCompleted: number;
+  /** subjectId → tests finished within that subject */
+  attempts: Record<string, number>;
 }
 
-const empty: ProgressData = { best: {}, testsCompleted: 0 };
+const empty: ProgressData = { best: {}, testsCompleted: 0, attempts: {} };
+
+/** Score (0–100) at or above which a topic counts as "dominado". */
+export const MASTERY_THRESHOLD = 70;
 
 function load(): ProgressData {
   try {
@@ -21,6 +26,7 @@ function load(): ProgressData {
         return {
           best: parsed.best ?? {},
           testsCompleted: parsed.testsCompleted ?? 0,
+          attempts: parsed.attempts ?? {},
         };
       }
     }
@@ -56,6 +62,10 @@ export function recordResult(
       [subjectId]: { ...cache.best[subjectId], [tid]: Math.max(prev, Math.round(pct)) },
     },
     testsCompleted: cache.testsCompleted + 1,
+    attempts: {
+      ...cache.attempts,
+      [subjectId]: (cache.attempts[subjectId] ?? 0) + 1,
+    },
   };
   persist();
 }
@@ -92,6 +102,24 @@ export function subjectPct(p: ProgressData, subject: Subject): number {
   if (topics.length === 0) return 0;
   const sum = topics.reduce((a, t) => a + topicPct(p, subject.id, t.id), 0);
   return Math.round(sum / topics.length);
+}
+
+/** Per-subject headline numbers for the Quick Stats row. */
+export function subjectStats(p: ProgressData, subject: Subject) {
+  const topics = subject.topics.filter((t) => t.questions.length > 0);
+  const mastered = topics.filter(
+    (t) => topicPct(p, subject.id, t.id) >= MASTERY_THRESHOLD,
+  ).length;
+  const totalQuestions = subject.topics.reduce(
+    (a, t) => a + t.questions.length,
+    0,
+  );
+  return {
+    topicsTotal: topics.length,
+    mastered,
+    totalQuestions,
+    attempts: p.attempts[subject.id] ?? 0,
+  };
 }
 
 export function overallStats(p: ProgressData, subjects: Subject[]) {

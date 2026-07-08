@@ -7,7 +7,8 @@ export const informaticaGrafica: Subject = {
   topics: [
     {
       id: 1,
-      name: "Banco de preguntas examen",
+      name: "Banco de preguntas",
+      description: "Test tipo examen de todos los temas",
       questions: [
         {
           id: 1,

@@ -7,7 +7,9 @@ export const deontologia: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Brecha de seguridad y protección de datos (RGPD, caso NetContent S.A.)",
+      name: "Actividad 1",
+      description:
+        "Brecha de seguridad y protección de datos (RGPD, caso NetContent S.A.)",
       questions: [
         {
           id: 1,
@@ -418,7 +420,9 @@ export const deontologia: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Confidencialidad y responsabilidad profesional (caso Juan Pérez, LegalTech Solutions)",
+      name: "Actividad 2",
+      description:
+        "Confidencialidad y responsabilidad profesional (caso Juan Pérez, LegalTech Solutions)",
       questions: [
         {
           id: 1,

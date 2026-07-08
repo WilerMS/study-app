@@ -7,7 +7,8 @@ export const comunicacion: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Liderazgo y comunicación (caso Luis Aragonés, España 2008)",
+      name: "Actividad 1",
+      description: "Liderazgo y comunicación (caso Luis Aragonés, España 2008)",
       questions: [
         {
           id: 1,
@@ -403,7 +404,9 @@ export const comunicacion: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Cómo construir un equipo de alto rendimiento (caso Dream Team 1992)",
+      name: "Actividad 2",
+      description:
+        "Cómo construir un equipo de alto rendimiento (caso Dream Team 1992)",
       questions: [
         {
           id: 1,

@@ -7,7 +7,9 @@ export const procesos: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Planificación y gestión de proyecto software (Scrum + ISO/IEC 12207)",
+      name: "Actividad 1",
+      description:
+        "Planificación y gestión de proyecto software (Scrum + ISO/IEC 12207)",
       questions: [
         {
           id: 1,
@@ -370,7 +372,8 @@ export const procesos: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Diseño de solución distribuida (SOA, ESB y calidad)",
+      name: "Actividad 2",
+      description: "Diseño de solución distribuida (SOA, ESB y calidad)",
       questions: [
         {
           id: 1,
@@ -760,7 +763,8 @@ export const procesos: Subject = {
     },
     {
       id: 3,
-      name: "Banco de preguntas examen",
+      name: "Banco de preguntas",
+      description: "Test tipo examen de todos los temas",
       questions: [
         {
           id: 1,

@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { IconChevronRight, IconLock, IconCheck } from "@tabler/icons-react";
+import {
+  IconChevronRight,
+  IconLock,
+  IconCheck,
+  IconCircleDashed,
+} from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import type { Topic } from "../../../types";
 import { riseIn } from "../../../utils/animations";
+import { MASTERY_THRESHOLD } from "../../../utils/progress";
 
 const MotionLink = motion.create(Link);
 
@@ -12,8 +18,6 @@ interface Props {
   topic: Topic;
   pct: number;
 }
-
-const DONE_THRESHOLD = 70;
 
 export default function TopicCard({ subjectId, topic, pct }: Props) {
   const { t } = useTranslation();
@@ -39,7 +43,8 @@ export default function TopicCard({ subjectId, topic, pct }: Props) {
     );
   }
 
-  const done = pct >= DONE_THRESHOLD;
+  const started = pct > 0;
+  const done = pct >= MASTERY_THRESHOLD;
 
   return (
     <MotionLink
@@ -52,21 +57,30 @@ export default function TopicCard({ subjectId, topic, pct }: Props) {
     >
       <div
         className={`shrink-0 w-11 h-11 rounded-[14px] grid place-items-center text-xs font-extrabold ${
-          done ? "bg-goodsoft text-good" : "bg-primarysoft text-primary"
+          done
+            ? "bg-goodsoft text-good"
+            : started
+              ? "bg-primarysoft text-primary"
+              : "bg-surface2 text-fgfaint"
         }`}
       >
-        {done ? <IconCheck size={19} stroke={2.6} /> : `${pct}%`}
+        {done ? (
+          <IconCheck size={19} stroke={2.6} />
+        ) : started ? (
+          `${pct}%`
+        ) : (
+          <IconCircleDashed size={19} stroke={2} />
+        )}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-[14.5px] font-bold text-fg tracking-tight line-clamp-2">
+        <div className="text-[14.5px] font-bold text-fg tracking-tight line-clamp-1">
           {topic.name}
         </div>
-        <div className="h-[5px] rounded-full bg-surface2 overflow-hidden mt-2">
-          <div
-            className={`h-full rounded-full ${done ? "bg-good" : "bg-primary"}`}
-            style={{ width: `${pct}%` }}
-          />
-        </div>
+        {topic.description && (
+          <div className="text-[12.5px] font-medium text-fgfaint/80 mt-0.5 truncate">
+            {topic.description}
+          </div>
+        )}
       </div>
       <span className="shrink-0 text-[12px] font-semibold text-fgfaint">
         {t("common.questionsShort", { count: topic.questions.length })}

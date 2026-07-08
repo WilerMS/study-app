@@ -20,6 +20,16 @@
   "subject": {
     "topicsSection": "Temas",
     "noQuestions": "Sin preguntas todavía",
-    "progressLabel": "Progreso"
+    "notStarted": "Por empezar",
+    "progressLabel": "Progreso",
+    "stats": {
+      "mastered": "Dominados",
+      "questions": "Preguntas",
+      "attempts": "Tests hechos"
+    },
+    "exam": {
+      "cta": "Simulacro de examen",
+      "ctaSubtitle": "{{count}} preguntas · mezcla tipo examen"
+    }
   }
 }

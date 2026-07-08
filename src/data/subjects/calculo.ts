@@ -7,7 +7,8 @@ export const calculo: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Cálculo integral y aplicaciones (estudio de f(x) = eˣ·sin x)",
+      name: "Actividad 1",
+      description: "Cálculo integral y aplicaciones (estudio de f(x) = eˣ·sin x)",
       questions: [
         {
           id: 1,
@@ -388,7 +389,8 @@ export const calculo: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Series de números reales",
+      name: "Actividad 2",
+      description: "Series de números reales",
       questions: [
         {
           id: 1,
@@ -735,7 +737,8 @@ export const calculo: Subject = {
     },
     {
       id: 3,
-      name: "Banco de preguntas examen",
+      name: "Banco de preguntas",
+      description: "Test tipo examen de todos los temas",
       questions: [
         {
           id: 1,

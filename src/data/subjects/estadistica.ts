@@ -7,7 +7,8 @@ export const estadistica: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Distribuciones de probabilidad (Poisson y aproximaciones)",
+      name: "Actividad 1",
+      description: "Distribuciones de probabilidad (Poisson y aproximaciones)",
       questions: [
         {
           id: 1,
@@ -372,7 +373,8 @@ export const estadistica: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Regresión lineal (altura y peso)",
+      name: "Actividad 2",
+      description: "Regresión lineal (altura y peso)",
       questions: [
         {
           id: 1,
@@ -725,7 +727,8 @@ export const estadistica: Subject = {
     },
     {
       id: 3,
-      name: "Banco de preguntas examen",
+      name: "Banco de preguntas",
+      description: "Test tipo examen de todos los temas",
       questions: [
         {
           id: 1,

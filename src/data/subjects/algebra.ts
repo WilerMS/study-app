@@ -7,7 +7,8 @@ export const algebra: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Operaciones con matrices y resolución de sistemas lineales",
+      name: "Actividad 1",
+      description: "Operaciones con matrices y resolución de sistemas lineales",
       questions: [
         {
           id: 1,
@@ -351,7 +352,9 @@ export const algebra: Subject = {
     },
     {
       id: 2,
-      name: "Actividad 2: Teoría de números (Teorema Chino del Resto) y operaciones con conjuntos",
+      name: "Actividad 2",
+      description:
+        "Teoría de números (Teorema Chino del Resto) y operaciones con conjuntos",
       questions: [
         {
           id: 1,

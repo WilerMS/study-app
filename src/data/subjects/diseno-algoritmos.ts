@@ -7,7 +7,9 @@ export const disenoAlgoritmos: Subject = {
   topics: [
     {
       id: 1,
-      name: "Actividad 1: Subarreglo de suma máxima (recursión, divide y vencerás y Kadane)",
+      name: "Actividad 1",
+      description:
+        "Subarreglo de suma máxima (recursión, divide y vencerás y Kadane)",
       questions: [
         {
           id: 1,
