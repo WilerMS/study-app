@@ -159,7 +159,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
                 {topic.name}
               </span>
             </div>
-            <div className="text-[21px] font-extrabold text-fg tracking-tight leading-snug text-pretty">
+            <div className="text-[20px] font-bold text-fg tracking-tight leading-relaxed text-pretty [font-variant-numeric:tabular-nums]">
               {current.question}
             </div>
           </motion.div>
