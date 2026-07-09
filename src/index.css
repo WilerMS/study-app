@@ -120,6 +120,8 @@
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
 }
 html::-webkit-scrollbar {
   display: none;
@@ -128,6 +130,7 @@ html::-webkit-scrollbar {
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -136,6 +139,16 @@ body {
   background: var(--color-canvas);
   color: var(--color-fg);
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.selectable {
+  user-select: text;
+  -webkit-user-select: text;
+  -webkit-touch-callout: default;
 }
 
 #root {
