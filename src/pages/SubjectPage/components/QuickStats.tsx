@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { IconTrophy, IconCards, IconTargetArrow } from "@tabler/icons-react";
 import type { Subject } from "../../../types";
 import { subjectStats, type ProgressData } from "../../../utils/progress";
+import { useIsBack } from "../../../hooks/backNav";
 import { riseIn } from "../../../utils/animations";
 
 interface Props {
@@ -40,11 +41,12 @@ export default function QuickStats({ subject, progress }: Props) {
     progress,
     subject,
   );
+  const isBack = useIsBack();
 
   return (
     <motion.div
       variants={riseIn}
-      initial="hidden"
+      initial={isBack ? false : "hidden"}
       animate="show"
       className="grid grid-cols-3 rounded-[20px] bg-surface border border-line divide-x divide-line mb-7"
     >

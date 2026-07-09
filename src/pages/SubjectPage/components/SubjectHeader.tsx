@@ -3,6 +3,7 @@ import type { Ref } from "react";
 import { useTranslation } from "react-i18next";
 import type { Subject } from "../../../types";
 import { hueFor, initialsOf, badgeColors } from "../../../utils/subjectVisual";
+import { useIsBack } from "../../../hooks/backNav";
 import { riseIn } from "../../../utils/animations";
 import ProgressRing from "../../../components/ProgressRing";
 
@@ -14,11 +15,12 @@ interface Props {
 
 export default function SubjectHeader({ subject, pct, titleRef }: Props) {
   const { t } = useTranslation();
+  const isBack = useIsBack();
 
   return (
     <motion.div
       variants={riseIn}
-      initial="hidden"
+      initial={isBack ? false : "hidden"}
       animate="show"
       className="mb-7 flex items-center gap-4"
     >

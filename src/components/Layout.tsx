@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IconArrowLeft, IconX } from "@tabler/icons-react";
+import { useGoBack } from "../hooks/backNav";
 
 interface Props {
   children: ReactNode;
@@ -27,7 +27,7 @@ export default function Layout({
   headerRight,
   header,
 }: Props) {
-  const navigate = useNavigate();
+  const goBack = useGoBack(backTo ?? "/");
   const { t } = useTranslation();
   const hasHeader = header || backTo || title || centerSlot || headerRight;
 
@@ -41,7 +41,7 @@ export default function Layout({
             <div className="px-4 h-14 flex items-center gap-3">
               {backTo && (
                 <button
-                  onClick={() => navigate(backTo)}
+                  onClick={goBack}
                   className={`w-9 h-9 shrink-0 grid place-items-center rounded-xl text-fg active:scale-95 transition-all ${
                     backIcon === "close"
                       ? "bg-surface2"

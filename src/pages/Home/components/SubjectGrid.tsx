@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { Subject } from "../../../types";
 import { subjectPct, type ProgressData } from "../../../utils/progress";
+import { useIsBack } from "../../../hooks/backNav";
 import { staggerContainer } from "../../../utils/animations";
 import SubjectCard from "./SubjectCard";
 
@@ -10,11 +11,12 @@ interface Props {
 }
 
 export default function SubjectGrid({ subjects, progress }: Props) {
+  const isBack = useIsBack();
   return (
     <motion.div
       className="grid grid-cols-2 gap-3"
       variants={staggerContainer}
-      initial="hidden"
+      initial={isBack ? false : "hidden"}
       animate="show"
     >
       {subjects.map((subject) => (
