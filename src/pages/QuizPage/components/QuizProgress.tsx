@@ -1,3 +1,4 @@
+import { Trans } from "react-i18next";
 import { IconCheck, IconX } from "@tabler/icons-react";
 
 interface Props {
@@ -22,9 +23,11 @@ export default function QuizProgress({ total, currentIndex, results }: Props) {
     <div className="mb-5">
       <div className="flex items-center justify-between mb-2.5">
         <span className="text-[12.5px] font-bold text-fgdim tabular-nums">
-          Pregunta{" "}
-          <span className="text-fg">{Math.min(currentIndex + 1, total)}</span>{" "}
-          de {total}
+          <Trans
+            i18nKey="quiz.questionProgress"
+            values={{ current: Math.min(currentIndex + 1, total), total }}
+            components={[<span key="current" className="text-fg" />]}
+          />
         </span>
         <div className="flex items-center gap-1.5">
           <span className="inline-flex items-center gap-1 pl-1.5 pr-2 py-0.5 rounded-full bg-goodsoft text-good text-[12px] font-extrabold tabular-nums">

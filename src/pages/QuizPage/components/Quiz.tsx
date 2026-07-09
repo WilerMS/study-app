@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import Layout from "../../../components/Layout";
@@ -8,10 +9,20 @@ import Alert from "../../../components/Alert";
 import QuizProgress from "./QuizProgress";
 import QuizFinished from "./QuizFinished";
 import { recordResult } from "../../../utils/progress";
+import { haptics } from "../../../utils/haptics";
 import { EASE } from "../../../utils/animations";
 import type { Question, Topic } from "../../../types";
 
 type QuizState = "answering" | "feedback" | "finished";
+
+//Staged revelation phases after responding:
+//"option" → only the touched option is colored (green/red).
+//"answer" → the correct one is revealed and the others are grayed out.
+//"panel" → brings up the bottom panel with the explanation.
+type RevealPhase = "option" | "answer" | "panel";
+
+const REVEAL_DELAY = 240; //ms: option touched → reveal correct + fade rest
+const PANEL_DELAY = 200; //ms: reveal → bottom panel appears
 
 const OPTION_LABELS = ["A", "B", "C", "D", "E", "F"];
 
@@ -62,12 +73,22 @@ function shuffleQuestion(q: Question): Question {
 }
 
 export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [quizState, setQuizState] = useState<QuizState>("answering");
+  const [phase, setPhase] = useState<RevealPhase>("option");
   const [score, setScore] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);
   const [attempt, setAttempt] = useState(0);
+
+  const timers = useRef<number[]>([]);
+  const clearTimers = () => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+  };
+  // Limpia los timers pendientes si el componente se desmonta a media revelación.
+  useEffect(() => clearTimers, []);
 
   const questions: Question[] = useMemo(
     () => topic.questions.map(shuffleQuestion),
@@ -80,6 +101,13 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
 
   function getOptionState(index: number) {
     if (quizState !== "feedback") return "default" as const;
+    // Fase 1: solo la opción tocada revela su color; el resto siguen neutras.
+    if (phase === "option") {
+      if (index === selected)
+        return index === current.correct ? "correct" : "wrong";
+      return "default" as const;
+    }
+    // Fase 2+: revelación completa (correcta en verde, resto atenuadas).
     if (index === current.correct) return "correct" as const;
     if (index === selected) return "wrong" as const;
     return "dimmed" as const;
@@ -89,12 +117,28 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
     if (quizState !== "answering") return;
     setSelected(index);
     setQuizState("feedback");
+    setPhase("option");
     const ok = index === current.correct;
-    if (ok) setScore((s) => s + 1);
+    if (ok) {
+      setScore((s) => s + 1);
+      haptics.success();
+    } else {
+      haptics.error();
+    }
     setResults((r) => [...r, ok]);
+
+    // Revelación por pasos: la opción tocada ya está coloreada; lo demás espera.
+    clearTimers();
+    timers.current.push(
+      window.setTimeout(() => setPhase("answer"), REVEAL_DELAY),
+    );
+    timers.current.push(
+      window.setTimeout(() => setPhase("panel"), REVEAL_DELAY + PANEL_DELAY),
+    );
   }
 
   function handleNext() {
+    clearTimers();
     if (currentIndex + 1 >= questions.length) {
       const finalScore = score; // already includes the last answer
       recordResult(subjectId, recordKey, (finalScore / questions.length) * 100);
@@ -103,13 +147,16 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
       setCurrentIndex((i) => i + 1);
       setSelected(null);
       setQuizState("answering");
+      setPhase("option");
     }
   }
 
   function handleRepeat() {
+    clearTimers();
     setCurrentIndex(0);
     setSelected(null);
     setQuizState("answering");
+    setPhase("option");
     setScore(0);
     setResults([]);
     setAttempt((a) => a + 1);
@@ -155,7 +202,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
                 {topic.name}
               </span>
             </div>
-            <div className="text-[20px] font-bold text-fg tracking-tight leading-relaxed text-pretty [font-variant-numeric:tabular-nums]">
+            <div className="selectable text-[20px] font-bold text-fg tracking-tight leading-relaxed text-pretty [font-variant-numeric:tabular-nums]">
               {current.question}
             </div>
           </motion.div>
@@ -166,7 +213,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
           >
             <span className="w-5 h-0.5 rounded bg-line" />
             <span className="text-[11px] font-bold text-fgfaint uppercase tracking-wider">
-              Elige una opción
+              {t("quiz.chooseOption")}
             </span>
             <span className="w-5 h-0.5 rounded bg-line" />
           </motion.div>
@@ -190,13 +237,13 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
         </motion.div>
       </AnimatePresence>
 
-      {quizState === "feedback" && (
+      {quizState === "feedback" && phase === "panel" && (
         <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 animate-[slide-up_0.34s_cubic-bezier(0.22,1,0.36,1)]">
           <div className="bg-bg rounded-t-[30px] border-t border-line shadow-[0_-18px_44px_-22px_oklch(0.4_0.05_260_/_0.35)] px-5 pt-3.5 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
             <div className="w-[42px] h-[5px] rounded-full bg-line mx-auto mb-4" />
             <Alert
               variant={isCorrect ? "success" : "danger"}
-              title={isCorrect ? "¡Correcto!" : "Incorrecto"}
+              title={isCorrect ? t("quiz.correct") : t("quiz.incorrect")}
               description={current.explanation}
             />
             <Button
@@ -206,8 +253,8 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
               className="mt-4"
             >
               {currentIndex + 1 >= questions.length
-                ? "Ver resultados"
-                : "Siguiente pregunta"}
+                ? t("quiz.seeResults")
+                : t("quiz.nextQuestion")}
             </Button>
           </div>
         </div>

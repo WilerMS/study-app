@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Button from './Button';
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 
 export default function StatusScreen({ loading, error }: Props) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-svh bg-bg flex items-center justify-center px-6">
@@ -18,7 +20,7 @@ export default function StatusScreen({ loading, error }: Props) {
         <div className="text-center">
           <p className="text-fgdim font-medium mb-4">{error}</p>
           <Button variant="ghost" onClick={() => navigate('/')}>
-            Volver al inicio
+            {t('common.backToHome')}
           </Button>
         </div>
       )}

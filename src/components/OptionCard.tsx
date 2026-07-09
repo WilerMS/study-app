@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+
 type OptionState = "default" | "correct" | "wrong" | "dimmed";
 
 interface Props {
@@ -11,12 +14,12 @@ interface Props {
 // Diseño B — options sit on a surface card with a square badge and a trailing marker.
 const containerStyles: Record<OptionState, string> = {
   default:
-    "bg-surface border-line hover:border-primary/50 hover:bg-primarysoft/40 hover:shadow-[0_12px_26px_-18px_var(--color-primary)] cursor-pointer active:scale-[0.99]",
+    "bg-surface border-line hover:border-primary/50 hover:bg-primarysoft/40 hover:shadow-[0_12px_26px_-18px_var(--color-primary)] cursor-pointer",
   correct:
-    "relative z-10 bg-goodsoft border-good shadow-[0_12px_30px_-12px_var(--color-good)]",
+    "relative z-10 bg-goodsoft border-good shadow-[0_16px_34px_-14px_var(--color-good)]",
   wrong:
-    "relative z-10 bg-badsoft border-bad shadow-[0_12px_30px_-12px_var(--color-bad)]",
-  dimmed: "bg-surface border-line opacity-45",
+    "relative z-10 bg-badsoft border-bad shadow-[0_16px_34px_-14px_var(--color-bad)]",
+  dimmed: "bg-surface border-line",
 };
 
 const badgeStyles: Record<OptionState, string> = {
@@ -28,10 +31,10 @@ const badgeStyles: Record<OptionState, string> = {
 };
 
 const trailStyles: Record<OptionState, string> = {
-  default: "opacity-0",
+  default: "bg-transparent border-transparent",
   correct: "bg-good border-good text-white",
   wrong: "bg-bad border-bad text-white",
-  dimmed: "opacity-0",
+  dimmed: "bg-transparent border-transparent",
 };
 
 const trailChar: Record<OptionState, string> = {
@@ -39,6 +42,37 @@ const trailChar: Record<OptionState, string> = {
   correct: "✓",
   wrong: "✕",
   dimmed: "",
+};
+
+const POP = [0.34, 1.56, 0.64, 1] as const;
+
+const cardVariants: Variants = {
+  default: { scale: 1, opacity: 1, x: 0, transition: { duration: 0.2 } },
+  correct: {
+    scale: [1, 1.045, 1],
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.42, ease: POP },
+  },
+  wrong: {
+    scale: 1,
+    opacity: 1,
+    x: [0, -7, 6, -4, 3, 0],
+    transition: { duration: 0.42, ease: "easeInOut" },
+  },
+  dimmed: {
+    scale: 0.965,
+    opacity: 0.5,
+    x: 0,
+    transition: { duration: 0.28, ease: "easeOut" },
+  },
+};
+
+const markerVariants: Variants = {
+  default: { scale: 0, opacity: 0 },
+  dimmed: { scale: 0, opacity: 0 },
+  correct: { scale: 1, opacity: 1 },
+  wrong: { scale: 1, opacity: 1 },
 };
 
 export default function OptionCard({
@@ -49,24 +83,35 @@ export default function OptionCard({
   disabled,
 }: Props) {
   return (
-    <button
+    <motion.button
       onClick={onClick}
       disabled={disabled}
-      className={`group w-full flex items-center gap-3.5 px-4 py-3.5 rounded-[18px] border-2 text-left transition-all duration-200 text-fg ${containerStyles[state]}`}
+      variants={cardVariants}
+      animate={state}
+      whileTap={disabled ? undefined : { scale: 0.97 }}
+      className={`group w-full flex items-center gap-3.5 px-4 py-3.5 rounded-[18px] border-2 text-left text-fg transition-[color,background-color,border-color,box-shadow] duration-200 ${containerStyles[state]}`}
     >
       <span
-        className={`shrink-0 w-9 h-9 rounded-xl grid place-items-center text-sm font-extrabold transition-all ${badgeStyles[state]}`}
+        className={`shrink-0 w-9 h-9 rounded-xl grid place-items-center text-sm font-extrabold transition-colors duration-200 ${badgeStyles[state]}`}
       >
         {label}
       </span>
       <span className="flex-1 text-[15px] font-semibold leading-snug [font-variant-numeric:tabular-nums]">
         {text}
       </span>
-      <span
-        className={`shrink-0 w-6 h-6 rounded-full border-2 grid place-items-center text-[13px] font-extrabold transition-all ${trailStyles[state]}`}
+      <motion.span
+        variants={markerVariants}
+        animate={state}
+        transition={{
+          type: "spring",
+          stiffness: 520,
+          damping: 20,
+          delay: 0.04,
+        }}
+        className={`shrink-0 w-6 h-6 rounded-full border-2 grid place-items-center text-[13px] font-extrabold ${trailStyles[state]}`}
       >
         {trailChar[state]}
-      </span>
-    </button>
+      </motion.span>
+    </motion.button>
   );
 }

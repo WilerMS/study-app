@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type AlertVariant = "success" | "danger" | "warning" | "info";
 
@@ -55,6 +56,7 @@ export default function Alert({
   description,
   className = "",
 }: AlertProps) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const styles = variantStyles[variant];
 
@@ -87,7 +89,7 @@ export default function Alert({
               onClick={() => setExpanded((e) => !e)}
               className={`text-xs font-bold mt-1.5 ${styles.button} hover:underline`}
             >
-              {expanded ? "Ver menos ↑" : "Ver más ↓"}
+              {expanded ? t("quiz.seeLess") : t("quiz.seeMore")}
             </button>
           </>
         )}

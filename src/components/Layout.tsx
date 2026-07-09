@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { IconArrowLeft, IconX } from "@tabler/icons-react";
 
 interface Props {
@@ -27,13 +28,14 @@ export default function Layout({
   header,
 }: Props) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const hasHeader = header || backTo || title || centerSlot || headerRight;
 
   return (
     <div className="min-h-svh bg-canvas flex justify-center">
       <div className="w-full max-w-[480px] bg-bg min-h-svh flex flex-col sm:shadow-[var(--shadow)]">
         {hasHeader && (
-          <header className="sticky top-0 z-10 bg-bg/90 backdrop-blur-md">
+          <header className="sticky top-0 z-10 bg-bg/90 backdrop-blur-md pt-[env(safe-area-inset-top)]">
             {header ?? (
             <>
             <div className="px-4 h-14 flex items-center gap-3">
@@ -45,7 +47,7 @@ export default function Layout({
                       ? "bg-surface2"
                       : "bg-surface border border-line hover:bg-surface2"
                   }`}
-                  aria-label={backIcon === "close" ? "Cerrar" : "Volver"}
+                  aria-label={backIcon === "close" ? t("common.close") : t("common.back")}
                 >
                   {backIcon === "close" ? (
                     <IconX size={18} stroke={2} />

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IconUser, IconSun, IconMoon } from "@tabler/icons-react";
 import { useTheme, toggleTheme } from "../utils/theme";
 
 export default function UserMenu() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -34,7 +36,7 @@ export default function UserMenu() {
         className="w-8 h-8 grid place-items-center rounded-full bg-surface border border-line text-fgdim active:scale-95 transition-all outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Menú de usuario"
+        aria-label={t("menu.user")}
       >
         <IconUser size={16} stroke={2} />
       </button>
@@ -56,10 +58,10 @@ export default function UserMenu() {
             </span>
             <div className="min-w-0">
               <div className="text-sm font-bold text-fg leading-tight">
-                Estudiante
+                {t("menu.studentName")}
               </div>
               <div className="text-[12px] font-medium text-fgfaint leading-tight">
-                Sesión local
+                {t("menu.session")}
               </div>
             </div>
           </div>
@@ -79,7 +81,7 @@ export default function UserMenu() {
               )}
             </span>
             <span className="flex-1 text-[14px] font-semibold text-fg">
-              Modo oscuro
+              {t("menu.darkMode")}
             </span>
             <span
               className={`shrink-0 w-10 h-6 rounded-full p-0.5 transition-colors ${

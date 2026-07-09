@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { IconRefresh, IconArrowLeft } from "@tabler/icons-react";
 import Button from "../../../components/Button";
@@ -16,8 +17,8 @@ interface Props {
 interface Tier {
   color: string;
   emoji: string;
-  title: string;
-  subtitle: string;
+  titleKey: string;
+  subtitleKey: string;
 }
 
 function tierFor(pct: number): Tier {
@@ -25,21 +26,21 @@ function tierFor(pct: number): Tier {
     return {
       color: "var(--color-good)",
       emoji: "🎉",
-      title: "¡Bien dominado!",
-      subtitle: "Controlas este bloque. ¡Sigue así!",
+      titleKey: "results.tiers.highTitle",
+      subtitleKey: "results.tiers.highSubtitle",
     };
   if (pct >= 50)
     return {
       color: "var(--color-primary)",
       emoji: "💪",
-      title: "¡Casi lo tienes!",
-      subtitle: "Vas por buen camino, repite para afinar.",
+      titleKey: "results.tiers.midTitle",
+      subtitleKey: "results.tiers.midSubtitle",
     };
   return {
     color: "var(--color-bad)",
     emoji: "📚",
-    title: "A repasar",
-    subtitle: "Repite el test para reforzar los fallos.",
+    titleKey: "results.tiers.lowTitle",
+    subtitleKey: "results.tiers.lowSubtitle",
   };
 }
 
@@ -50,6 +51,7 @@ export default function QuizFinished({
   backPath,
   onRepeat,
 }: Props) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const pct = Math.round((score / total) * 100);
   const tier = tierFor(pct);
@@ -71,7 +73,7 @@ export default function QuizFinished({
                 {pct}%
               </span>
               <span className="text-[12px] font-bold text-fgfaint mt-1.5 tabular-nums">
-                {score}/{total} aciertos
+                {t("results.hits", { score, total })}
               </span>
             </div>
           </ProgressRing>
@@ -83,7 +85,7 @@ export default function QuizFinished({
           transition={{ duration: 0.4, ease: EASE, delay: 0.18 }}
           className="text-[26px] font-extrabold text-fg tracking-tight mt-7"
         >
-          {tier.emoji} {tier.title}
+          {tier.emoji} {t(tier.titleKey)}
         </motion.h2>
 
         <motion.p
@@ -92,7 +94,7 @@ export default function QuizFinished({
           transition={{ duration: 0.4, ease: EASE, delay: 0.24 }}
           className="text-[15px] font-medium text-fgdim mt-2 leading-relaxed max-w-[300px]"
         >
-          {tier.subtitle}
+          {t(tier.subtitleKey)}
         </motion.p>
 
         <motion.div
@@ -113,13 +115,13 @@ export default function QuizFinished({
           <Button variant="primary" onClick={onRepeat}>
             <span className="flex items-center justify-center gap-2">
               <IconRefresh size={18} stroke={2.4} />
-              Repetir test
+              {t("results.repeat")}
             </span>
           </Button>
           <Button variant="secondary" onClick={() => navigate(backPath)}>
             <span className="flex items-center justify-center gap-2">
               <IconArrowLeft size={18} stroke={2.4} />
-              Volver
+              {t("results.back")}
             </span>
           </Button>
         </motion.div>

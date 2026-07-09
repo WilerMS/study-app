@@ -7,7 +7,10 @@
     "questionsCount_one": "{{count}} pregunta",
     "questionsCount_other": "{{count}} preguntas",
     "questionsShort": "{{count}} preg.",
-    "completed": "{{pct}}% completado"
+    "completed": "{{pct}}% completado",
+    "back": "Volver",
+    "close": "Cerrar",
+    "backToHome": "Volver al inicio"
   },
   "home": {
     "greeting": "¡Hola! 👋",
@@ -31,5 +34,45 @@
       "cta": "Simulacro de examen",
       "ctaSubtitle": "{{count}} preguntas · mezcla tipo examen"
     }
+  },
+  "quiz": {
+    "questionProgress": "Pregunta <0>{{current}}</0> de {{total}}",
+    "chooseOption": "Elige una opción",
+    "correct": "¡Correcto!",
+    "incorrect": "Incorrecto",
+    "nextQuestion": "Siguiente pregunta",
+    "seeResults": "Ver resultados",
+    "seeMore": "Ver más ↓",
+    "seeLess": "Ver menos ↑"
+  },
+  "results": {
+    "hits": "{{score}}/{{total}} aciertos",
+    "repeat": "Repetir test",
+    "back": "Volver",
+    "tiers": {
+      "highTitle": "¡Bien dominado!",
+      "highSubtitle": "Controlas este bloque. ¡Sigue así!",
+      "midTitle": "¡Casi lo tienes!",
+      "midSubtitle": "Vas por buen camino, repite para afinar.",
+      "lowTitle": "A repasar",
+      "lowSubtitle": "Repite el test para reforzar los fallos."
+    }
+  },
+  "menu": {
+    "user": "Menú de usuario",
+    "studentName": "Estudiante",
+    "session": "Sesión local",
+    "darkMode": "Modo oscuro"
+  },
+  "errors": {
+    "topicInvalidParams": "Parámetros de tema no válidos.",
+    "topicNotFound": "Tema no encontrado.",
+    "topicLoad": "No se pudo cargar el tema.",
+    "topicNoQuestions": "Este tema no tiene preguntas todavía.",
+    "subjectInvalidId": "ID de asignatura no válido.",
+    "subjectNotFound": "Asignatura no encontrada.",
+    "subjectLoad": "No se pudo cargar la asignatura.",
+    "subjectNoQuestions": "Esta asignatura no tiene preguntas todavía.",
+    "subjectsLoad": "No se pudieron cargar las asignaturas."
   }
 }
