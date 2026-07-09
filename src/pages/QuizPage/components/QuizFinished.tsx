@@ -1,10 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { IconRefresh, IconArrowLeft } from "@tabler/icons-react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  IconRefresh,
+  IconArrowLeft,
+  IconListSearch,
+} from "@tabler/icons-react";
 import Button from "../../../components/Button";
 import ProgressRing from "../../../components/ProgressRing";
+import QuizReview from "./QuizReview";
+import { useGoBack } from "../../../hooks/backNav";
 import { EASE } from "../../../utils/animations";
+import type { Question } from "../../../types";
 
 interface Props {
   score: number;
@@ -12,6 +19,8 @@ interface Props {
   topicName: string;
   backPath: string;
   onRepeat: () => void;
+  questions: Question[];
+  answers: number[];
 }
 
 interface Tier {
@@ -50,11 +59,17 @@ export default function QuizFinished({
   topicName,
   backPath,
   onRepeat,
+  questions,
+  answers,
 }: Props) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const goBack = useGoBack(backPath);
+  const [showReview, setShowReview] = useState(false);
   const pct = Math.round((score / total) * 100);
   const tier = tierFor(pct);
+  const wrongCount = questions.filter(
+    (q, i) => answers[i] !== q.correct,
+  ).length;
 
   return (
     <div className="min-h-svh bg-canvas flex justify-center">
@@ -62,7 +77,12 @@ export default function QuizFinished({
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 210, damping: 18, delay: 0.05 }}
+          transition={{
+            type: "spring",
+            stiffness: 210,
+            damping: 18,
+            delay: 0.05,
+          }}
         >
           <ProgressRing pct={pct} size={172} stroke={12} color={tier.color}>
             <div className="flex flex-col items-center leading-none">
@@ -118,7 +138,15 @@ export default function QuizFinished({
               {t("results.repeat")}
             </span>
           </Button>
-          <Button variant="secondary" onClick={() => navigate(backPath)}>
+          {wrongCount > 0 && (
+            <Button variant="secondary" onClick={() => setShowReview(true)}>
+              <span className="flex items-center justify-center gap-2">
+                <IconListSearch size={18} stroke={2.4} />
+                {t("results.review")} ({wrongCount})
+              </span>
+            </Button>
+          )}
+          <Button variant="ghost" onClick={goBack}>
             <span className="flex items-center justify-center gap-2">
               <IconArrowLeft size={18} stroke={2.4} />
               {t("results.back")}
@@ -126,6 +154,16 @@ export default function QuizFinished({
           </Button>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {showReview && (
+          <QuizReview
+            questions={questions}
+            answers={answers}
+            onBack={() => setShowReview(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

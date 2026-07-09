@@ -80,6 +80,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
   const [phase, setPhase] = useState<RevealPhase>("option");
   const [score, setScore] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);
+  const [answers, setAnswers] = useState<number[]>([]);
   const [attempt, setAttempt] = useState(0);
 
   const timers = useRef<number[]>([]);
@@ -126,6 +127,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
       haptics.error();
     }
     setResults((r) => [...r, ok]);
+    setAnswers((a) => [...a, index]);
 
     // Revelación por pasos: la opción tocada ya está coloreada; lo demás espera.
     clearTimers();
@@ -159,6 +161,7 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
     setPhase("option");
     setScore(0);
     setResults([]);
+    setAnswers([]);
     setAttempt((a) => a + 1);
   }
 
@@ -170,6 +173,8 @@ export default function Quiz({ topic, subjectId, backPath, recordKey }: Props) {
         topicName={topic.name}
         backPath={backPath}
         onRepeat={handleRepeat}
+        questions={questions}
+        answers={answers}
       />
     );
   }

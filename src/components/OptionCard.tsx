@@ -9,6 +9,8 @@ interface Props {
   state?: OptionState;
   onClick?: () => void;
   disabled?: boolean;
+  /** Modo repaso: sin interacción ni animación de entrada; se pinta ya en su estado final. */
+  readOnly?: boolean;
 }
 
 // Diseño B — options sit on a surface card with a square badge and a trailing marker.
@@ -19,6 +21,13 @@ const containerStyles: Record<OptionState, string> = {
     "relative z-10 bg-goodsoft border-good shadow-[0_16px_34px_-14px_var(--color-good)]",
   wrong:
     "relative z-10 bg-badsoft border-bad shadow-[0_16px_34px_-14px_var(--color-bad)]",
+  dimmed: "bg-surface border-line",
+};
+
+const containerReadOnly: Record<OptionState, string> = {
+  default: "bg-surface border-line",
+  correct: "bg-goodsoft border-good",
+  wrong: "bg-badsoft border-bad",
   dimmed: "bg-surface border-line",
 };
 
@@ -68,6 +77,13 @@ const cardVariants: Variants = {
   },
 };
 
+const readOnlyVariants: Variants = {
+  default: { scale: 1, opacity: 1, x: 0 },
+  correct: { scale: 1, opacity: 1, x: 0 },
+  wrong: { scale: 1, opacity: 1, x: 0 },
+  dimmed: { scale: 1, opacity: 0.5, x: 0 },
+};
+
 const markerVariants: Variants = {
   default: { scale: 0, opacity: 0 },
   dimmed: { scale: 0, opacity: 0 },
@@ -81,15 +97,19 @@ export default function OptionCard({
   state = "default",
   onClick,
   disabled,
+  readOnly,
 }: Props) {
   return (
     <motion.button
-      onClick={onClick}
-      disabled={disabled}
-      variants={cardVariants}
+      onClick={readOnly ? undefined : onClick}
+      disabled={disabled || readOnly}
+      variants={readOnly ? readOnlyVariants : cardVariants}
+      initial={readOnly ? false : undefined}
       animate={state}
-      whileTap={disabled ? undefined : { scale: 0.97 }}
-      className={`group w-full flex items-center gap-3.5 px-4 py-3.5 rounded-[18px] border-2 text-left text-fg transition-[color,background-color,border-color,box-shadow] duration-200 ${containerStyles[state]}`}
+      whileTap={disabled || readOnly ? undefined : { scale: 0.97 }}
+      className={`group w-full flex items-center gap-3.5 px-4 py-3.5 rounded-[18px] border-2 text-left text-fg transition-[color,background-color,border-color,box-shadow] duration-200 ${
+        (readOnly ? containerReadOnly : containerStyles)[state]
+      }`}
     >
       <span
         className={`shrink-0 w-9 h-9 rounded-xl grid place-items-center text-sm font-extrabold transition-colors duration-200 ${badgeStyles[state]}`}
@@ -101,6 +121,7 @@ export default function OptionCard({
       </span>
       <motion.span
         variants={markerVariants}
+        initial={readOnly ? false : undefined}
         animate={state}
         transition={{
           type: "spring",

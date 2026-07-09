@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-type AlertVariant = "success" | "danger" | "warning" | "info";
+type AlertVariant = "default" | "success" | "danger" | "warning" | "info";
 
 const variantStyles: Record<
   AlertVariant,
@@ -13,6 +13,13 @@ const variantStyles: Record<
     glyph: string;
   }
 > = {
+  default: {
+    container: "bg-surface2 border-line",
+    icon: "bg-primary text-white",
+    title: "text-fg",
+    button: "text-primary",
+    glyph: "i",
+  },
   success: {
     container: "bg-goodsoft border-good",
     icon: "bg-good text-white",

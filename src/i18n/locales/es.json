@@ -49,6 +49,7 @@
     "hits": "{{score}}/{{total}} aciertos",
     "repeat": "Repetir test",
     "back": "Volver",
+    "review": "Repasar fallos",
     "tiers": {
       "highTitle": "¡Bien dominado!",
       "highSubtitle": "Controlas este bloque. ¡Sigue así!",
@@ -57,6 +58,15 @@
       "lowTitle": "A repasar",
       "lowSubtitle": "Repite el test para reforzar los fallos."
     }
+  },
+  "review": {
+    "title": "Repaso",
+    "failed": "Falladas",
+    "all": "Todas",
+    "explanation": "Explicación",
+    "failedTag": "Fallada",
+    "correctTag": "Acertada",
+    "noFails": "¡No fallaste ninguna! 🎉"
   },
   "menu": {
     "user": "Menú de usuario",

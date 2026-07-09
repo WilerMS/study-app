@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useIsBack } from "../../../hooks/backNav";
 import { riseIn } from "../../../utils/animations";
 
 interface Props {
@@ -16,11 +17,12 @@ export default function ProgressCard({
   subjectsCount,
 }: Props) {
   const { t } = useTranslation();
+  const isBack = useIsBack();
 
   return (
     <motion.div
       variants={riseIn}
-      initial="hidden"
+      initial={isBack ? false : "hidden"}
       animate="show"
       className="rounded-[26px] p-5 text-white mb-6"
       style={{
