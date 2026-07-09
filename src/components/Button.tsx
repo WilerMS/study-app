@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
+import { haptics } from '../utils/haptics';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 
@@ -43,11 +44,16 @@ export default function Button({
   fullWidth = false,
   className = '',
   children,
+  onClick,
   ...props
 }: Props) {
   return (
     <button
       className={`transition-all duration-150 cursor-pointer select-none ${variantStyles[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
+      onClick={(e) => {
+        haptics.tap();
+        onClick?.(e);
+      }}
       {...props}
     >
       {children}
