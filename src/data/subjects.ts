@@ -5,6 +5,7 @@ import { comunicacion } from "./subjects/comunicacion";
 import { deontologia } from "./subjects/deontologia";
 import { disenoAlgoritmos } from "./subjects/diseno-algoritmos";
 import { estadistica } from "./subjects/estadistica";
+import { fundamentosFisicos } from "./subjects/fundamentos-fisicos";
 import { informaticaGrafica } from "./subjects/informatica-grafica";
 import { procesos } from "./subjects/procesos";
 
@@ -15,6 +16,7 @@ export const subjects: Subject[] = [
   deontologia,
   disenoAlgoritmos,
   estadistica,
+  fundamentosFisicos,
   informaticaGrafica,
   procesos,
 ];

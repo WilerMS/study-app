@@ -81,18 +81,21 @@ Cuando el usuario adjunte una actividad o banco que falta:
 
 ## Estado actual (asignaturas y topics existentes)
 
-| Asignatura                          | Archivo                  | Act 1 | Act 2 | Banco | Faltan         |
-| ----------------------------------- | ------------------------ | ----- | ----- | ----- | -------------- |
-| Álgebra y Matemática Discreta       | `algebra.ts`             | ✅    | ✅    | —     | (banco)        |
-| Cálculo y Métodos Numéricos         | `calculo.ts`             | ✅    | ✅    | ✅    | —              |
-| Comunicación y Liderazgo            | `comunicacion.ts`        | ✅    | ✅    | —     | (banco)        |
-| Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | —     | (banco)        |
-| Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | (act 2, banco) |
-| Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | —              |
-| Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | (act 1, act 2) |
-| Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | —              |
+| Asignatura                          | Archivo                  | Act 1 | Act 2 | Banco | Estado                         |
+| ----------------------------------- | ------------------------ | ----- | ----- | ----- | ------------------------------ |
+| Álgebra y Matemática Discreta       | `algebra.ts`             | ✅    | ✅    | n/a   | Completa (no existe banco)     |
+| Cálculo y Métodos Numéricos         | `calculo.ts`             | ✅    | ✅    | ✅    | Completa                       |
+| Comunicación y Liderazgo            | `comunicacion.ts`        | ✅    | ✅    | n/a   | Completa (no existe banco)     |
+| Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | n/a   | Completa (no existe banco)     |
+| Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
+| Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
+| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Act1 (30), Act2 (30), Tests (50); falta Temario |
+| Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
+| Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
-"Faltan" = topics que el usuario aún no ha entregado y añadirá más adelante. Cada topic completo tiene 30 preguntas. (Se eliminaron las asignaturas placeholder "ejemplo" y "Estructura de Datos" originales.)
+**Asignaturas del curso 2026-27 (no hay banco):** llevan 4 topics de 30 preguntas mínimo: Actividad 1 (id 1), Actividad 2 (id 2), Temario (id 3) y Tests de los temas (id 4). Las preguntas de los tests se copian **literalmente** desde los `.md` guardados en `unipro/<asignatura>/tests/N.md` (en el examen salen idénticas). No se incluyen las preguntas con varias respuestas correctas (el modelo solo admite un `correct`) ni las que el campus no ha confirmado. La app baraja las opciones, así que se evitan las de "Todas las anteriores".
+
+"n/a" = la asignatura **no tiene banco de preguntas**: en el examen todas las preguntas salen de las actividades y del temario. "Suspendida" = el usuario la repetirá el curso siguiente; cuando traiga los PDFs nuevos (pueden cambiar las actividades), añadir o sustituir los topics. Cada topic completo tiene 30 preguntas.
 
 ## Comandos útiles
 
