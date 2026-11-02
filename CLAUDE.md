@@ -89,7 +89,7 @@ Cuando el usuario adjunte una actividad o banco que falta:
 | Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | n/a   | Completa (no existe banco)     |
 | Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
 | Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
-| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Act1 (30), Act2 (30), Tests (50); falta Temario |
+| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests (50) |
 | Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
 | Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
