@@ -17,6 +17,7 @@ Algunas asignaturas solo tienen una actividad, o solo el banco. Se hace test de 
 - Todas las preguntas viven en `src/data/` en formato tipado (`src/types/index.ts`: `Subject → Topic → Question`).
 - **Un archivo `.ts` por asignatura** en `src/data/subjects/` que exporta un `Subject`.
 - `src/data/subjects.ts` es el **agregador**: importa cada asignatura y las expone en `export const subjects: Subject[]`.
+- **Asignaturas activas:** solo las que están en `subjects` se muestran en la app. Las de cursos pasados están en `archivedSubjects` (desactivadas, con sus preguntas intactas). Activas ahora: Fundamentos Físicos e Ingeniería de Requisitos. Para reactivar una, moverla de `archivedSubjects` a `subjects`.
 - El flujo de carga es: `subjects.ts` → `services/subjectService.ts` → `hooks/useSubjects.ts` → páginas.
 
 Modelo de datos:
@@ -89,7 +90,8 @@ Cuando el usuario adjunte una actividad o banco que falta:
 | Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | n/a   | Completa (no existe banco)     |
 | Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
 | Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
-| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests (50) |
+| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests (144: todas las de los 10 tests salvo 6 especiales) |
+| Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Act1 (30), Act2 (30), Temario (60); faltan Tests |
 | Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
 | Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
