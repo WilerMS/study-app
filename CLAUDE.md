@@ -90,12 +90,12 @@ Cuando el usuario adjunte una actividad o banco que falta:
 | Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | n/a   | Completa (no existe banco)     |
 | Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
 | Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
-| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests (144: todas las de los 10 tests salvo 6 especiales) |
+| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests: un topic por tema, "Test Tema 1…10" (ids 4–13, 13–15 preguntas cada uno; 144 en total, salvo 6 especiales) |
 | Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Act1 (30), Act2 (30), Temario (60); faltan Tests |
 | Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
 | Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
-**Asignaturas del curso 2026-27 (no hay banco):** llevan 4 topics de 30 preguntas mínimo: Actividad 1 (id 1), Actividad 2 (id 2), Temario (id 3) y Tests de los temas (id 4). Las preguntas de los tests se copian **literalmente** desde los `.md` guardados en `unipro/<asignatura>/tests/N.md` (en el examen salen idénticas). No se incluyen las preguntas con varias respuestas correctas (el modelo solo admite un `correct`) ni las que el campus no ha confirmado. La app baraja las opciones, así que se evitan las de "Todas las anteriores".
+**Asignaturas del curso 2026-27 (no hay banco):** llevan 4 topics de 30 preguntas mínimo: Actividad 1 (id 1), Actividad 2 (id 2), Temario (id 3) y un topic por cada test de tema ("Test Tema N", ids 4 en adelante, description = título del tema). Las preguntas de los tests se copian **literalmente** desde los `.md` guardados en `unipro/<asignatura>/tests/N.md` (en el examen salen idénticas). No se incluyen las preguntas con varias respuestas correctas (el modelo solo admite un `correct`) ni las que el campus no ha confirmado. La app baraja las opciones, así que se evitan las de "Todas las anteriores".
 
 "n/a" = la asignatura **no tiene banco de preguntas**: en el examen todas las preguntas salen de las actividades y del temario. "Suspendida" = el usuario la repetirá el curso siguiente; cuando traiga los PDFs nuevos (pueden cambiar las actividades), añadir o sustituir los topics. Cada topic completo tiene 30 preguntas.
 

@@ -1348,8 +1348,8 @@ export const fundamentosFisicos: Subject = {
     },
     {
       id: 4,
-      name: "Tests de los temas",
-      description: "Todas las preguntas de los tests de autoevaluación (temas 1–10)",
+      name: "Test Tema 1",
+      description: "Campo eléctrico",
       questions: [
         {
           id: 1,
@@ -1519,8 +1519,15 @@ export const fundamentosFisicos: Subject = {
           correct: 2,
           explanation: "Para una esfera conductora cargada (o una esfera cuya carga se reparte), dentro el campo es nulo o crece desde el centro, y fuera disminuye como 1/r² porque se comporta como una carga puntual situada en el centro. El valor máximo se alcanza justo en la superficie (E = kQ/R²), que es donde la superficie gaussiana encierra toda la carga y la distancia al centro es la mínima posible fuera de la esfera. No es cero en la superficie, no es máximo en el centro (allí vale cero) y no es constante en toda la esfera.",
         },
+      ],
+    },
+    {
+      id: 5,
+      name: "Test Tema 2",
+      description: "Potencial eléctrico",
+      questions: [
         {
-          id: 15,
+          id: 1,
           question: "¿Cuál es la unidad de medida del campo eléctrico en el Sistema Internacional?",
           options: [
             "Newton (N).",
@@ -1532,7 +1539,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El campo eléctrico se define como fuerza por unidad de carga, E = F/q, así que su unidad en el SI es el newton por culombio (N/C). Esa unidad es equivalente al voltio por metro (V/m), porque el campo también es el gradiente del potencial (E = −dV/dx): 1 N/C = 1 V/m. De las opciones, la única que corresponde al campo es V/m. El newton mide fuerza, el voltio mide potencial y el culombio mide carga.",
         },
         {
-          id: 16,
+          id: 2,
           question: "¿Cuál es la fórmula del potencial eléctrico debido a una carga puntual?",
           options: [
             "V = K q/r²",
@@ -1544,7 +1551,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El potencial de una carga puntual es V = Kq/r: aumenta con la carga y disminuye con la inversa de la distancia (no con su cuadrado). La dependencia 1/r² corresponde al campo eléctrico E = Kq/r², y es la trampa típica de esta pregunta. Las opciones Kqr y Kqr² harían que el potencial creciera al alejarnos de la carga, lo cual es físicamente imposible: el potencial debe tender a cero en el infinito.",
         },
         {
-          id: 17,
+          id: 3,
           question: "¿Qué sucede con el potencial eléctrico en un punto específico si la distancia a una carga puntual se duplica?",
           options: [
             "El potencial se duplica.",
@@ -1556,7 +1563,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Como V = Kq/r, el potencial es inversamente proporcional a la distancia: si r pasa a 2r, el potencial pasa a V/2, es decir, se reduce a la mitad. Reducirse a la cuarta parte sería lo que le ocurre al campo eléctrico (E ∝ 1/r²), no al potencial. No se duplica ni se mantiene constante, porque el potencial sí depende de la distancia y disminuye al alejarnos.",
         },
         {
-          id: 18,
+          id: 4,
           question: "En un sistema de dos cargas puntuales del mismo signo, ¿cómo es el potencial eléctrico en el punto medio entre las dos cargas?",
           options: [
             "Mayor que el de una sola carga.",
@@ -1568,7 +1575,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El potencial eléctrico es una magnitud escalar: el potencial total en un punto es la suma algebraica de los potenciales de cada carga (V = kq₁/r₁ + kq₂/r₂). Si las dos cargas tienen el mismo signo, sus contribuciones tienen el mismo signo y se suman, así que el potencial en el punto medio es mayor (en valor absoluto) que el que crearía una sola carga. No es cero: eso pasaría con cargas iguales y de signo opuesto. Fíjate en la diferencia con el campo, que es vectorial y en ese mismo punto sí se anula.",
         },
         {
-          id: 19,
+          id: 5,
           question: "¿Qué mide la diferencia de potencial en un circuito eléctrico?",
           options: [
             "La resistencia entre dos puntos.",
@@ -1580,7 +1587,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La diferencia de potencial (o tensión, o voltaje) entre dos puntos es el trabajo por unidad de carga necesario para llevar una carga de un punto al otro: ΔV = W/q, en voltios (J/C). Es lo que 'empuja' a las cargas a moverse por el circuito. La resistencia entre dos puntos se mide en ohmios, la intensidad de corriente en amperios y la capacidad de un condensador en faradios: son magnitudes distintas, aunque relacionadas a través de la ley de Ohm (V = I·R) y de Q = C·V.",
         },
         {
-          id: 20,
+          id: 6,
           question: "¿Qué sucede cuando se aplica una diferencia de potencial a un conductor?",
           options: [
             "La resistencia del conductor aumenta.",
@@ -1592,7 +1599,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Al aplicar una diferencia de potencial aparece un campo eléctrico dentro del conductor que ejerce fuerza sobre los electrones libres y los pone en movimiento ordenado: eso es una corriente eléctrica (I = V/R según la ley de Ohm). La resistencia no aumenta por aplicar tensión (depende del material, la geometría y la temperatura), sí hay un cambio evidente, y el conductor no se enfría: al contrario, por efecto Joule se calienta.",
         },
         {
-          id: 21,
+          id: 7,
           question: "¿Qué componente se utiliza en la memoria DRAM para almacenar un bit de información?",
           options: [
             "Resistor.",
@@ -1604,7 +1611,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La DRAM almacena cada bit como carga en un condensador: si el condensador está cargado representa un 1 y si está descargado un 0 (junto a un transistor MOSFET que actúa como interruptor de acceso). Como el condensador se descarga poco a poco, la DRAM necesita refrescarse periódicamente, de ahí lo de 'dinámica'. Un resistor disipa energía pero no la almacena, un diodo solo deja pasar corriente en un sentido y un inductor almacena energía en un campo magnético pero no se usa para guardar bits.",
         },
         {
-          id: 22,
+          id: 8,
           question: "¿Cuál es la función principal de un condensador en un circuito?",
           options: [
             "Almacenar y liberar energía eléctrica.",
@@ -1616,7 +1623,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Un condensador está formado por dos conductores separados por un aislante; al aplicarle tensión acumula carga +Q y −Q en sus placas y almacena energía en el campo eléctrico entre ellas (U = ½CV²). Después puede liberar esa energía al circuito, lo que permite filtrar, estabilizar tensiones o temporizar. No reduce la resistencia del circuito, no aumenta la corriente por sí mismo y no está pensado para generar calor (eso sería una resistencia).",
         },
         {
-          id: 23,
+          id: 9,
           question: "¿Qué representa la capacitancia o capacidad de un condensador?",
           options: [
             "La cantidad de voltaje que puede soportar.",
@@ -1628,7 +1635,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La capacidad C = Q/V mide cuánta carga almacena un condensador por cada voltio aplicado; su unidad es el faradio (1 F = 1 C/V). Cuanto mayor es C, más carga acumula con la misma tensión. La tensión máxima que soporta es la tensión de ruptura del dieléctrico, no la capacidad; la resistencia interna es un parámetro parásito; y la frecuencia de oscilación aparece en circuitos LC, pero no es lo que representa C.",
         },
         {
-          id: 24,
+          id: 10,
           question: "¿Cuál es la relación principal entre el campo eléctrico y el potencial eléctrico?",
           options: [
             "Son magnitudes físicas independientes.",
@@ -1640,7 +1647,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El campo eléctrico se obtiene del potencial: E⃗ = −∇V. Indica la dirección en la que el potencial disminuye más rápidamente, y su intensidad mide lo deprisa que cambia el potencial en el espacio (en una dimensión, E = −dV/dx). Por tanto no son independientes ni carecen de relación. La opción inversa ('el potencial es el gradiente del campo') es la trampa: el gradiente se aplica a una magnitud escalar (V) y da un vector (E), no al revés; el potencial se obtiene del campo integrando, no derivando.",
         },
         {
-          id: 25,
+          id: 11,
           question: "¿Qué representan las superficies equipotenciales?",
           options: [
             "Áreas donde el campo eléctrico es constante.",
@@ -1652,7 +1659,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una superficie equipotencial es el conjunto de puntos que tienen el mismo potencial eléctrico. Mover una carga sobre ella no requiere trabajo (ΔV = 0) y, por eso, las líneas de campo eléctrico la cortan siempre perpendicularmente. No es una zona de campo constante ni de campo nulo (alrededor de una carga puntual las equipotenciales son esferas y el campo no es nulo en ellas), y no tiene que ver con donde la fuerza es máxima.",
         },
         {
-          id: 26,
+          id: 12,
           question: "¿Qué ocurre con el campo eléctrico dentro de un condensador ideal?",
           options: [
             "Es nulo en todo el volumen.",
@@ -1664,7 +1671,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un condensador ideal de placas planas y paralelas, lejos de los bordes, el campo entre las placas es uniforme: mismo módulo, dirección y sentido en todos los puntos, con valor E = σ/ε = V/d. Fuera de las placas el campo es prácticamente nulo, pero entre ellas no. No disminuye linealmente ni crece exponencialmente de una placa a otra; lo que varía linealmente entre las placas es el potencial, no el campo.",
         },
         {
-          id: 27,
+          id: 13,
           question: "¿Cómo se puede definir la capacidad de un condensador?",
           options: [
             "Como la relación entre la carga y el potencial.",
@@ -1676,7 +1683,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La capacidad se define como C = Q/V: la carga almacenada en las placas dividida entre la diferencia de potencial entre ellas. Se mide en faradios (1 F = 1 C/V). El producto del campo por la distancia entre placas (E·d) es precisamente la diferencia de potencial V, no la capacidad, y la diferencia de potencial por sí sola tampoco lo es. La capacidad no es la inversa del campo: depende de la geometría (área y separación de las placas) y del dieléctrico, C = εA/d.",
         },
         {
-          id: 28,
+          id: 14,
           question: "¿De qué depende la capacidad de un condensador?",
           options: [
             "Depende de la carga almacenada y el potencial.",
@@ -1687,8 +1694,15 @@ export const fundamentosFisicos: Subject = {
           correct: 1,
           explanation: "Para un condensador plano C = ε·S/d: depende de la geometría (superficie de las placas S y distancia d) y del dieléctrico que hay entre ellas (permitividad ε = εr·ε₀). Introducir un dieléctrico multiplica la capacidad por εr respecto al vacío, y es lo que el test considera el factor clave. La carga y el potencial no la determinan: C = Q/V es una relación constante para cada condensador (si duplicas V, se duplica Q). No depende 'únicamente' de la geometría porque falta el material, y la temperatura o la presión no son los factores que la definen.",
         },
+      ],
+    },
+    {
+      id: 6,
+      name: "Test Tema 3",
+      description: "Campo magnético",
+      questions: [
         {
-          id: 29,
+          id: 1,
           question: "¿Qué describe la Ley de Biot y Savart?",
           options: [
             "El comportamiento de los imanes.",
@@ -1700,7 +1714,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Biot y Savart permite calcular el campo magnético que genera una corriente eléctrica en un punto del espacio, sumando (integrando) la contribución de cada elemento de corriente: dB = (μ₀/4π)·I·(dl × r̂)/r². Es la base para calcular el campo de espiras, hilos o solenoides. No describe el comportamiento de los imanes en general, la relación campo eléctrico–fuerza es F = qE y la atracción gravitacional pertenece a la ley de Newton.",
         },
         {
-          id: 30,
+          id: 2,
           question: "¿Qué representa la permeabilidad magnética?",
           options: [
             "La resistencia de un material al campo eléctrico.",
@@ -1712,7 +1726,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La permeabilidad magnética μ mide cómo responde un material a un campo magnético: la facilidad con que se magnetiza y 'concentra' las líneas de campo en su interior (B = μH). Un material con μ alta, como el hierro, atrae y canaliza las líneas de campo. No tiene que ver con el campo eléctrico (eso sería la permitividad), no es la fuerza que ejerce un imán y tampoco es la energía almacenada en el campo, aunque esta dependa de μ.",
         },
         {
-          id: 31,
+          id: 3,
           question: "Según la regla de la mano derecha, ¿cómo se determina la dirección del campo magnético alrededor de un conductor?",
           options: [
             "Con el pulgar apuntando en la dirección de la corriente y los dedos curvados en la dirección opuesta al campo magnético.",
@@ -1724,7 +1738,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La regla de la mano derecha para un conductor rectilíneo: si el pulgar apunta en el sentido de la corriente, los dedos al cerrarse alrededor del cable indican el sentido de las líneas de campo magnético, que son circunferencias concéntricas al conductor. Las opciones que hablan de dirección 'opuesta' o de pulgar contrario a la corriente dan el sentido equivocado. La opción con los dedos en la corriente y el pulgar en el campo es la versión de la regla que se usa para una espira o un solenoide, no para el campo alrededor de un conductor recto.",
         },
         {
-          id: 32,
+          id: 4,
           question: "¿Qué tipo de materiales tienen una permeabilidad relativa muy superior a 1?",
           options: [
             "Paramagnéticos.",
@@ -1736,7 +1750,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los materiales se clasifican por su permeabilidad relativa μr: los ferromagnéticos (hierro, níquel, cobalto) tienen μr muy superior a 1, de cientos a miles, porque sus dominios magnéticos se alinean con el campo y lo refuerzan enormemente. Los paramagnéticos tienen μr ligeramente mayor que 1 (aluminio), los diamagnéticos ligeramente menor que 1 (cobre, agua) y los 'no magnéticos' se consideran μr ≈ 1.",
         },
         {
-          id: 33,
+          id: 5,
           question: "¿Cuál es una aplicación práctica de la Ley de Biot y Savart?",
           options: [
             "El diseño de antenas de televisión.",
@@ -1748,7 +1762,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Biot-Savart permite calcular el campo magnético que crea cualquier distribución de corriente sumando (integrando) la contribución de cada elemento de corriente: dB⃗ = (μ₀/4π)·I·dl⃗ × r̂/r². Aplicada a una espira o a un solenoide da su campo (en un solenoide largo, B = μ₀nI). Las baterías funcionan por reacciones electroquímicas y los circuitos eléctricos se diseñan con leyes de circuitos (Ohm, Kirchhoff). Las antenas tienen que ver con ondas electromagnéticas, no con el cálculo del campo estático de una corriente.",
         },
         {
-          id: 34,
+          id: 6,
           question: "¿Cuál es la fuerza que experimenta una carga en movimiento en un campo magnético?",
           options: [
             "Fuerza eléctrica.",
@@ -1760,7 +1774,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una carga q que se mueve con velocidad v dentro de un campo magnético B experimenta la fuerza de Lorentz, F⃗ = q·(v⃗ × B⃗), que es perpendicular tanto a la velocidad como al campo (en su forma completa incluye además el término eléctrico qE). La fuerza eléctrica actúa sobre cargas aunque estén en reposo y depende del campo eléctrico, no del magnético. La gravitacional depende de la masa y la nuclear actúa dentro del núcleo atómico.",
         },
         {
-          id: 35,
+          id: 7,
           question: "¿Qué se crea cuando una corriente eléctrica fluye por un conductor en presencia de un campo magnético perpendicular?",
           options: [
             "Una corriente inducida.",
@@ -1772,7 +1786,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Si una corriente circula por un conductor y se aplica un campo magnético perpendicular, la fuerza de Lorentz desvía los portadores de carga hacia uno de los lados. La carga se acumula en un lado y falta en el otro, apareciendo una diferencia de potencial transversal: el voltaje Hall. No es una corriente inducida (esa requiere variación de flujo, ley de Faraday), y la fuerza centrífuga no tiene que ver. Aparece también un campo eléctrico transversal, pero es la causa interna del voltaje Hall; el efecto que se mide y que da nombre al fenómeno es el voltaje.",
         },
         {
-          id: 36,
+          id: 8,
           question: "¿Qué le sucede a una carga en movimiento que entra en paralelo a un campo magnético?",
           options: [
             "La carga se acelera en la dirección del campo magnético.",
@@ -1784,7 +1798,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La fuerza magnética es F = q·v·B·sen θ, donde θ es el ángulo entre la velocidad y el campo. Si la carga entra paralela al campo, θ = 0° y sen 0° = 0, así que la fuerza es nula y la carga sigue en línea recta sin desviarse. No se acelera en la dirección del campo, porque la fuerza magnética nunca tiene componente a lo largo de B. Desviarse perpendicularmente es lo que ocurre cuando entra perpendicular al campo (describe una circunferencia). Y tampoco se frena: la fuerza magnética nunca realiza trabajo, solo puede cambiar la dirección de la velocidad.",
         },
         {
-          id: 37,
+          id: 9,
           question: "¿Qué les sucede a dos hilos de corriente paralelos cuando sus intensidades fluyen en el mismo sentido?",
           options: [
             "Los hilos se repelen.",
@@ -1796,7 +1810,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cada hilo crea un campo magnético en la posición del otro, y la fuerza de Lorentz sobre la corriente del segundo hilo apunta hacia el primero. Por eso dos corrientes paralelas en el mismo sentido se atraen, y si van en sentidos opuestos se repelen. Ojo: es justo al revés que con las cargas eléctricas, donde 'iguales se repelen'. No permanecen en reposo, porque sí hay fuerza entre ellos, y por supuesto no se fusionan.",
         },
         {
-          id: 38,
+          id: 10,
           question: "¿Qué describe la ley de Lorentz en el contexto de un hilo de corriente?",
           options: [
             "La creación de un campo eléctrico.",
@@ -1808,7 +1822,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La fuerza de Lorentz sobre una carga es F⃗ = q·v⃗ × B⃗. Aplicada a un hilo por el que circula una corriente I dentro de un campo B, queda F⃗ = I·L⃗ × B⃗: el campo magnético ejerce una fuerza perpendicular al hilo y al campo. Es el principio de funcionamiento de los motores eléctricos. No describe la creación de un campo eléctrico, la generación de calor (efecto Joule) ni la resistencia del conductor.",
         },
         {
-          id: 39,
+          id: 11,
           question: "¿Qué es el Efecto Hall?",
           options: [
             "Un fenómeno donde un material conductor experimenta un aumento de temperatura.",
@@ -1820,7 +1834,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El Efecto Hall es la aparición de un voltaje transversal (voltaje Hall) en un conductor por el que circula corriente cuando se le aplica un campo magnético perpendicular. La fuerza de Lorentz desvía los portadores de carga hacia un lado del conductor, se acumula carga y aparece una diferencia de potencial transversal. Su aplicación práctica son los sensores de efecto Hall, que miden campos magnéticos o detectan posiciones. No es un fenómeno térmico (eso sería el efecto Joule) ni una técnica para medir resistencias o intensidades.",
         },
         {
-          id: 40,
+          id: 12,
           question: "¿Qué se necesita para calcular el Voltaje Hall?",
           options: [
             "Solo la densidad de electrones.",
@@ -1832,7 +1846,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El voltaje Hall en una lámina de espesor d es V_H = I·B/(n·e·d): depende de la intensidad de corriente I, del campo magnético B, de la densidad de portadores (electrones) n y del módulo de la carga del electrón e (además de la geometría). Ninguna de esas magnitudes por sí sola basta para calcularlo, así que las opciones de 'solo uno' son incorrectas.",
         },
         {
-          id: 41,
+          id: 13,
           question: "¿Cuál de los siguientes elementos no es necesario para calcular el Voltaje Hall?",
           options: [
             "Densidad de electrones.",
@@ -1844,7 +1858,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Según V_H = I·B/(n·e·d), para el voltaje Hall hacen falta la intensidad de corriente, el campo magnético, la densidad de portadores y la carga del electrón (más el espesor de la lámina). La resistencia eléctrica no aparece en la fórmula: el voltaje Hall surge por la desviación de los portadores por la fuerza de Lorentz, no por la caída de tensión a lo largo del conductor.",
         },
         {
-          id: 42,
+          id: 14,
           question: "¿Cuál es una aplicación práctica del Efecto Hall mencionada en la videoclase?",
           options: [
             "Sensor de efecto Hall.",
@@ -1856,7 +1870,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Un sensor de efecto Hall mide el voltaje transversal que aparece en un material cuando lo atraviesa un campo magnético, y a partir de él deduce el campo. Se usan para medir campos, detectar posición o velocidad (ruedas, ventiladores, el sensor que detecta si la tapa del portátil está cerrada) y en medidores de corriente sin contacto. Transformadores, motores de alterna y generadores de continua se basan en la inducción electromagnética y en la fuerza de Lorentz, no en el efecto Hall.",
         },
         {
-          id: 43,
+          id: 15,
           question: "¿Qué describe la Ley de Ampère?",
           options: [
             "La relación entre el voltaje y la resistencia en un circuito.",
@@ -1867,8 +1881,15 @@ export const fundamentosFisicos: Subject = {
           correct: 2,
           explanation: "La Ley de Ampère relaciona el campo magnético con la corriente que lo produce: la circulación de B a lo largo de una curva cerrada es proporcional a la corriente que la atraviesa, ∮B⃗·dl⃗ = μ₀·I_enc. Permite calcular de forma sencilla campos con mucha simetría, como el de un hilo infinito (B = μ₀I/2πr) o el de un solenoide. La relación entre voltaje y resistencia es la ley de Ohm, la fem inducida es la ley de Faraday y la conservación de la energía electromagnética es el teorema de Poynting.",
         },
+      ],
+    },
+    {
+      id: 7,
+      name: "Test Tema 4",
+      description: "Inducción electromagnética",
+      questions: [
         {
-          id: 44,
+          id: 1,
           question: "¿Qué mide el flujo magnético?",
           options: [
             "La cantidad de electricidad que pasa por un conductor.",
@@ -1880,7 +1901,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El flujo magnético mide la cantidad de campo magnético que atraviesa una superficie: Φ = B⃗·S⃗ = B·S·cos θ, y se mide en weber (Wb). Es el concepto clave de la inducción electromagnética, porque lo que induce una fem es su variación. La cantidad de electricidad que pasa por un conductor es la intensidad de corriente, la fuerza del campo eléctrico es E y la 'resistencia al paso del campo magnético' sería la reluctancia, que no es el flujo.",
         },
         {
-          id: 45,
+          id: 2,
           question: "¿Cómo se relaciona el flujo magnético con el ángulo entre el campo magnético y el vector superficie?",
           options: [
             "Es independiente del ángulo.",
@@ -1892,7 +1913,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El flujo magnético es el producto escalar del campo por el vector superficie: Φ = B⃗·S⃗ = B·S·cos θ, donde θ es el ángulo entre el campo y el vector superficie (que es perpendicular a la superficie). Cuando θ = 0° el campo atraviesa la superficie de frente y el flujo es máximo; a medida que θ se acerca a 90° el coseno tiende a 0 y el flujo disminuye, hasta anularse cuando el campo es paralelo a la superficie. Por eso no es independiente del ángulo, no es máximo a 90° y no disminuye al acercarse a 0°.",
         },
         {
-          id: 46,
+          id: 3,
           question: "¿Cuál de los siguientes dispositivos utiliza el principio del flujo magnético en su funcionamiento?",
           options: [
             "Motor eléctrico.",
@@ -1904,7 +1925,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un motor eléctrico la corriente que circula por las bobinas, dentro de un campo magnético, sufre fuerzas (Lorentz) que producen un par de giro; al girar, el flujo magnético que atraviesa las bobinas cambia continuamente. El funcionamiento del motor (y del generador, que es el proceso inverso) se basa en el campo y el flujo magnéticos. El termómetro de mercurio se basa en la dilatación térmica, la batería de litio en reacciones electroquímicas y el panel solar en el efecto fotovoltaico.",
         },
         {
-          id: 47,
+          id: 4,
           question: "¿Qué ocurre con el flujo magnético cuando el campo magnético cambia con el tiempo?",
           options: [
             "Se mantiene constante.",
@@ -1916,7 +1937,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Como Φ = B·S·cos θ, si el campo cambia con el tiempo, el flujo cambia con él: aumenta si el campo crece (en el sentido del vector superficie) y disminuye si se reduce o se invierte. No hay una regla de 'siempre aumenta' ni 'siempre disminuye'. Esa variación del flujo es justo lo que, según la ley de Faraday, induce una fuerza electromotriz. 'Se mantiene constante' solo sería cierto si el campo no cambiara.",
         },
         {
-          id: 48,
+          id: 5,
           question: "¿Cuál es una aplicación práctica del flujo magnético discutida en la presentación?",
           options: [
             "Circuitos integrados.",
@@ -1928,7 +1949,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Un disco duro (HDD) guarda los bits como pequeñas zonas magnetizadas en un sentido u otro sobre el plato. Para leer, el cabezal detecta los cambios de campo y de flujo magnético al pasar sobre esas zonas; para escribir, crea un campo que magnetiza la zona. Los circuitos integrados y las placas de circuito impreso son electrónica basada en semiconductores y conductores, y las celdas de combustible producen electricidad por reacciones químicas.",
         },
         {
-          id: 49,
+          id: 6,
           question: "¿Qué establece la Ley de Faraday-Lenz?",
           options: [
             "Que el campo magnético no puede generar un campo eléctrico.",
@@ -1940,7 +1961,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Faraday-Lenz dice que una variación del flujo magnético induce una fuerza electromotriz, ε = −dΦ/dt, y el signo menos (Ley de Lenz) indica que esa fem se opone a la variación de flujo que la produce. Es justo lo contrario de que el campo magnético no pueda generar un campo eléctrico: un campo magnético variable sí lo genera. La fem no depende de la resistencia (la resistencia solo determina cuánta corriente circula, I = ε/R) y la corriente inducida no es constante: depende de lo rápido que cambie el flujo.",
         },
         {
-          id: 50,
+          id: 7,
           question: "Para que se genere una corriente inducida según la Ley de Faraday-Lenz, el circuito debe estar:",
           options: [
             "Cerrado.",
@@ -1952,7 +1973,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La variación de flujo induce una fem tanto en un circuito abierto como en uno cerrado, pero para que circule corriente inducida el circuito tiene que estar cerrado: la corriente necesita un camino completo por el que fluir. En un circuito abierto aparece la fem (hay diferencia de potencial entre los extremos), pero no circula corriente. El cortocircuito y la conexión a tierra no son condiciones de la Ley de Faraday-Lenz.",
         },
         {
-          id: 51,
+          id: 8,
           question: "¿Qué debe variar para que se induzca una fuerza electromotriz según la Ley de Faraday-Lenz?",
           options: [
             "La resistencia del circuito.",
@@ -1964,7 +1985,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Faraday-Lenz dice que la fuerza electromotriz inducida es ε = −dΦ/dt: solo aparece si el flujo magnético que atraviesa el circuito varía con el tiempo. Puede variar porque cambie el campo, el área o la orientación (el ángulo) del circuito, pero lo que tiene que cambiar es el flujo. Cambiar la resistencia o la temperatura no induce nada; la longitud del conductor solo influye si con ella cambia el área atravesada por el campo.",
         },
         {
-          id: 52,
+          id: 9,
           question: "El flujo magnético en función del tiempo es importante porque:",
           options: [
             "Permite calcular la resistencia del circuito.",
@@ -1976,7 +1997,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Según la Ley de Faraday, ε = −dΦ/dt: la fem inducida es la derivada del flujo respecto al tiempo. Por eso importa conocer Φ(t): cuanto más rápido cambia el flujo, mayor es la fem inducida. La resistencia del circuito no se calcula con el flujo, la frecuencia de la corriente alterna la fija el generador (aunque el flujo de un generador varíe periódicamente con esa frecuencia, no es lo que la 'determina') y el flujo no tiene relación con la temperatura del conductor.",
         },
         {
-          id: 53,
+          id: 10,
           question: "La fuerza electromotriz inducida por la Ley de Faraday-Lenz genera un campo magnético que:",
           options: [
             "Aumenta la velocidad de cambio del flujo magnético.",
@@ -1988,7 +2009,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Es la Ley de Lenz, el signo menos de ε = −dΦ/dt: la corriente inducida crea un campo magnético que se opone a la variación del flujo que la produjo. Si el flujo aumenta, el campo inducido intenta reducirlo; si disminuye, intenta mantenerlo. Es una consecuencia de la conservación de la energía: si reforzara el cambio, se crearía energía de la nada. Por eso no acelera el cambio, sí tiene efecto y no es algo exclusivo de los superconductores.",
         },
         {
-          id: 54,
+          id: 11,
           question: "¿Dónde se almacena la energía magnética en un circuito RL?",
           options: [
             "En los resistores.",
@@ -2000,7 +2021,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un circuito RL la energía magnética se almacena en la bobina (inductor), en forma de campo magnético, y vale U = ½·L·I². Los resistores no almacenan energía: la disipan en forma de calor por efecto Joule. Los condensadores sí almacenan energía, pero eléctrica (U = ½·C·V²) y en un campo eléctrico; además, un circuito RL no tiene condensadores. Los interruptores solo abren o cierran el circuito.",
         },
         {
-          id: 55,
+          id: 12,
           question: "¿Qué genera el flujo magnético a través de una bobina?",
           options: [
             "La resistencia del circuito.",
@@ -2012,7 +2033,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cuando circula corriente por una bobina, ella misma crea un campo magnético cuyas líneas atraviesan sus propias espiras, generando un flujo a través de ella. Ese es el autoflujo, y su relación con la corriente es la autoinductancia L (Φ = L·I). La resistencia del circuito, la capacidad de un condensador o la tensión aplicada no generan flujo magnético por sí mismas: la tensión puede provocar la corriente, pero el flujo lo crea el campo de esa corriente en la bobina.",
         },
         {
-          id: 56,
+          id: 13,
           question: "¿Qué es la autoinductancia en un circuito?",
           options: [
             "La capacidad de un circuito para almacenar carga.",
@@ -2024,7 +2045,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La autoinducción (autoinductancia) es el fenómeno por el que un cambio de corriente en un circuito modifica el flujo magnético que atraviesa ese mismo circuito y le induce una fem que se opone al cambio (ε = −L·dI/dt). Su coeficiente es L y se mide en henrios (1 H = 1 Wb/A). Almacenar carga es la capacidad (propia de los condensadores), la resistencia interna es otra propiedad del circuito y la pérdida de energía en forma de calor es el efecto Joule.",
         },
         {
-          id: 57,
+          id: 14,
           question: "¿Cuándo es máxima la relación entre el campo magnético y la superficie de una bobina en cuanto al flujo magnético?",
           options: [
             "Cuando el campo magnético es paralelo a la superficie de la bobina.",
@@ -2036,7 +2057,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Φ = B·S·cos θ, con θ el ángulo entre el campo y la normal a la superficie. El flujo es máximo cuando el campo es perpendicular a la superficie de la bobina, porque entonces es paralelo a la normal (θ = 0°, cos θ = 1) y la atraviesa de lleno. Si el campo es paralelo a la superficie, o forma 90° con la normal (es lo mismo), cos θ = 0 y el flujo es nulo. Y siempre hay relación angular: el flujo depende del ángulo por el coseno.",
         },
         {
-          id: 58,
+          id: 15,
           question: "¿En cuál de las siguientes aplicaciones se aprovecha el comportamiento de un circuito RL para proteger componentes eléctricos frente a sobrecorrientes transitorias?",
           options: [
             "En la modulación de señales de radiofrecuencia.",
@@ -2047,8 +2068,15 @@ export const fundamentosFisicos: Subject = {
           correct: 2,
           explanation: "Una bobina se opone a los cambios bruscos de corriente (V = L·di/dt): en un circuito RL la corriente no puede saltar de golpe y crece de forma exponencial con constante de tiempo τ = L/R. Por eso se usan inductancias en el arranque de motores para limitar el pico de corriente inicial y proteger los componentes. La modulación de radiofrecuencia y los LED no se basan en este comportamiento, y un filtro 'basado únicamente en condensadores' por definición no es un circuito RL.",
         },
+      ],
+    },
+    {
+      id: 8,
+      name: "Test Tema 5",
+      description: "Ondas electromagnéticas",
+      questions: [
         {
-          id: 59,
+          id: 1,
           question: "¿Qué describe la Ley de Gauss para el campo eléctrico?",
           options: [
             "La interacción de los campos magnéticos con las corrientes eléctricas.",
@@ -2060,7 +2088,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Gauss para el campo eléctrico (primera ecuación de Maxwell) describe cómo las cargas son el origen del campo eléctrico: las cargas positivas son fuentes de las que salen líneas de campo y las negativas son sumideros a los que llegan. La interacción de campos magnéticos con corrientes corresponde a la Ley de Ampère y la generación de campo eléctrico a partir de campos magnéticos cambiantes es la Ley de Faraday. La variación temporal del campo eléctrico aparece en la Ley de Ampère generalizada, no en la de Gauss.",
         },
         {
-          id: 60,
+          id: 2,
           question: "¿Qué establece la Ley de Ampere generalizada?",
           options: [
             "Las líneas de campo magnético siempre se cierran.",
@@ -2072,7 +2100,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Ampère generalizada (Ampère-Maxwell) añade a la Ley de Ampère el término de corriente de desplazamiento: un campo eléctrico que varía en el tiempo genera un campo magnético, igual que lo genera una corriente. Es la simétrica de la Ley de Faraday y, juntas, explican la existencia de las ondas electromagnéticas. 'Las líneas de campo magnético siempre se cierran' es la Ley de Gauss para el magnetismo, 'las cargas positivas son fuentes' es la Ley de Gauss eléctrica y el decaimiento con 1/r² es la Ley de Coulomb.",
         },
         {
-          id: 61,
+          id: 3,
           question: "Según la Ley de Gauss para el campo magnético, ¿qué es cierto acerca de las líneas de campo magnético?",
           options: [
             "Las líneas de campo magnético siempre se cierran.",
@@ -2084,7 +2112,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Gauss para el magnetismo dice que el flujo magnético a través de cualquier superficie cerrada es cero (∮B⃗·dS⃗ = 0): no existen monopolos magnéticos, es decir, ni fuentes ni sumideros de campo magnético, así que sus líneas siempre se cierran sobre sí mismas. Las cargas en reposo no son fuentes de campo magnético (lo generan las cargas en movimiento), el decaimiento con 1/r² no es lo que establece esta ley y que un campo magnético variable genere uno eléctrico es la Ley de Faraday.",
         },
         {
-          id: 62,
+          id: 4,
           question: "¿Qué indica la Ley de Gauss para el campo eléctrico sobre las cargas negativas?",
           options: [
             "Son fuentes de campo eléctrico.",
@@ -2096,7 +2124,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Gauss para el campo eléctrico (∇·E⃗ = ρ/ε₀) dice que las cargas son el origen de las líneas de campo: las cargas positivas son fuentes (las líneas salen de ellas) y las negativas son sumideros (las líneas terminan en ellas). Por eso el flujo a través de una superficie que encierra carga negativa es negativo. Sí afectan al campo, y las cargas en reposo no generan campos magnéticos (eso lo hacen las cargas en movimiento).",
         },
         {
-          id: 63,
+          id: 5,
           question: "¿Cuál es la principal ecuación que describe la propagación de ondas electromagnéticas en el vacío?",
           options: [
             "Ecuación de Schrödinger.",
@@ -2108,7 +2136,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Las ecuaciones de Maxwell describen todos los fenómenos electromagnéticos clásicos y, combinándolas en el vacío, se obtiene la ecuación de ondas, cuya solución son ondas electromagnéticas que se propagan a la velocidad c = 1/√(μ₀ε₀). Así fue como Maxwell predijo que la luz es una onda electromagnética. La ecuación de Schrödinger es de la mecánica cuántica, las de Newton describen la mecánica clásica y las de Navier-Stokes el movimiento de fluidos.",
         },
         {
-          id: 64,
+          id: 6,
           question: "¿Cuál de las siguientes afirmaciones es correcta acerca del espectro electromagnético?",
           options: [
             "Las ondas de radio tienen frecuencias más altas que los rayos X.",
@@ -2120,7 +2148,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En el espectro electromagnético, de mayor a menor longitud de onda (y de menor a mayor frecuencia y energía): radio, microondas, infrarrojo, visible, ultravioleta, rayos X y rayos gamma. Por tanto, los rayos gamma tienen longitudes de onda mucho más cortas que la luz visible. Las ondas de radio tienen frecuencias más bajas que los rayos X, la luz visible es solo una franja estrecha del espectro y las microondas tienen menos energía que el ultravioleta (E = h·f).",
         },
         {
-          id: 65,
+          id: 7,
           question: "¿Qué representa λf en el contexto de las ondas?",
           options: [
             "La relación entre la energía y la masa.",
@@ -2132,7 +2160,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Para cualquier onda, la velocidad de propagación es v = λ·f: la longitud de onda λ es lo que avanza la onda en un periodo T, y v = λ/T = λ·f. Para la luz en el vacío, c = λ·f. Así que λf representa la velocidad de la onda. La relación entre energía y masa es E = mc², la intensidad de una onda depende de su amplitud al cuadrado y λf no es una frecuencia sino una velocidad.",
         },
         {
-          id: 66,
+          id: 8,
           question: "¿Qué tipo de onda se describe como una perturbación que se propaga en todas direcciones desde un punto?",
           options: [
             "Onda plana.",
@@ -2144,7 +2172,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una onda esférica se genera en una fuente puntual y se propaga por igual en todas las direcciones: sus frentes de onda son esferas concéntricas cada vez mayores, y su intensidad disminuye como 1/r². Una onda plana tiene frentes de onda planos y avanza en una sola dirección (es la aproximación de una onda esférica muy lejos de la fuente). 'Longitudinal' y 'transversal' no describen la forma del frente sino la dirección de la vibración respecto a la propagación.",
         },
         {
-          id: 67,
+          id: 9,
           question: "¿Cuál de las siguientes aplicaciones prácticas se menciona en la videoclase relacionada con el espectro electromagnético?",
           options: [
             "Energía eólica.",
@@ -2156,7 +2184,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La luz eléctrica (las lámparas) convierte energía eléctrica en radiación electromagnética visible y es un ejemplo directo de uso del espectro electromagnético, que es lo que menciona la videoclase. La energía eólica aprovecha el viento (energía mecánica), la geotérmica el calor interior de la Tierra y la nuclear la energía de los núcleos atómicos: aunque algunas emitan radiación, no son aplicaciones del espectro electromagnético en el sentido del tema.",
         },
         {
-          id: 68,
+          id: 10,
           question: "¿Qué representa el vector de Poynting?",
           options: [
             "La densidad de energía en un punto.",
@@ -2168,7 +2196,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El vector de Poynting, S⃗ = (1/μ₀)·(E⃗ × B⃗), representa la densidad de flujo de energía de una onda electromagnética: la energía que atraviesa una unidad de área perpendicular a la dirección de propagación por unidad de tiempo, y su sentido es el de propagación de la onda. No es la densidad de energía en un punto (eso es energía por unidad de volumen, en J/m³), ni la velocidad de la onda (c en el vacío), ni la longitud de onda.",
         },
         {
-          id: 69,
+          id: 11,
           question: "¿Cómo se mide el vector de Poynting?",
           options: [
             "En julios.",
@@ -2180,7 +2208,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El vector de Poynting se mide en vatios por metro cuadrado (W/m²), porque expresa energía por unidad de tiempo (potencia, en vatios) y por unidad de área. Los julios miden energía total, sin referirla a tiempo ni área. Los teslas miden el campo magnético B y los amperios por metro miden la intensidad de campo magnético H: son magnitudes que intervienen en su cálculo, pero no son sus unidades.",
         },
         {
-          id: 70,
+          id: 12,
           question: "¿Qué es la densidad de energía electromagnética?",
           options: [
             "Energía por unidad de tiempo.",
@@ -2192,7 +2220,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La densidad de energía electromagnética es la energía almacenada en los campos por unidad de volumen, en J/m³: u = ½ε₀E² + B²/(2μ₀). La energía por unidad de tiempo es una potencia (W), la energía por unidad de tiempo y superficie es la intensidad (W/m², que es lo que da el vector de Poynting) y la energía por unidad de carga es el potencial (V).",
         },
         {
-          id: 71,
+          id: 13,
           question: "¿Qué magnitud es el vector de Poynting?",
           options: [
             "Escalar.",
@@ -2204,7 +2232,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El vector de Poynting S⃗ = (1/μ₀)·E⃗ × B⃗ es una magnitud vectorial: su módulo indica la potencia que transporta la onda por unidad de superficie (W/m²) y su dirección indica hacia dónde fluye la energía, que es la dirección de propagación. No es escalar porque tiene dirección y sentido. 'Constante' y 'periódica' no son tipos de magnitud: de hecho, en una onda el vector de Poynting varía con el tiempo.",
         },
         {
-          id: 72,
+          id: 14,
           question: "¿Qué permite interpretar el teorema de Poynting?",
           options: [
             "La velocidad de propagación de una onda.",
@@ -2215,8 +2243,15 @@ export const fundamentosFisicos: Subject = {
           correct: 1,
           explanation: "El teorema de Poynting es la ecuación de conservación de la energía en electromagnetismo: la disminución de la energía almacenada en los campos dentro de un volumen es igual a la energía que sale por su superficie (flujo del vector de Poynting) más la que se transfiere a las cargas (por ejemplo, el calor por efecto Joule). Por eso permite interpretar la conservación de la energía. La velocidad de propagación sale de la ecuación de ondas, y la frecuencia y la polarización son características de la onda, no lo que describe este teorema.",
         },
+      ],
+    },
+    {
+      id: 9,
+      name: "Test Tema 6",
+      description: "Corriente continua",
+      questions: [
         {
-          id: 73,
+          id: 1,
           question: "¿Qué determina la resistividad de un material?",
           options: [
             "La longitud del material.",
@@ -2228,7 +2263,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La resistividad (ρ) es una propiedad intrínseca del material: depende de qué material es (y de la temperatura), no de su forma ni de su tamaño. No hay que confundirla con la resistencia, R = ρ·L/S, que sí depende de la longitud (L) y de la sección (S) del conductor. Por eso la longitud y la superficie afectan a la resistencia, no a la resistividad, y la resistencia total del circuito tampoco la determina.",
         },
         {
-          id: 74,
+          id: 2,
           question: "¿Cómo se comportan las resistencias en serie en un circuito?",
           options: [
             "La resistencia total es la suma de todas las resistencias individuales.",
@@ -2240,7 +2275,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En serie, la misma corriente atraviesa todas las resistencias, y la tensión total es la suma de las caídas de tensión: V = I·R₁ + I·R₂ + … = I·(R₁ + R₂ + …). Por eso la resistencia equivalente es la suma: R_eq = R₁ + R₂ + … + Rn, siempre mayor que la mayor de ellas. No es el producto, ni la diferencia, ni la media. (En paralelo, en cambio, se suman las inversas: 1/R_eq = 1/R₁ + 1/R₂ + …)",
         },
         {
-          id: 75,
+          id: 3,
           question: "¿Qué ocurre con las resistencias en paralelo?",
           options: [
             "La resistencia total es la suma de todas las resistencias individuales.",
@@ -2252,7 +2287,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En paralelo se suman las inversas: 1/R_eq = 1/R₁ + 1/R₂ + …, y la resistencia equivalente siempre es menor que la menor de las resistencias individuales, porque cada rama añade un camino más por el que puede circular la corriente. La suma de todas las resistencias es la regla de las resistencias en serie, que es la trampa de esta pregunta. El producto y la diferencia no corresponden a ninguna regla de asociación.",
         },
         {
-          id: 76,
+          id: 4,
           question: "¿Qué establece la Ley de Ohm?",
           options: [
             "La corriente es inversamente proporcional a la resistencia.",
@@ -2264,7 +2299,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Ohm, V = I·R (o I = V/R), dice que la corriente es directamente proporcional a la diferencia de potencial e inversamente proporcional a la resistencia. La primera opción es incompleta, porque solo recoge la mitad de la relación. La diferencia de potencial no es inversamente proporcional a la corriente: a resistencia constante, si la corriente aumenta también lo hace la tensión. Y la resistencia de un conductor óhmico es constante: no cambia al variar la tensión.",
         },
         {
-          id: 77,
+          id: 5,
           question: "¿Qué sucede con la corriente en un circuito en paralelo?",
           options: [
             "La corriente es la misma a través de todas las resistencias.",
@@ -2276,7 +2311,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un circuito en paralelo todas las ramas están sometidas a la misma tensión, y la corriente total se reparte entre ellas: I = I₁ + I₂ + …, con Ii = V/Ri (por la rama de menor resistencia pasa más corriente). Es la ley de nodos de Kirchhoff. La corriente no es la misma en todas las ramas (lo que es igual es la tensión), no 'disminuye' en cada rama como si se perdiera, y tampoco se multiplica: la carga se conserva.",
         },
         {
-          id: 78,
+          id: 6,
           question: "¿Qué establecen las Leyes de Kirchhoff en un circuito eléctrico?",
           options: [
             "La resistencia total del circuito.",
@@ -2288,7 +2323,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Las dos Leyes de Kirchhoff expresan principios de conservación. La ley de los nudos (corrientes) dice que la suma de las corrientes que entran en un nudo es igual a la suma de las que salen: es la conservación de la carga. La ley de las mallas (tensiones) dice que la suma de las diferencias de potencial en una malla cerrada es cero: es la conservación de la energía. Con ellas se pueden calcular resistencias, potencias o capacidades, pero no 'establecen' ninguna de esas magnitudes.",
         },
         {
-          id: 79,
+          id: 7,
           question: "¿Qué significa un signo negativo en la intensidad de una corriente según las Leyes de Kirchhoff?",
           options: [
             "La corriente está aumentando.",
@@ -2300,7 +2335,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Al resolver un circuito con Kirchhoff, primero se elige arbitrariamente un sentido para cada corriente. Si al resolver el sistema una intensidad sale negativa, el valor es correcto pero la corriente circula en sentido contrario al supuesto. No hay que repetir el cálculo, solo reinterpretar el sentido. El signo no indica que la corriente aumente, disminuya o sea constante: en continua, esas corrientes son constantes y el signo solo habla del sentido.",
         },
         {
-          id: 80,
+          id: 8,
           question: "¿Cuál es el criterio de signos para la Ley de Voltajes de Kirchhoff?",
           options: [
             "Los voltajes se suman algebraicamente sin importar la dirección.",
@@ -2312,7 +2347,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Voltajes (o de mallas) de Kirchhoff dice que la suma algebraica de las tensiones en una malla cerrada es cero. 'Algebraica' significa que cada tensión se suma con su signo según la polaridad y el sentido de recorrido: si recorres una fuente de − a +, la tensión cuenta como subida; si atraviesas una resistencia en el sentido de la corriente, cuenta como caída (−I·R). Si se sumaran todas como positivas, sin importar la dirección, o se restaran siempre, la ecuación no reflejaría la conservación de la energía.",
         },
         {
-          id: 81,
+          id: 9,
           question: "¿Qué se debe calcular para aplicar la Ley de Corrientes (primera ley) de Kirchhoff en un nodo?",
           options: [
             "La resistencia equivalente en el nodo.",
@@ -2324,7 +2359,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Corrientes (o de nodos) de Kirchhoff dice que en un nodo la suma de las corrientes que entran es igual a la suma de las que salen; dicho de otro modo, la suma algebraica de corrientes en el nodo es cero. Es la conservación de la carga: no se acumula carga en un nodo. La resistencia equivalente no se calcula en un nodo, la diferencia de potencial se usa en la ley de mallas y la opción de 'suma de R·I igualada a la suma de potenciales' es justamente la segunda ley (mallas), no la primera.",
         },
         {
-          id: 82,
+          id: 10,
           question: "¿Qué método se utiliza para resolver circuitos complejos utilizando las Leyes de Kirchhoff?",
           options: [
             "Mallas y nodos.",
@@ -2336,7 +2371,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los métodos de mallas y de nodos son la aplicación sistemática de las Leyes de Kirchhoff: en el de mallas se plantea la ley de tensiones en cada malla independiente (con corrientes de malla como incógnitas) y en el de nodos la ley de corrientes en cada nodo (con las tensiones de nodo como incógnitas). La asociación serie/paralelo solo sirve para circuitos simples, la ley de Ohm se usa dentro de esos métodos pero no basta por sí sola, y las transformadas de Laplace se emplean para analizar circuitos en régimen transitorio, no son el método de Kirchhoff.",
         },
         {
-          id: 83,
+          id: 11,
           question: "¿Cuál es el comportamiento de la intensidad en un circuito RC inicialmente descargado?",
           options: [
             "La intensidad se mantiene constante.",
@@ -2348,7 +2383,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En la carga de un condensador la intensidad es máxima al principio (I₀ = V/R, el condensador descargado se comporta como un cortocircuito) y luego disminuye exponencialmente, I(t) = (V/R)·e^(−t/RC), hasta anularse cuando el condensador está completamente cargado. Lo que aumenta durante la carga es la carga del condensador, q(t) = Q(1 − e^(−t/RC)), así que 'aumenta exponencialmente' es la trampa. No se mantiene constante ni deja de variar. Ojo: la explicación oficial del campus habla de 'descarga', pero en un RC inicialmente descargado el condensador se está cargando.",
         },
         {
-          id: 84,
+          id: 12,
           question: "¿Cómo se comporta la carga en un condensador en un circuito RC inicialmente cargado?",
           options: [
             "La carga se mantiene constante.",
@@ -2360,7 +2395,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cuando un condensador cargado se descarga a través de una resistencia, la carga cae de forma exponencial: q(t) = Q₀·e^(−t/RC). La constante de tiempo τ = RC indica la rapidez: tras un τ queda un 37 % de la carga, y tras unos 5τ prácticamente se ha descargado. No se mantiene constante (hay un camino para descargarse), no baja linealmente (cuanta menos carga queda, menor es la corriente y más despacio se descarga) y no aumenta.",
         },
         {
-          id: 85,
+          id: 13,
           question: "¿Qué sucede con la carga en un condensador en un circuito RC inicialmente descargado?",
           options: [
             "La carga aumenta linealmente.",
@@ -2372,7 +2407,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Al conectar un condensador descargado a una fuente a través de una resistencia, la carga aumenta exponencialmente hacia su valor final: q(t) = C·V·(1 − e^(−t/RC)). Al principio sube rápido y luego cada vez más despacio, porque a medida que el condensador se carga la tensión en la resistencia, y por tanto la corriente, disminuyen. No aumenta linealmente, no disminuye y no permanece constante.",
         },
         {
-          id: 86,
+          id: 14,
           question: "¿Qué sucede con la intensidad en un circuito RC cuando el tiempo tiende a infinito?",
           options: [
             "La intensidad aumenta infinitamente.",
@@ -2384,7 +2419,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un circuito RC (tanto en la carga como en la descarga) la intensidad es i(t) = I₀·e^(−t/RC): decrece exponencialmente y tiende a cero cuando t → ∞. En la carga, el condensador se llena y deja de admitir carga; en la descarga, se vacía. En ambos casos acaba sin corriente. Por eso no aumenta indefinidamente, no se mantiene igual y no varía aleatoriamente.",
         },
         {
-          id: 87,
+          id: 15,
           question: "¿Qué sucede con la intensidad en un circuito RC cuando el condensador está completamente cargado?",
           options: [
             "La intensidad aumenta exponencialmente.",
@@ -2395,8 +2430,15 @@ export const fundamentosFisicos: Subject = {
           correct: 3,
           explanation: "Cuando el condensador está completamente cargado, su tensión iguala a la de la fuente; entonces la tensión en la resistencia es cero y, por la ley de Ohm, la corriente es cero (I = V_R/R). En corriente continua, un condensador cargado se comporta como un circuito abierto. La corriente no aumenta exponencialmente, no disminuye linealmente (el decrecimiento previo es exponencial) y no es aleatoria.",
         },
+      ],
+    },
+    {
+      id: 10,
+      name: "Test Tema 7",
+      description: "Corriente alterna",
+      questions: [
         {
-          id: 88,
+          id: 1,
           question: "¿Cuál es la principal ventaja de la corriente alterna sobre la corriente continua?",
           options: [
             "Mayor eficiencia en motores.",
@@ -2408,7 +2450,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La gran ventaja de la corriente alterna es que su tensión se puede subir o bajar fácilmente con transformadores, algo que no se puede hacer con la corriente continua porque el transformador necesita un flujo magnético variable. Esto permite transportar la energía a alta tensión y baja corriente, reduciendo las pérdidas por efecto Joule (P = I²R), y después bajarla para el consumo. La menor pérdida de energía es una consecuencia de esa transformación, no la ventaja en sí, y la eficiencia de los motores o el coste de generación no son la ventaja principal.",
         },
         {
-          id: 89,
+          id: 2,
           question: "¿Qué describe el valor eficaz del voltaje en corriente alterna?",
           options: [
             "El pico máximo del voltaje.",
@@ -2420,7 +2462,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El valor eficaz (RMS) de una tensión alterna es el valor de tensión continua que disiparía la misma potencia (el mismo efecto térmico) en una resistencia. Para una señal senoidal, V_ef = V_máx/√2 ≈ 0,707·V_máx; por ejemplo, los 230 V de un enchufe son eficaces y el pico es de unos 325 V. Por tanto no es el pico máximo, no tiene relación con la frecuencia (que en Europa es de 50 Hz) y 'la diferencia de potencial' es demasiado genérico: tanto el pico como el eficaz son diferencias de potencial.",
         },
         {
-          id: 90,
+          id: 3,
           question: "¿Qué se necesita para aumentar el voltaje en un transformador?",
           options: [
             "Disminuir el número de espiras en la bobina primaria.",
@@ -2432,7 +2474,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un transformador ideal V₂/V₁ = N₂/N₁: la tensión del secundario es proporcional a su número de espiras. Para elevar la tensión de salida hay que aumentar las espiras del secundario (o, equivalentemente, reducir las del primario respecto a las del secundario). Disminuir las espiras del secundario o aumentar las del primario reduce la tensión de salida. Entre las opciones, la única que eleva la tensión es aumentar las espiras de la bobina secundaria.",
         },
         {
-          id: 91,
+          id: 4,
           question: "¿Cuál es la relación de transformación si la bobina primaria tiene 100 espiras y la bobina secundaria tiene 200 espiras?",
           options: [
             "1:1.",
@@ -2444,7 +2486,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La relación de transformación es el cociente entre las espiras del primario y del secundario: N₁:N₂ = 100:200 = 1:2. Como V₂/V₁ = N₂/N₁ = 2, el transformador duplica la tensión (es elevador) y, para conservar la potencia, reduce la corriente a la mitad. 1:1 sería un transformador de aislamiento, 2:1 uno reductor, y 1:0,5 es lo mismo que 2:1, también reductor.",
         },
         {
-          id: 92,
+          id: 5,
           question: "¿Cuál es una aplicación práctica de los transformadores mencionada en la videoclase?",
           options: [
             "Aumentar la resistencia eléctrica.",
@@ -2456,7 +2498,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los transformadores son clave en la transmisión de energía eléctrica: se eleva mucho la tensión para transportarla por las líneas de alta tensión (así la corriente es pequeña y se pierde menos energía por efecto Joule, P = I²R) y después se reduce para el consumo. No sirven para aumentar la resistencia ni para almacenar energía, y no funcionan con corriente continua: necesitan una corriente variable para que haya variación de flujo y, por la ley de Faraday, inducción en el secundario.",
         },
         {
-          id: 93,
+          id: 6,
           question: "¿Qué representa la impedancia en un circuito de corriente alterna?",
           options: [
             "La capacidad de almacenamiento de energía.",
@@ -2468,7 +2510,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La impedancia Z es la oposición total que presenta un circuito al paso de la corriente alterna. Generaliza la resistencia: combina la resistencia R con la reactancia X de bobinas y condensadores (Z = R + jX, módulo |Z| = √(R² + X²)) y depende de la frecuencia. No es una capacidad de almacenar energía, no se refiere a la corriente continua (en continua solo hay resistencia) y no mide la energía disipada en calor, aunque esta dependa de la parte resistiva.",
         },
         {
-          id: 94,
+          id: 7,
           question: "¿Qué ocurre con la corriente en un condensador en un circuito de corriente alterna?",
           options: [
             "La corriente está en fase con el voltaje.",
@@ -2480,7 +2522,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un condensador la corriente va adelantada 90° respecto al voltaje, porque la corriente depende de cómo cambia el voltaje (i = C·dv/dt): la corriente es máxima cuando el voltaje cambia más rápido, es decir, cuando pasa por cero. Estar en fase es lo que ocurre en una resistencia pura y estar retrasada es lo que ocurre en una bobina. Una regla para recordarlo es 'ELI the ICE man': en la bobina (L) la tensión E va antes que la corriente I, y en el condensador (C) la corriente I va antes que la tensión E.",
         },
         {
-          id: 95,
+          id: 8,
           question: "¿Cómo se comporta la corriente en una bobina en un circuito de corriente alterna?",
           options: [
             "La corriente está en fase con el voltaje.",
@@ -2492,7 +2534,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En una bobina la corriente va retrasada 90° respecto al voltaje, porque el inductor se opone a los cambios de corriente (v = L·di/dt): almacena energía en su campo magnético y la corriente tarda en establecerse. Estar en fase es lo propio de una resistencia y estar adelantada es lo que ocurre en un condensador. Con la regla 'ELI the ICE man': en ELI la tensión (E) va antes que la corriente (I) en la bobina (L).",
         },
         {
-          id: 96,
+          id: 9,
           question: "¿Qué ley se utiliza para describir la relación entre voltaje, corriente e impedancia en corriente alterna?",
           options: [
             "Ley de Ohm para corriente alterna.",
@@ -2504,7 +2546,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En corriente alterna se usa la ley de Ohm generalizada: V = I·Z, con tensión, corriente e impedancia expresadas como números complejos (fasores). Así se tienen en cuenta tanto el módulo como el desfase que introducen bobinas y condensadores. La ley de Faraday describe la inducción, la ley de Coulomb la fuerza entre cargas y la ley de Lenz el sentido de la corriente inducida: ninguna relaciona tensión, corriente e impedancia.",
         },
         {
-          id: 97,
+          id: 10,
           question: "¿Qué componente de un circuito RLC tiene una impedancia que disminuye cuando aumenta la frecuencia?",
           options: [
             "Resistencia.",
@@ -2516,7 +2558,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La reactancia de un condensador es X_C = 1/(ωC) = 1/(2πfC): es inversamente proporcional a la frecuencia, así que su impedancia disminuye al aumentar f (a alta frecuencia casi es un cortocircuito; en continua, un circuito abierto). La de la bobina hace lo contrario: X_L = ωL crece con la frecuencia. La resistencia ideal no depende de la frecuencia. Por eso la respuesta es el condensador.",
         },
         {
-          id: 98,
+          id: 11,
           question: "¿Cuál es la fórmula de la impedancia de una resistencia en un circuito RLC?",
           options: [
             "Z_R = R",
@@ -2528,7 +2570,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En alterna, una resistencia ideal no introduce desfase entre tensión y corriente, así que su impedancia es real e igual a su valor en ohmios: Z_R = R, independiente de la frecuencia. Z = ωL·i es la impedancia de una bobina, Z = (−1/ωC)·i la de un condensador, y √(R² + (X_L − X_C)²) es el módulo de la impedancia total de un RLC en serie, no la de la resistencia sola.",
         },
         {
-          id: 99,
+          id: 12,
           question: "¿Cómo se comporta la impedancia de un circuito RLC en serie en resonancia?",
           options: [
             "Es máxima.",
@@ -2540,7 +2582,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En resonancia la reactancia inductiva y la capacitiva son iguales (X_L = X_C, que ocurre a la frecuencia ω₀ = 1/√(LC)) y se cancelan, así que la impedancia total Z = √(R² + (X_L − X_C)²) queda reducida a Z = R, su valor mínimo posible. Por eso, en resonancia, la corriente de un RLC serie es máxima. No es máxima (eso ocurre en un circuito LC en paralelo) ni igual a la impedancia de la bobina o del condensador por separado, que se anulan entre sí.",
         },
         {
-          id: 100,
+          id: 13,
           question: "¿Qué ocurre en un circuito RLC en serie cuando está en resonancia?",
           options: [
             "La corriente es máxima.",
@@ -2551,8 +2593,15 @@ export const fundamentosFisicos: Subject = {
           correct: 2,
           explanation: "En resonancia, la reactancia inductiva y la capacitiva son iguales (ωL = 1/(ωC), es decir, ω₀ = 1/√(LC)) y, como tienen signos opuestos, se cancelan. La impedancia total queda reducida a la resistencia (Z = R), que es su valor mínimo, y por eso la corriente es máxima. El test pide la causa: la cancelación de reactancias. La impedancia no es máxima (es mínima), y la resistencia no cambia con la frecuencia, así que no 'es mínima' en resonancia. 'La corriente es máxima' es cierto, pero es la consecuencia, no lo que define la resonancia.",
         },
+      ],
+    },
+    {
+      id: 11,
+      name: "Test Tema 8",
+      description: "Física de los elementos ópticos de un sistema informático",
+      questions: [
         {
-          id: 101,
+          id: 1,
           question: "¿Qué experimento demuestra la naturaleza ondulatoria de la luz?",
           options: [
             "Efecto fotoeléctrico.",
@@ -2564,7 +2613,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El experimento de la doble rendija de Young demuestra que la luz se comporta como una onda: al pasar por dos rendijas produce un patrón de interferencia con franjas brillantes y oscuras, algo que solo pueden hacer las ondas. El efecto fotoeléctrico demuestra lo contrario, la naturaleza corpuscular de la luz (los fotones). El experimento de Cavendish midió la constante de gravitación universal y el de Michelson-Morley buscaba el 'éter' y mostró que la velocidad de la luz es la misma en cualquier dirección.",
         },
         {
-          id: 102,
+          id: 2,
           question: "¿Qué ocurre durante el efecto fotoeléctrico?",
           options: [
             "Los electrones se mueven a niveles de energía superiores.",
@@ -2576,7 +2625,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En el efecto fotoeléctrico, la luz que incide sobre un material (normalmente un metal) arranca electrones de su superficie, siempre que la energía de cada fotón (E = h·f) supere el trabajo de extracción del material. Einstein lo explicó en 1905 suponiendo que la luz está formada por fotones, y le valió el Nobel. Que los electrones suban a niveles superiores sin salir es excitación, no efecto fotoeléctrico; la reflexión no libera electrones; y aunque esos electrones pueden formar una corriente, el fenómeno en sí es su liberación.",
         },
         {
-          id: 103,
+          id: 3,
           question: "¿Qué determina la energía de un fotón?",
           options: [
             "La velocidad de la luz.",
@@ -2588,7 +2637,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La energía de un fotón depende solo de su frecuencia: E = h·f, siendo h la constante de Planck (6,626·10⁻³⁴ J·s). Por eso la luz ultravioleta (de mayor frecuencia) es más energética que la infrarroja. La velocidad de la luz es la misma para todos los fotones en el vacío, así que no los distingue; el fotón no tiene masa en reposo; y la amplitud (la intensidad de la luz) determina cuántos fotones hay, no la energía de cada uno. Esta idea es clave en el efecto fotoeléctrico.",
         },
         {
-          id: 104,
+          id: 4,
           question: "¿Qué es la función de trabajo en el contexto del efecto fotoeléctrico?",
           options: [
             "La distancia que recorre un electrón.",
@@ -2600,7 +2649,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La función de trabajo (o trabajo de extracción, φ) es la energía mínima necesaria para arrancar un electrón de la superficie de un material. Es propia de cada material y aparece en la ecuación de Einstein del efecto fotoeléctrico: E_c,máx = h·f − φ. Si la energía del fotón (h·f) es menor que φ, no se libera ningún electrón, por intensa que sea la luz. No es una distancia, ni un tiempo, ni una velocidad: es una energía y se suele dar en electronvoltios.",
         },
         {
-          id: 105,
+          id: 5,
           question: "¿Cuál es una aplicación práctica del conocimiento del efecto fotoeléctrico?",
           options: [
             "Generadores eólicos.",
@@ -2612,7 +2661,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los sensores de imagen CCD (y CMOS) se basan en el efecto fotoeléctrico: cada píxel convierte los fotones que recibe en carga eléctrica, que después se lee y se digitaliza para formar la imagen. Los generadores eólicos convierten energía del viento, los reactores nucleares energía de la fisión y los termómetros de mercurio se basan en la dilatación térmica.",
         },
         {
-          id: 106,
+          id: 6,
           question: "¿Qué fenómeno óptico se utiliza en las pantallas LCD?",
           options: [
             "Reflexión.",
@@ -2624,7 +2673,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Las pantallas LCD usan cristales líquidos birrefringentes: tienen dos índices de refracción según la polarización de la luz, así que pueden girar su plano de polarización. Al aplicar un campo eléctrico se reorientan las moléculas y cambia ese efecto; combinado con polarizadores, cada píxel deja pasar más o menos luz. La reflexión, la difracción y la interferencia son fenómenos ópticos reales, pero no son el principio que controla el brillo de cada píxel en un LCD.",
         },
         {
-          id: 107,
+          id: 7,
           question: "¿Cuál es una de las aplicaciones del láser en el campo médico?",
           options: [
             "Cirugía.",
@@ -2636,7 +2685,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En medicina el láser se usa en cirugía como bisturí óptico: su haz concentrado corta con gran precisión y a la vez cauteriza (coagula) los vasos, reduciendo el sangrado. También se usa en cirugía ocular (corrección de miopía). La radiografía y la tomografía (TAC) usan rayos X, no láser, y la endoscopia es una técnica de visualización con fibra óptica e iluminación, no una aplicación característica del láser.",
         },
         {
-          id: 108,
+          id: 8,
           question: "¿Qué tipo de fotodetector se usa comúnmente en cámaras digitales?",
           options: [
             "CMOS.",
@@ -2648,7 +2697,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Hoy la gran mayoría de cámaras digitales (y todos los móviles) usan sensores CMOS: consumen menos energía, son más baratos y permiten integrar la electrónica de lectura en el mismo chip. Los CCD dominaron al principio y todavía se usan donde se busca máxima calidad y poco ruido, como en astronomía. Los fotomultiplicadores son para detectar señales de luz muy débiles (física de partículas, medicina nuclear) y los fotodiodos PIN se usan en comunicaciones ópticas, no para formar imágenes.",
         },
         {
-          id: 109,
+          id: 9,
           question: "¿Qué característica permite al láser ser utilizado en fibra óptica?",
           options: [
             "Alta dispersión.",
@@ -2660,7 +2709,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La luz láser es muy coherente (todas las ondas mantienen la fase), monocromática y muy direccional. Esto permite introducirla de forma eficiente en el núcleo de la fibra y que la señal se mantenga con poca dispersión a lo largo de grandes distancias, transportando mucha información. Una dispersión alta, una divergencia alta o una absorción alta serían precisamente defectos que degradan la señal en la fibra.",
         },
         {
-          id: 110,
+          id: 10,
           question: "¿Qué tipo de fotodetector se usa típicamente en telescopios?",
           options: [
             "CMOS.",
@@ -2672,7 +2721,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En astronomía se usan típicamente sensores CCD por su altísima eficiencia cuántica (convierten en señal casi todos los fotones), su bajo ruido y su respuesta muy lineal, algo esencial para captar objetos muy débiles con exposiciones largas. Los CMOS dominan en cámaras de consumo. Los fotomultiplicadores detectan señales muy débiles, pero no forman imágenes, y los fotodiodos PIN se usan en comunicaciones ópticas.",
         },
         {
-          id: 111,
+          id: 11,
           question: "¿Qué describe la Ley de Snell?",
           options: [
             "La reflexión de la luz en una superficie.",
@@ -2684,7 +2733,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La Ley de Snell describe la refracción, es decir, el cambio de dirección que sufre la luz al pasar de un medio a otro con distinto índice de refracción: n₁·sen θ₁ = n₂·sen θ₂. La reflexión tiene su propia ley (el ángulo de incidencia es igual al de reflexión), la dispersión en un prisma se debe a que el índice de refracción depende de la longitud de onda y la difracción es la desviación de la luz al atravesar una rendija u obstáculo pequeño.",
         },
         {
-          id: 112,
+          id: 12,
           question: "¿Cuál es el ángulo límite?",
           options: [
             "El ángulo mínimo de incidencia para la reflexión total.",
@@ -2696,7 +2745,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cuando la luz pasa de un medio con mayor índice de refracción a otro con menor índice (por ejemplo, de vidrio a aire), el rayo refractado se aleja de la normal. El ángulo límite es el ángulo de incidencia para el que el rayo refractado sale a 90°, y vale sen θ_lím = n₂/n₁. A partir de ese ángulo ya no hay refracción, sino reflexión total interna, que es el principio en el que se basa la fibra óptica. Por eso es el ángulo mínimo para la reflexión total. Se podría pensar que es el 'máximo para la refracción', pero la definición que pide el test es la de la reflexión total. No tiene que ver con la dispersión en un prisma ni con la difracción. (La corrección del campus explica esta pregunta solo con imágenes; este texto es de elaboración propia.)",
         },
         {
-          id: 113,
+          id: 13,
           question: "¿Cuál es la función principal de una lente convergente?",
           options: [
             "Enfocar los rayos de luz en un punto.",
@@ -2708,7 +2757,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una lente convergente (más gruesa en el centro, como la de una lupa) desvía los rayos que llegan paralelos al eje y los hace coincidir en un punto llamado foco. Con ella se forman imágenes reales (en cámaras y proyectores) o virtuales aumentadas (en lupas). Dispersar los rayos es lo que hace una lente divergente; la reflexión es propia de los espejos; y la difracción es un fenómeno ondulatorio en bordes y rendijas, no la función de una lente.",
         },
         {
-          id: 114,
+          id: 14,
           question: "¿Qué ocurre con los rayos de luz que pasan a través de una lente divergente?",
           options: [
             "Se enfocan en un punto.",
@@ -2720,7 +2769,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una lente divergente (más delgada en el centro) separa los rayos que llegan paralelos al eje, como si salieran de un foco virtual situado delante de la lente. Por eso forma imágenes virtuales y más pequeñas, y se usa para corregir la miopía. Enfocar los rayos en un punto es lo que hace una lente convergente, reflejarlos es propio de un espejo, y la difracción no es el principio de funcionamiento de las lentes.",
         },
         {
-          id: 115,
+          id: 15,
           question: "¿Qué es el índice de refracción?",
           options: [
             "Una medida de cuánto se desvía la luz al entrar en un medio.",
@@ -2731,8 +2780,15 @@ export const fundamentosFisicos: Subject = {
           correct: 0,
           explanation: "El índice de refracción n = c/v compara la velocidad de la luz en el vacío con la velocidad en el medio, y determina cuánto se desvía la luz al cambiar de medio (ley de Snell, n₁·sen θ₁ = n₂·sen θ₂): cuanto mayor es la diferencia de índices, más se desvía. No es la velocidad de la luz en el vacío (esa es la constante c), no mide intensidad y no es una longitud de onda, aunque la longitud de onda en el medio sea λ₀/n.",
         },
+      ],
+    },
+    {
+      id: 12,
+      name: "Test Tema 9",
+      description: "Fundamentos físicos de la persistencia magnética",
+      questions: [
         {
-          id: 116,
+          id: 1,
           question: "¿Cuál de las siguientes características es necesaria para que un medio de memoria sea considerado duradero o no volátil?",
           options: [
             "Debe consumir energía continuamente.",
@@ -2744,7 +2800,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Una memoria no volátil es la que conserva la información aunque se desconecte de la alimentación, como los discos duros (HDD), los SSD o los pendrives. Consumir energía continuamente es justo lo que caracteriza a las memorias volátiles (como la DRAM, que necesita refresco constante). 'Debe ser volátil' es una contradicción y depender de transductores externos no es lo que define la no volatilidad.",
         },
         {
-          id: 117,
+          id: 2,
           question: "¿Qué es la magnetización en el contexto de los dispositivos de memoria?",
           options: [
             "Un proceso que depende de la temperatura.",
@@ -2756,7 +2812,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Un material ferromagnético está dividido en dominios, pequeñas regiones con su magnetización orientada en una misma dirección. Magnetizarlo es alinear esos dominios con un campo externo. En los dispositivos de memoria magnética (discos duros, cintas) cada bit se guarda como una zona cuya magnetización apunta en un sentido o en el contrario. La temperatura influye (por encima de la temperatura de Curie se pierde el ferromagnetismo), pero la magnetización no es 'un proceso que depende de la temperatura'; tampoco es un cambio por presión ni la creación de un campo eléctrico.",
         },
         {
-          id: 118,
+          id: 3,
           question: "¿Cuál de los siguientes es un ejemplo de memoria volátil?",
           options: [
             "HDD",
@@ -2768,7 +2824,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La DRAM es volátil: guarda cada bit como carga en un condensador que se descarga con el tiempo, así que pierde su contenido cuando se corta la alimentación. Por eso se usa como memoria principal (RAM) y no para guardar datos de forma permanente. El HDD (almacenamiento magnético), el SSD y las memorias USB (ambos con flash de puerta flotante) son memorias no volátiles: conservan los datos con el equipo apagado.",
         },
         {
-          id: 119,
+          id: 4,
           question: "¿Qué se entiende por permeabilidad magnética?",
           options: [
             "La capacidad de un material para conducir electricidad.",
@@ -2780,7 +2836,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La permeabilidad magnética μ mide cómo responde un material a un campo magnético: cuánto se magnetiza y cuánto refuerza el campo en su interior (B = μH, y μr = μ/μ₀ compara con el vacío). Es la magnitud que distingue los materiales ferromagnéticos (útiles para almacenamiento) de los demás. Conducir la electricidad es la conductividad, resistirse a la corriente es la resistividad, y cambiar de sólido a líquido es una transición de fase.",
         },
         {
-          id: 120,
+          id: 5,
           question: "¿Qué caracteriza a los materiales ferromagnéticos en términos de permeabilidad magnética?",
           options: [
             "Tienen valores de permeabilidad muy superiores a 1.",
@@ -2792,7 +2848,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los ferromagnéticos (hierro, cobalto, níquel y sus aleaciones) tienen una permeabilidad relativa muy superior a 1, de cientos a cientos de miles, porque sus dominios se alinean fácilmente con el campo externo y lo amplifican; además conservan una magnetización remanente, que es lo que permite almacenar información. Una permeabilidad cercana a 1 corresponde a los paramagnéticos, una inferior a 1 a los diamagnéticos, y es falso que no respondan a campos externos.",
         },
         {
-          id: 121,
+          id: 6,
           question: "¿Qué representa el ciclo de histéresis en el contexto de un disco duro HDD?",
           options: [
             "La capacidad de almacenamiento.",
@@ -2804,7 +2860,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El ciclo de histéresis representa el comportamiento magnético del material ferromagnético del disco: cómo cambia su magnetización al aplicarle un campo magnético externo y, sobre todo, que conserva una magnetización remanente cuando ese campo desaparece. Gracias a esa 'memoria' magnética el disco guarda los bits sin alimentación. No mide la capacidad, ni la velocidad de lectura/escritura, ni la estructura física del disco, aunque las propiedades del ciclo (remanencia, coercitividad) influyen en cómo se graba.",
         },
         {
-          id: 122,
+          id: 7,
           question: "¿Cuál es la función principal de los dominios magnéticos en un HDD?",
           options: [
             "Almacenar datos mediante la orientación de sus magnetizaciones.",
@@ -2816,7 +2872,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un HDD los bits se almacenan en la orientación de la magnetización de pequeñas regiones (dominios o granos) de la capa magnética del plato: un sentido u otro, o las transiciones entre ellos, codifican los 0 y los 1. Como esa orientación se conserva sin alimentación, el almacenamiento es no volátil. Los dominios no protegen el disco frente a golpes, ni son los que determinan la velocidad de acceso (eso depende del cabezal y del giro) o el consumo.",
         },
         {
-          id: 123,
+          id: 8,
           question: "¿Qué componente de un HDD se encarga de la lectura de datos?",
           options: [
             "El motor de rotación.",
@@ -2828,7 +2884,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El cabezal de lectura/escritura flota a pocos nanómetros sobre el plato. Para leer, detecta el campo magnético de cada zona (hoy mediante sensores magnetorresistivos) y lo convierte en una señal eléctrica; para escribir, genera un campo que magnetiza la zona. El motor hace girar los platos, la carcasa protege el conjunto y el controlador gestiona las órdenes y los datos, pero quien lee físicamente la información es el cabezal.",
         },
         {
-          id: 124,
+          id: 9,
           question: "¿Qué ocurre durante el proceso de escritura en un disco duro HDD?",
           options: [
             "El disco se fragmenta para almacenar más datos.",
@@ -2840,7 +2896,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Al escribir, el cabezal genera un campo magnético localizado que orienta la magnetización de los dominios de la zona del plato que pasa por debajo, en un sentido u otro según el bit. Esa orientación se mantiene después sin energía. No se fragmenta el disco para almacenar más (la fragmentación es un fenómeno del sistema de ficheros), lo que gira a alta velocidad son los platos, no el cabezal, y no se borran todos los datos anteriores: solo se sobrescribe la zona afectada.",
         },
         {
-          id: 125,
+          id: 10,
           question: "¿Qué mide el tiempo de acceso en un disco duro HDD?",
           options: [
             "El tiempo para descargar archivos de internet.",
@@ -2852,7 +2908,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El tiempo de acceso de un HDD es lo que tarda en empezar a leer un dato: sobre todo, el tiempo de búsqueda (seek), que es lo que tarda el cabezal en posicionarse sobre la pista correcta, más la latencia rotacional, que es la espera hasta que el sector pasa bajo el cabezal. Está en el orden de milisegundos y es la gran desventaja frente a un SSD. No tiene nada que ver con descargas de internet ni con la vida útil, y la velocidad de transferencia es otra métrica distinta (cuántos datos por segundo una vez colocado).",
         },
         {
-          id: 126,
+          id: 11,
           question: "¿Qué es el efecto magneto-resistivo?",
           options: [
             "La capacidad de un material de generar electricidad en presencia de un campo magnético.",
@@ -2864,7 +2920,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El efecto magneto-resistivo (MR) es la variación de la resistencia eléctrica de un material cuando se le aplica un campo magnético. Es la base de los cabezales de lectura de los discos duros: el campo de cada bit grabado cambia la resistencia del sensor y eso se traduce en una señal eléctrica. Generar electricidad en presencia de un campo magnético se parece más a la inducción (Faraday) o al efecto Hall, y mantener la temperatura constante o emitir luz no tienen relación con este efecto.",
         },
         {
-          id: 127,
+          id: 12,
           question: "¿Dónde se sitúa el sensor MR (magneto-resistivo) en un disco duro?",
           options: [
             "En el cabezal del transductor.",
@@ -2876,7 +2932,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El sensor magnetorresistivo (MR, y sus evoluciones GMR y TMR) forma parte del elemento de lectura del cabezal (el transductor). Su resistencia eléctrica cambia según el campo magnético de las zonas del plato que pasan por debajo, y esa variación se convierte en la señal que representa los bits. Por eso tiene que estar en el cabezal, pegado al plato: en el plato están los datos, y ni la carcasa ni la fuente de alimentación tienen que ver con la lectura.",
         },
         {
-          id: 128,
+          id: 13,
           question: "¿Qué propiedad del spin y el momento magnético se menciona en la presentación?",
           options: [
             "Su capacidad de generar calor.",
@@ -2888,7 +2944,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El momento magnético de los electrones está asociado a su spin. En los materiales magnetorresistivos (sobre todo en la magnetorresistencia gigante, GMR), la resistencia eléctrica depende de cómo está orientado el spin de los electrones respecto a la magnetización de las capas del material. Esa es la base de la espintrónica y de los cabezales de lectura modernos. El spin no se relaciona en este tema con la generación de calor, la velocidad de la luz o las ondas sonoras.",
         },
         {
-          id: 129,
+          id: 14,
           question: "¿Qué se destaca sobre los medios de grabación magneto-ópticos?",
           options: [
             "Utilizan únicamente láseres para escribir datos.",
@@ -2900,7 +2956,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los medios magneto-ópticos (como el MiniDisc o los discos MO) escriben combinando un láser que calienta la zona por encima de su temperatura de Curie y un campo magnético que fija la nueva magnetización al enfriarse. Para leer usan el efecto Kerr magneto-óptico: el plano de polarización de la luz reflejada gira en un sentido u otro según la magnetización de la zona. No usan únicamente láser (también campo magnético), sí dependen de la temperatura y sí aparecen en la presentación.",
         },
         {
-          id: 130,
+          id: 15,
           question: "¿Cuál es la principal aplicación del efecto magneto-resistivo gigante (GMR)?",
           options: [
             "Generación de energía eléctrica.",
@@ -2911,8 +2967,15 @@ export const fundamentosFisicos: Subject = {
           correct: 1,
           explanation: "La principal aplicación del GMR son los cabezales de lectura de los discos duros. El efecto magneto-resistivo gigante produce una variación de resistencia mucho mayor que el MR convencional, gracias a capas ferromagnéticas muy finas separadas por una no magnética (las 'válvulas de espín'). Eso permite detectar bits mucho más pequeños y multiplicar la densidad de grabación de los HDD. No se usa para generar energía, ni es la base de los dispositivos de comunicación o de los sensores de temperatura.",
         },
+      ],
+    },
+    {
+      id: 13,
+      name: "Test Tema 10",
+      description: "Fundamentos físicos del almacenamiento volátil",
+      questions: [
         {
-          id: 131,
+          id: 1,
           question: "¿Cuál es la energía del gap del Silicio (Si)?",
           options: [
             "0.66 eV.",
@@ -2924,7 +2987,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El gap (banda prohibida) del silicio es de 1,12 eV a temperatura ambiente: es la energía mínima que necesita un electrón para pasar de la banda de valencia a la de conducción. Los demás valores corresponden a otros semiconductores, y conviene memorizarlos juntos: 0,66 eV es el germanio (Ge), 1,43 eV el arseniuro de galio (GaAs) y 2,3–3,3 eV el carburo de silicio (SiC), que es el de mayor gap y por eso se usa en electrónica de alta potencia y alta temperatura.",
         },
         {
-          id: 132,
+          id: 2,
           question: "¿Cuál de los siguientes materiales tiene el mayor rango de energía del gap?",
           options: [
             "Silicio (Si).",
@@ -2936,7 +2999,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La energía del gap es la separación entre la banda de valencia y la de conducción. Valores típicos: germanio ≈ 0,67 eV, silicio ≈ 1,12 eV, arseniuro de galio ≈ 1,42 eV y carburo de silicio entre ≈ 2,3 y 3,3 eV según su forma cristalina. El SiC es un semiconductor de banda ancha (wide bandgap): soporta altas tensiones, temperaturas y potencias, y por eso se usa en electrónica de potencia y en los inversores de los coches eléctricos.",
         },
         {
-          id: 133,
+          id: 3,
           question: "¿Cuál es el tipo de dopaje que introduce electrones adicionales en el material semiconductor?",
           options: [
             "Dopaje tipo P.",
@@ -2948,7 +3011,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "El dopaje tipo N consiste en añadir átomos donadores (de 5 electrones de valencia, como el fósforo o el arsénico) que aportan electrones libres: los portadores mayoritarios pasan a ser los electrones, de carga negativa, y de ahí la 'N'. El dopaje tipo P añade átomos aceptores (de 3 electrones de valencia, como el boro) que generan huecos, de carga positiva. La unión PN es la unión de una zona P y una N (la base del diodo) y el MOSFET es un transistor, no un tipo de dopaje.",
         },
         {
-          id: 134,
+          id: 4,
           question: "¿Qué tipo de transistor se utiliza comúnmente en las memorias flash?",
           options: [
             "Transistor NPN.",
@@ -2960,7 +3023,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cada celda de una memoria flash es un MOSFET de puerta flotante: un MOSFET con una segunda puerta, aislada por óxido, en la que se atrapan electrones (por efecto túnel). Al estar aislada, la carga se conserva durante años sin alimentación, y eso hace que la memoria sea no volátil. Un MOSFET estándar no almacena información por sí mismo, así que la opción 'Transistor MOSFET' es la trampa. Los transistores bipolares NPN y PNP no se usan para este tipo de almacenamiento.",
         },
         {
-          id: 135,
+          id: 5,
           question: "¿Cuál de los siguientes componentes tiene una banda de valencia y una banda de conducción claramente definidas que permita superar energéticamente por los electrones?",
           options: [
             "Semiconductor.",
@@ -2972,7 +3035,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un semiconductor la banda de valencia (llena) y la de conducción (vacía) están separadas por un gap pequeño (≈ 1 eV en el silicio). Los electrones pueden superarlo con energía térmica, luz o dopado, y por eso su conducción se puede controlar, que es la base de diodos y transistores. En un conductor las bandas se solapan (no hay gap que superar), en un aislante el gap es tan grande (> 4–5 eV) que los electrones prácticamente no lo superan, y un superconductor es otro fenómeno distinto (resistencia nula por debajo de una temperatura crítica).",
         },
         {
-          id: 136,
+          id: 6,
           question: "¿Cómo se mantiene la información almacenada en los condensadores de la memoria DRAM?",
           options: [
             "Por la constante transferencia de datos desde la CPU.",
@@ -2984,7 +3047,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Los condensadores de la DRAM pierden su carga poco a poco por las corrientes de fuga, así que el controlador de memoria tiene que leer y reescribir (refrescar) periódicamente cada celda, normalmente cada pocos milisegundos. Por eso se llama 'dinámica'. La CPU no transfiere datos constantemente para mantenerla, la información no está en los transistores (estos solo actúan como interruptores de acceso al condensador) y la refrigeración no tiene nada que ver con conservar los datos.",
         },
         {
-          id: 137,
+          id: 7,
           question: "¿Cuál es una de las aplicaciones más comunes de la memoria DRAM?",
           options: [
             "Almacenamiento a largo plazo.",
@@ -2996,7 +3059,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La DRAM se usa sobre todo como memoria principal (la RAM) de ordenadores y móviles: cada celda es solo un transistor y un condensador, así que tiene mucha densidad, es barata y rápida. Es volátil (pierde los datos sin alimentación), así que no sirve para almacenamiento a largo plazo, que es cosa de SSD o HDD. Las tarjetas gráficas usan variantes de DRAM (GDDR), pero el procesamiento gráfico lo hace la GPU, y los dispositivos de entrada son periféricos como el teclado.",
         },
         {
-          id: 138,
+          id: 8,
           question: "¿Qué significa la sigla DRAM?",
           options: [
             "Memoria de Acceso Directo.",
@@ -3008,7 +3071,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "DRAM son las siglas de Dynamic Random-Access Memory, es decir, Memoria de Acceso Aleatorio Dinámico. 'Acceso aleatorio' significa que se puede acceder a cualquier posición en el mismo tiempo, sin recorrer las anteriores, y 'dinámica' que necesita refrescarse periódicamente porque sus condensadores se descargan. Las demás opciones omiten la 'R' (Random), que es justo lo que caracteriza a la RAM.",
         },
         {
-          id: 139,
+          id: 9,
           question: "¿Qué característica del transistor MOSFET es crucial para su función en la DRAM?",
           options: [
             "Alta resistencia.",
@@ -3020,7 +3083,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Cada celda DRAM tiene un condensador que guarda el bit como carga y un transistor MOSFET que hace de interruptor de acceso: cuando se activa la línea de palabra, el MOSFET conecta el condensador a la línea de bit para leerlo o escribirlo; cuando está cortado, lo aísla para conservar la carga. Una resistencia alta, una conductividad baja o un tamaño grande serían inconvenientes: interesa que el transistor conmute bien y sea lo más pequeño posible.",
         },
         {
-          id: 140,
+          id: 10,
           question: "¿Cuál es el componente básico de una celda de memoria NAND?",
           options: [
             "Transistor MOSFET de puerta flotante.",
@@ -3032,7 +3095,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La celda básica de una memoria NAND flash es un transistor MOSFET de puerta flotante: tiene una puerta adicional rodeada de óxido aislante donde se pueden atrapar electrones. La presencia o ausencia de esa carga cambia la tensión umbral del transistor, y eso es lo que codifica el bit. Un MOSFET normal no almacena información; el efecto túnel es el mecanismo para meter o sacar electrones de la puerta flotante (no un componente); y la MRAM es otra tecnología de memoria distinta.",
         },
         {
-          id: 141,
+          id: 11,
           question: "¿Qué fenómeno se utiliza para generar un \"0\" en un transistor MOSFET de puerta flotante?",
           options: [
             "Efecto túnel.",
@@ -3044,7 +3107,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "Para cambiar el estado de un MOSFET de puerta flotante se aplica una tensión alta que hace que los electrones atraviesen la fina capa de óxido aislante por efecto túnel cuántico (efecto túnel Fowler-Nordheim) y queden atrapados en la puerta flotante, o salgan de ella. Atrapar electrones sube la tensión umbral de la celda, que según el convenio se interpreta como un '0' (programado). La MRAM y la celda NAND no son fenómenos físicos, y generar cargas positivas no es el mecanismo de escritura.",
         },
         {
-          id: 142,
+          id: 12,
           question: "¿Qué función cumple el transistor MOSFET de puerta flotante en una memoria SSD?",
           options: [
             "Incrementar la velocidad de lectura.",
@@ -3056,7 +3119,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "En un SSD, cada celda NAND es un MOSFET de puerta flotante que almacena información en forma de carga eléctrica atrapada en esa puerta aislada; la cantidad de carga fija la tensión umbral y, por tanto, el valor del bit (o de varios bits en celdas MLC/TLC/QLC). No es un mecanismo para acelerar la lectura, ni genera energía, ni existe para reducir el consumo, aunque los SSD consuman poco por no tener partes móviles.",
         },
         {
-          id: 143,
+          id: 13,
           question: "Enunciado de la pregunta de respuesta múltiple: ¿Qué tipo de memoria se menciona en la presentación como alternativa a la memoria NAND?",
           options: [
             "Memoria Flash.",
@@ -3068,7 +3131,7 @@ export const fundamentosFisicos: Subject = {
           explanation: "La MRAM (memoria RAM magnetorresistiva) guarda los bits en la orientación magnética de unas uniones de túnel magnéticas en lugar de en carga eléctrica. Es no volátil, muy rápida y aguanta muchísimos más ciclos de escritura que la NAND, por eso se presenta como alternativa. La memoria flash es la propia NAND, el disco duro es otra tecnología de almacenamiento y 'memoria volátil' es una categoría, no una alternativa concreta.",
         },
         {
-          id: 144,
+          id: 14,
           question: "¿Cuál es el componente que se destaca por su capacidad de almacenar información de forma no volátil en una SSD?",
           options: [
             "Efecto túnel.",
