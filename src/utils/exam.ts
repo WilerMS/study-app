@@ -25,6 +25,24 @@ function roleWeight(name: string): number {
   return 3;
 }
 
+/**
+ * Los "Test Tema N" juntos equivalen al banco del examen (3 preguntas en total),
+ * así que se agrupan en un único bloque antes de repartir las cuotas.
+ */
+function mergeTemaTests(topics: Topic[]): Topic[] {
+  const isTema = (t: Topic) => t.name.toLowerCase().startsWith("test tema");
+  const temas = topics.filter(isTema);
+  if (temas.length === 0) return topics;
+  return [
+    ...topics.filter((t) => !isTema(t)),
+    {
+      id: -2,
+      name: "Banco de preguntas",
+      questions: temas.flatMap((t) => t.questions),
+    },
+  ];
+}
+
 /** ¿Se puede montar un simulacro? (hay al menos una pregunta) */
 export function canBuildExam(subject: Subject): boolean {
   return subject.topics.some((t) => t.questions.length > 0);
@@ -37,7 +55,9 @@ export function canBuildExam(subject: Subject): boolean {
  * usa las que existan.
  */
 export function buildExam(subject: Subject): Topic {
-  const topics = subject.topics.filter((t) => t.questions.length > 0);
+  const topics = mergeTemaTests(
+    subject.topics.filter((t) => t.questions.length > 0),
+  );
   const totalAvailable = topics.reduce((a, t) => a + t.questions.length, 0);
   const target = Math.min(EXAM_SIZE, totalAvailable);
 

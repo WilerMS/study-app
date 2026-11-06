@@ -8,7 +8,7 @@ Cada Prueba de Validación final tiene 10 preguntas tipo test:
 
 - **3 preguntas** de la **Actividad 1**
 - **4 preguntas** de la **Actividad 2**
-- **3 preguntas** del **Banco de Preguntas** (Test de los temas)
+- **3 preguntas** del **Banco de Preguntas** (Test de los temas). En el simulacro, todos los topics "Test Tema N" cuentan juntos como este bloque (`src/utils/exam.ts`).
 
 Algunas asignaturas solo tienen una actividad, o solo el banco. Se hace test de lo que haya.
 
@@ -90,12 +90,12 @@ Cuando el usuario adjunte una actividad o banco que falta:
 | Deontología y Legislación           | `deontologia.ts`         | ✅    | ✅    | n/a   | Completa (no existe banco)     |
 | Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
 | Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
-| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests: un topic por tema, "Test Tema 1…10" (ids 4–13, 13–15 preguntas cada uno; 144 en total, salvo 6 especiales) |
-| Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (60), Tests: un topic por tema, "Test Tema 1…12" (ids 4–15, 150 preguntas en total) |
+| Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Tests: un topic por tema, "Test Tema 1…10" (ids 4–13, 13–15 preguntas cada uno; 144 en total, salvo 6 especiales). Sin Temario: el examen es 3 Act1 + 4 Act2 + 3 de los tests de tema |
+| Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Tests: un topic por tema, "Test Tema 1…12" (ids 4–15, 150 preguntas en total). Sin Temario: el examen es 3 Act1 + 4 Act2 + 3 de los tests de tema |
 | Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
 | Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
-**Asignaturas del curso 2026-27 (no hay banco):** llevan 4 topics de 30 preguntas mínimo: Actividad 1 (id 1), Actividad 2 (id 2), Temario (id 3) y un topic por cada test de tema ("Test Tema N", ids 4 en adelante, description = título del tema). Las preguntas de los tests se copian **literalmente** desde los `.md` guardados en `unipro/<asignatura>/tests/N.md` (en el examen salen idénticas). No se incluyen las preguntas con varias respuestas correctas (el modelo solo admite un `correct`) ni las que el campus no ha confirmado. La app baraja las opciones, así que se evitan las de "Todas las anteriores".
+**Asignaturas del curso 2026-27 (no hay banco):** llevan Actividad 1 (id 1, 30 preguntas), Actividad 2 (id 2, 30 preguntas) y un topic por cada test de tema ("Test Tema N", ids 4 en adelante, description = título del tema). **No llevan topic Temario** (el id 3 queda libre): el examen es 3 preguntas de la Act1, 4 de la Act2 y 3 idénticas a los tests de tema. Las preguntas de los tests se copian **literalmente** desde los `.md` guardados en `unipro/<asignatura>/tests/N.md` (en el examen salen idénticas). No se incluyen las preguntas con varias respuestas correctas (el modelo solo admite un `correct`) ni las que el campus no ha confirmado. La app baraja las opciones, así que se evitan las de "Todas las anteriores".
 
 "n/a" = la asignatura **no tiene banco de preguntas**: en el examen todas las preguntas salen de las actividades y del temario. "Suspendida" = el usuario la repetirá el curso siguiente; cuando traiga los PDFs nuevos (pueden cambiar las actividades), añadir o sustituir los topics. Cada topic completo tiene 30 preguntas.
 
