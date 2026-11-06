@@ -91,7 +91,7 @@ Cuando el usuario adjunte una actividad o banco que falta:
 | Diseño Avanzado de Algoritmos       | `diseno-algoritmos.ts`   | ✅    | —     | —     | Suspendida: repetir el próximo curso |
 | Estadística                         | `estadistica.ts`         | ✅    | ✅    | ✅    | Completa                       |
 | Fundamentos Físicos de la Informática | `fundamentos-fisicos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (50), Tests: un topic por tema, "Test Tema 1…10" (ids 4–13, 13–15 preguntas cada uno; 144 en total, salvo 6 especiales) |
-| Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Act1 (30), Act2 (30), Temario (60); faltan Tests |
+| Ingeniería de Requisitos            | `ingenieria-requisitos.ts` | ✅  | ✅    | n/a   | Curso 2026-27 · Completa: Act1 (30), Act2 (30), Temario (60), Tests: un topic por tema, "Test Tema 1…12" (ids 4–15, 150 preguntas en total) |
 | Informática Gráfica y Visualización | `informatica-grafica.ts` | —     | —     | ✅    | Suspendida: repetir el próximo curso |
 | Procesos de Ingeniería del Software | `procesos.ts`            | ✅    | ✅    | ✅    | Completa                       |
 
